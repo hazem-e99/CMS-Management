@@ -12,7 +12,7 @@
       "metadata": {
         "showInNav": true,
         "isPublished": true,
-        "order": 1
+        "order": 3
       },
       "sections": [
         {
@@ -798,7 +798,7 @@
       "metadata": {
         "showInNav": true,
         "isPublished": true,
-        "order": 2
+        "order": 1
       },
       "sections": [
         {
@@ -1285,7 +1285,7 @@
       "metadata": {
         "showInNav": true,
         "isPublished": true,
-        "order": 3
+        "order": 2
       },
       "sections": [
         {
@@ -3054,19 +3054,19 @@
       ]
     },
     {
-      "id": "page-1763837486847",
+      "id": "page-1763839722389",
       "title": {
         "en": "Home",
         "ar": "الرئيسية",
-        "ku": "kjffff"
+        "ku": "gffgggg"
       },
       "slug": "home",
       "parentId": null,
       "metadata": {
         "description": {
-          "en": "home page",
-          "ar": "home page",
-          "ku": "home page"
+          "en": "dddddddddd",
+          "ar": "ييييييييييييي",
+          "ku": "ffffffff"
         },
         "isPublished": true,
         "showInNav": true,
@@ -3077,7 +3077,7 @@
           "type": "hero",
           "content": {
             "en": {
-              "title": "Welcome to Our Website",
+              "title": "Welcome to Home Page",
               "subtitle": "Build amazing experiences with our platform",
               "buttonText": "Get Started",
               "buttonLink": "#"
@@ -3096,18 +3096,18 @@
             }
           },
           "settings": {
-            "backgroundType": "media",
-            "backgroundColor": "#0ea5e9",
-            "textColor": "#ffffff",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
             "backgroundImage": "",
-            "backgroundVideo": "https://www.pexels.com/download/video/2098989/",
+            "backgroundVideo": "",
             "backgroundOverlay": true,
             "overlayOpacity": 0.5,
             "paddingTop": "80px",
             "paddingBottom": "80px",
             "minHeight": "500px"
           },
-          "id": "b003af6c-0bbc-48b9-ace7-087dea5b90b6",
+          "id": "96758ebc-0570-469f-87db-685de54e897f",
           "order": 1
         },
         {
@@ -3183,12 +3183,92 @@
             "paddingBottom": "64px",
             "columns": 3
           },
-          "id": "6d0907b0-36d7-4c3c-a79e-918a0a3d58bb",
+          "id": "4394fd40-494a-4f1f-8337-0033274f9bbc",
           "order": 2
+        },
+        {
+          "type": "image-text-left",
+          "content": {
+            "en": {
+              "title": "Discover Our Story",
+              "description": "We are passionate about creating amazing experiences for our customers. Our journey started with a simple idea and has grown into something truly special.",
+              "imageUrl": "",
+              "imageAlt": "Feature image",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "اكتشف قصتنا",
+              "description": "نحن شغوفون بخلق تجارب رائعة لعملائنا. بدأت رحلتنا بفكرة بسيطة ونمت لتصبح شيئًا مميزًا حقًا.",
+              "imageUrl": "",
+              "imageAlt": "صورة الميزة",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "چیرۆکەکەمان بزانە",
+              "description": "ئێمە حەزمان لە دروستکردنی ئەزموونی سەرنجڕاکێش بۆ کڕیارەکانمان هەیە. گەشتەکەمان بە بیرۆکەیەکی سادە دەستی پێکرد و بووە شتێکی تایبەت.",
+              "imageUrl": "",
+              "imageAlt": "وێنەی تایبەتمەندی",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "backgroundImage": "",
+            "paddingTop": "64px",
+            "paddingBottom": "64px",
+            "imageWidth": "50%"
+          },
+          "id": "61c0a33c-bb52-41e5-9c6a-1c6acde283e5",
+          "order": 3
+        },
+        {
+          "type": "image-text-right",
+          "content": {
+            "en": {
+              "title": "Why Choose Us",
+              "description": "Our commitment to excellence and customer satisfaction sets us apart. We deliver quality results that exceed expectations every time.",
+              "imageUrl": "",
+              "imageAlt": "Feature image",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "لماذا تختارنا",
+              "description": "التزامنا بالتميز ورضا العملاء يميزنا. نقدم نتائج عالية الجودة تتجاوز التوقعات في كل مرة.",
+              "imageUrl": "",
+              "imageAlt": "صورة الميزة",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بۆچی ئێمە هەڵبژێریت",
+              "description": "پابەندبوونمان بە باشی و ڕەزامەندی کڕیار جیامان دەکاتەوە. ئەنجامی کوالیتی دابین دەکەین کە چاوەڕوانی تێدەپەڕێنێت.",
+              "imageUrl": "",
+              "imageAlt": "وێنەی تایبەتمەندی",
+              "buttonText": "دەست پێبکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#f9fafb",
+            "textColor": "#111827",
+            "backgroundImage": "",
+            "paddingTop": "64px",
+            "paddingBottom": "64px",
+            "imageWidth": "50%"
+          },
+          "id": "5ccb8601-19ac-4ccc-b82e-3d02a021e190",
+          "order": 4
         }
       ],
-      "createdAt": "2025-11-22T18:51:26.844Z",
-      "updatedAt": "2025-11-22T18:54:24.694Z"
+      "createdAt": "2025-11-22T19:28:42.386Z",
+      "updatedAt": "2025-11-22T19:31:14.717Z"
     }
   ],
   "surveys": [],
@@ -3196,38 +3276,37 @@
     "logo": {
       "url": "",
       "alt": {
-        "en": "PGS Logo",
-        "ar": "شعار PGS",
-        "ku": "لۆگۆی PGS"
+        "en": "ddd",
+        "ar": "ييي",
+        "ku": "ييييي"
       }
     },
     "siteName": {
-      "en": "PGS",
-      "ar": "PGS",
-      "ku": "PGS"
+      "en": "PGSSSS",
+      "ar": "بي جي اس",
+      "ku": "بي جي اسسس"
     },
     "footer": {
       "phones": [
-        "+964 750 123 4567",
-        "+964 770 987 6543"
+        "01094575914"
       ],
+      "email": "ssss@fdsgf.com",
       "address": {
-        "en": "Baghdad, Iraq",
-        "ar": "بغداد، العراق",
-        "ku": "بەغدا، عێراق"
+        "en": "eeeeeeeeee",
+        "ar": "ييييييييي",
+        "ku": "fdgfgfd"
       },
-      "email": "info@pgs.org",
       "socialMedia": {
-        "facebook": "",
-        "twitter": "",
-        "instagram": "",
-        "linkedin": ""
+        "facebook": "https://www.facebook.com",
+        "twitter": "https://www.facebook.com",
+        "instagram": "https://www.facebook.com",
+        "linkedin": "https://www.facebook.com"
       }
     },
     "copyright": {
-      "en": "© 2024 PGS. All rights reserved.",
-      "ar": "© 2024 PGS. جميع الحقوق محفوظة.",
-      "ku": "© 2024 PGS. هەموو مافەکان پارێزراون."
+      "en": "bbbbbbbb",
+      "ar": "بببببببب",
+      "ku": "يييييييييي"
     }
   }
 }

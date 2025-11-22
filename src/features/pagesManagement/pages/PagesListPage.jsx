@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Edit, Trash2, Layout, FileText, Eye } from 'lucide-react';
-import { usePages, useDeletePage } from '../hooks/usePages';
+import { Plus, Edit, Trash2, Layout, FileText, Eye, ChevronUp, ChevronDown } from 'lucide-react';
+import { usePages, useDeletePage, useUpdatePage } from '../hooks/usePages';
 import { Button } from '../../../shared/ui/Button';
 import { Card } from '../../../shared/ui/Card';
 import { Modal } from '../../../shared/ui/Modal';
@@ -16,6 +16,7 @@ export function PagesListPage() {
   const navigate = useNavigate();
   const { data: pages, isLoading } = usePages();
   const deletePage = useDeletePage();
+  const updatePage = useUpdatePage();
 
   const [pageToDelete, setPageToDelete] = useState(null);
   const [previewPage, setPreviewPage] = useState(null);
@@ -35,9 +36,79 @@ export function PagesListPage() {
     }
   };
 
-  const renderPageItem = (page, level = 0) => {
-    const hasChildren = pages.some((p) => p.parentId === page.id);
+  // Sort pages by order
+  const sortedPages = pages ? [...pages].sort((a, b) => {
+    const orderA = a.metadata?.order ?? 999;
+    const orderB = b.metadata?.order ?? 999;
+    return orderA - orderB;
+  }) : [];
+
+  // Move page up
+  const movePageUp = async (page, currentIndex) => {
+    if (currentIndex === 0) return;
+
+    const topLevelPages = sortedPages.filter(p => !p.parentId);
+    const prevPage = topLevelPages[currentIndex - 1];
+
+    // Swap orders
+    await updatePage.mutateAsync({
+      id: page.id,
+      data: {
+        ...page,
+        metadata: {
+          ...page.metadata,
+          order: prevPage.metadata.order,
+        },
+      },
+    });
+
+    await updatePage.mutateAsync({
+      id: prevPage.id,
+      data: {
+        ...prevPage,
+        metadata: {
+          ...prevPage.metadata,
+          order: page.metadata.order,
+        },
+      },
+    });
+  };
+
+  // Move page down
+  const movePageDown = async (page, currentIndex, totalPages) => {
+    if (currentIndex === totalPages - 1) return;
+
+    const topLevelPages = sortedPages.filter(p => !p.parentId);
+    const nextPage = topLevelPages[currentIndex + 1];
+
+    // Swap orders
+    await updatePage.mutateAsync({
+      id: page.id,
+      data: {
+        ...page,
+        metadata: {
+          ...page.metadata,
+          order: nextPage.metadata.order,
+        },
+      },
+    });
+
+    await updatePage.mutateAsync({
+      id: nextPage.id,
+      data: {
+        ...nextPage,
+        metadata: {
+          ...nextPage.metadata,
+          order: page.metadata.order,
+        },
+      },
+    });
+  };
+
+  const renderPageItem = (page, level = 0, index = 0, totalPages = 0) => {
+    const hasChildren = sortedPages.some((p) => p.parentId === page.id);
     const paddingInline = level * 24;
+    const isTopLevel = level === 0;
 
     return (
       <div key={page.id}>
@@ -72,6 +143,28 @@ export function PagesListPage() {
           </div>
 
           <div className="flex items-center gap-2">
+            {/* Up/Down arrows - only for top-level pages */}
+            {isTopLevel && (
+              <>
+                <button
+                  onClick={() => movePageUp(page, index)}
+                  disabled={index === 0}
+                  className="p-1.5 bg-gray-100 dark:bg-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                  title={t('builder.moveUp')}
+                >
+                  <ChevronUp className="h-4 w-4 text-gray-600 dark:text-gray-300" />
+                </button>
+                <button
+                  onClick={() => movePageDown(page, index, totalPages)}
+                  disabled={index === totalPages - 1}
+                  className="p-1.5 bg-gray-100 dark:bg-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                  title={t('builder.moveDown')}
+                >
+                  <ChevronDown className="h-4 w-4 text-gray-600 dark:text-gray-300" />
+                </button>
+              </>
+            )}
+            
             <Button
               variant="ghost"
               size="sm"
@@ -102,12 +195,14 @@ export function PagesListPage() {
             />
           </div>
         </div>
-        {pages
+        {sortedPages
           .filter((p) => p.parentId === page.id)
-          .map((child) => renderPageItem(child, level + 1))}
+          .map((child, childIndex) => renderPageItem(child, level + 1, childIndex, sortedPages.filter(p => p.parentId === page.id).length))}
       </div>
     );
   };
+
+  const topLevelPages = sortedPages.filter((page) => !page.parentId);
 
   return (
     <div className="space-y-6">
@@ -127,11 +222,11 @@ export function PagesListPage() {
 
       <Card className="overflow-hidden p-0">
         <div className="divide-y divide-gray-200 dark:divide-gray-700">
-          {pages
-            .filter((p) => !p.parentId)
-            .map((page) => renderPageItem(page))}
+          {topLevelPages.map((page, index) => 
+            renderPageItem(page, 0, index, topLevelPages.length)
+          )}
           
-          {pages.length === 0 && (
+          {sortedPages.length === 0 && (
             <div className="p-8 text-center text-gray-500 dark:text-gray-400">
               {t('pages.noPages')}
             </div>
