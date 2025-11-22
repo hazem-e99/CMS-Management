@@ -663,4 +663,58 @@ export const sectionsLibrary = [
       columns: 3,
     },
   },
+  {
+    id: 'data-table-1',
+    type: 'data-table',
+    name: {
+      en: 'Data Table',
+      ar: 'جدول البيانات',
+      ku: 'خشتەی داتا',
+    },
+    description: {
+      en: 'Customizable data table with rows and columns',
+      ar: 'جدول بيانات قابل للتخصيص مع صفوف وأعمدة',
+      ku: 'خشتەی داتای گونجاو لەگەڵ ڕیز و ستوون',
+    },
+    defaultContent: {
+      en: {
+        title: 'Data Overview',
+        headers: ['Feature', 'Basic', 'Pro', 'Enterprise'],
+        rows: [
+          ['Users', '10', '50', 'Unlimited'],
+          ['Storage', '5GB', '50GB', 'Unlimited'],
+          ['Support', 'Email', 'Priority', '24/7'],
+        ],
+      },
+      ar: {
+        title: 'نظرة عامة على البيانات',
+        headers: ['الميزة', 'أساسي', 'احترافي', 'مؤسسات'],
+        rows: [
+          ['المستخدمون', '10', '50', 'غير محدود'],
+          ['التخزين', '5 جيجا', '50 جيجا', 'غير محدود'],
+          ['الدعم', 'بريد إلكتروني', 'ذو أولوية', '24/7'],
+        ],
+      },
+      ku: {
+        title: 'تێڕوانینی داتا',
+        headers: ['تایبەتمەندی', 'بنەڕەتی', 'پیشەیی', 'کۆمپانیا'],
+        rows: [
+          ['بەکارهێنەران', '10', '50', 'بێسنوور'],
+          ['کۆگا', '5GB', '50GB', 'بێسنوور'],
+          ['پشتگیری', 'ئیمەیڵ', 'تایبەت', '24/7'],
+        ],
+      },
+    },
+    settings: {
+      backgroundType: 'color',
+      backgroundColor: '#ffffff',
+      textColor: '#111827',
+      backgroundImage: '',
+      paddingTop: '64px',
+      paddingBottom: '64px',
+      striped: true,
+      bordered: true,
+      headerBgColor: '#f3f4f6',
+    },
+  },
 ];

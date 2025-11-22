@@ -27,6 +27,8 @@ export function SectionRenderer({ section }) {
       return <ImageTextRightSection content={content} settings={settings} />;
     case 'pricing-table':
       return <PricingTableSection content={content} settings={settings} />;
+    case 'data-table':
+      return <DataTableSection content={content} settings={settings} />;
     default:
       return <DefaultSection content={content} type={section.type} />;
   }
@@ -401,6 +403,64 @@ function PricingTableSection({ content, settings }) {
               </a>
             </div>
           ))}
+        </div>
+      </div>
+    </SectionWrapper>
+  );
+}
+
+function DataTableSection({ content, settings }) {
+  const striped = settings.striped !== false;
+  const bordered = settings.bordered !== false;
+  const headerBgColor = settings.headerBgColor || '#f3f4f6';
+  
+  return (
+    <SectionWrapper settings={settings}>
+      <div className="max-w-7xl mx-auto px-4">
+        {content.title && (
+          <h2 className="text-3xl font-bold text-center mb-8">{content.title}</h2>
+        )}
+        
+        <div className="overflow-x-auto shadow-lg rounded-lg">
+          <table className={`min-w-full ${bordered ? 'border-collapse' : ''}`}>
+            <thead style={{ backgroundColor: headerBgColor }}>
+              <tr>
+                {content.headers?.map((header, idx) => (
+                  <th
+                    key={idx}
+                    className={`px-6 py-4 text-left text-sm font-semibold ${
+                      bordered ? 'border border-gray-300 dark:border-gray-600' : ''
+                    }`}
+                  >
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="bg-white dark:bg-gray-800">
+              {content.rows?.map((row, rowIdx) => (
+                <tr
+                  key={rowIdx}
+                  className={`${
+                    striped && rowIdx % 2 === 1
+                      ? 'bg-gray-50 dark:bg-gray-700'
+                      : ''
+                  } hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors`}
+                >
+                  {row.map((cell, cellIdx) => (
+                    <td
+                      key={cellIdx}
+                      className={`px-6 py-4 text-sm ${
+                        bordered ? 'border border-gray-300 dark:border-gray-600' : ''
+                      }`}
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </SectionWrapper>

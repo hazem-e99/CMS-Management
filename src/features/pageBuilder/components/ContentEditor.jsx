@@ -138,11 +138,37 @@ export function ContentEditor({ section, onUpdate, onClose }) {
               dir={lang !== 'en' ? 'rtl' : 'ltr'}
             />
             <div className="space-y-3">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Features
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Features
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newFeatures = [
+                      ...(langContent.features || []),
+                      { icon: '⚡', title: '', description: '' }
+                    ];
+                    handleContentChange(lang, 'features', newFeatures);
+                  }}
+                  className="px-3 py-1 text-sm bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
+                >
+                  + Add Feature
+                </button>
+              </div>
               {langContent.features?.map((feature, idx) => (
-                <div key={idx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg space-y-2">
+                <div key={idx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg space-y-2 relative">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newFeatures = langContent.features.filter((_, i) => i !== idx);
+                      handleContentChange(lang, 'features', newFeatures);
+                    }}
+                    className="absolute top-2 right-2 text-red-600 hover:text-red-700 text-sm font-medium"
+                    title="Remove feature"
+                  >
+                    ✕
+                  </button>
                   <Input
                     label={`Feature ${idx + 1} - Icon (Emoji)`}
                     value={feature.icon || ''}
@@ -177,11 +203,37 @@ export function ContentEditor({ section, onUpdate, onClose }) {
               dir={lang !== 'en' ? 'rtl' : 'ltr'}
             />
             <div className="space-y-3">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Testimonials
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Testimonials
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newTestimonials = [
+                      ...(langContent.testimonials || []),
+                      { content: '', name: '', role: '', avatar: '' }
+                    ];
+                    handleContentChange(lang, 'testimonials', newTestimonials);
+                  }}
+                  className="px-3 py-1 text-sm bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
+                >
+                  + Add Testimonial
+                </button>
+              </div>
               {langContent.testimonials?.map((testimonial, idx) => (
-                <div key={idx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg space-y-2">
+                <div key={idx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg space-y-2 relative">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newTestimonials = langContent.testimonials.filter((_, i) => i !== idx);
+                      handleContentChange(lang, 'testimonials', newTestimonials);
+                    }}
+                    className="absolute top-2 right-2 text-red-600 hover:text-red-700 text-sm font-medium"
+                    title="Remove testimonial"
+                  >
+                    ✕
+                  </button>
                   <div>
                     <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">
                       Content
@@ -228,11 +280,37 @@ export function ContentEditor({ section, onUpdate, onClose }) {
               dir={lang !== 'en' ? 'rtl' : 'ltr'}
             />
             <div className="space-y-3">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Images
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Images
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newImages = [
+                      ...(langContent.images || []),
+                      { url: '', caption: '' }
+                    ];
+                    handleContentChange(lang, 'images', newImages);
+                  }}
+                  className="px-3 py-1 text-sm bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
+                >
+                  + Add Image
+                </button>
+              </div>
               {langContent.images?.map((image, idx) => (
-                <div key={idx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg space-y-2">
+                <div key={idx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg space-y-2 relative">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newImages = langContent.images.filter((_, i) => i !== idx);
+                      handleContentChange(lang, 'images', newImages);
+                    }}
+                    className="absolute top-2 right-2 text-red-600 hover:text-red-700 text-sm font-medium"
+                    title="Remove image"
+                  >
+                    ✕
+                  </button>
                   <Input
                     label={`Image ${idx + 1} - URL`}
                     value={image.url || ''}
@@ -261,11 +339,37 @@ export function ContentEditor({ section, onUpdate, onClose }) {
               dir={lang !== 'en' ? 'rtl' : 'ltr'}
             />
             <div className="space-y-3">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                FAQs
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  FAQs
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newFaqs = [
+                      ...(langContent.faqs || []),
+                      { question: '', answer: '' }
+                    ];
+                    handleContentChange(lang, 'faqs', newFaqs);
+                  }}
+                  className="px-3 py-1 text-sm bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
+                >
+                  + Add FAQ
+                </button>
+              </div>
               {langContent.faqs?.map((faq, idx) => (
-                <div key={idx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg space-y-2">
+                <div key={idx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg space-y-2 relative">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newFaqs = langContent.faqs.filter((_, i) => i !== idx);
+                      handleContentChange(lang, 'faqs', newFaqs);
+                    }}
+                    className="absolute top-2 right-2 text-red-600 hover:text-red-700 text-sm font-medium"
+                    title="Remove FAQ"
+                  >
+                    ✕
+                  </button>
                   <Input
                     label="Question"
                     value={faq.question || ''}
@@ -354,11 +458,45 @@ export function ContentEditor({ section, onUpdate, onClose }) {
               dir={lang !== 'en' ? 'rtl' : 'ltr'}
             />
             <div className="space-y-3">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Pricing Plans
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Pricing Plans
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newPlans = [
+                      ...(langContent.plans || []),
+                      {
+                        name: '',
+                        price: '',
+                        period: '/month',
+                        features: [],
+                        buttonText: 'Get Started',
+                        buttonLink: '#',
+                        highlighted: false,
+                      }
+                    ];
+                    handleContentChange(lang, 'plans', newPlans);
+                  }}
+                  className="px-3 py-1 text-sm bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
+                >
+                  + Add Plan
+                </button>
+              </div>
               {langContent.plans?.map((plan, idx) => (
-                <div key={idx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg space-y-2">
+                <div key={idx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg space-y-2 relative">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newPlans = langContent.plans.filter((_, i) => i !== idx);
+                      handleContentChange(lang, 'plans', newPlans);
+                    }}
+                    className="absolute top-2 right-2 text-red-600 hover:text-red-700 text-sm font-medium"
+                    title="Remove plan"
+                  >
+                    ✕
+                  </button>
                   <div className="flex items-center gap-2">
                     <Input
                       label={`Plan ${idx + 1} - Name`}
@@ -419,6 +557,130 @@ export function ContentEditor({ section, onUpdate, onClose }) {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        );
+
+      case 'data-table':
+        return (
+          <div className="space-y-4">
+            <Input
+              label="Title"
+              value={langContent.title || ''}
+              onChange={(e) => handleContentChange(lang, 'title', e.target.value)}
+              dir={lang !== 'en' ? 'rtl' : 'ltr'}
+            />
+            
+            {/* Table Headers */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Column Headers
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newHeaders = [...(langContent.headers || []), ''];
+                    const newRows = (langContent.rows || []).map(row => [...row, '']);
+                    const newContent = {
+                      ...langContent,
+                      headers: newHeaders,
+                      rows: newRows,
+                    };
+                    handleContentChange(lang, null, newContent);
+                  }}
+                  className="px-3 py-1 text-sm bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
+                >
+                  + Add Column
+                </button>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                {langContent.headers?.map((header, idx) => (
+                  <div key={idx} className="relative">
+                    <Input
+                      label={`Column ${idx + 1}`}
+                      value={header}
+                      onChange={(e) => {
+                        const newHeaders = [...langContent.headers];
+                        newHeaders[idx] = e.target.value;
+                        handleContentChange(lang, 'headers', newHeaders);
+                      }}
+                      dir={lang !== 'en' ? 'rtl' : 'ltr'}
+                    />
+                    {langContent.headers.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const newHeaders = langContent.headers.filter((_, i) => i !== idx);
+                          const newRows = langContent.rows.map(row => row.filter((_, i) => i !== idx));
+                          const newContent = {
+                            ...langContent,
+                            headers: newHeaders,
+                            rows: newRows,
+                          };
+                          handleContentChange(lang, null, newContent);
+                        }}
+                        className="absolute -top-2 -right-2 w-5 h-5 bg-red-600 text-white rounded-full text-xs hover:bg-red-700 flex items-center justify-center"
+                        title="Remove column"
+                      >
+                        ✕
+                      </button>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Table Rows */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Table Rows
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newRow = new Array(langContent.headers?.length || 1).fill('');
+                    const newRows = [...(langContent.rows || []), newRow];
+                    handleContentChange(lang, 'rows', newRows);
+                  }}
+                  className="px-3 py-1 text-sm bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
+                >
+                  + Add Row
+                </button>
+              </div>
+              <div className="space-y-3 max-h-96 overflow-y-auto">
+                {langContent.rows?.map((row, rowIdx) => (
+                  <div key={rowIdx} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg relative">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newRows = langContent.rows.filter((_, i) => i !== rowIdx);
+                        handleContentChange(lang, 'rows', newRows);
+                      }}
+                      className="absolute top-2 right-2 text-red-600 hover:text-red-700 text-sm font-medium"
+                      title="Remove row"
+                    >
+                      ✕
+                    </button>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                      {row.map((cell, cellIdx) => (
+                        <Input
+                          key={cellIdx}
+                          label={langContent.headers?.[cellIdx] || `Col ${cellIdx + 1}`}
+                          value={cell}
+                          onChange={(e) => {
+                            const newRows = [...langContent.rows];
+                            newRows[rowIdx][cellIdx] = e.target.value;
+                            handleContentChange(lang, 'rows', newRows);
+                          }}
+                          dir={lang !== 'en' ? 'rtl' : 'ltr'}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         );
