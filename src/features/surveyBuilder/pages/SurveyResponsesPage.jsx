@@ -32,7 +32,7 @@ export function SurveyResponsesPage() {
           variant="ghost"
           size="sm"
           icon={ArrowLeft}
-          onClick={() => navigate('/surveys')}
+          onClick={() => navigate('/admin/surveys')}
         >
           Back
         </Button>

@@ -4,9 +4,9 @@ import { FileText, Layout, ClipboardList, LayoutDashboard } from 'lucide-react';
 import { cn } from '../lib/cn';
 
 const navigation = [
-  { name: 'nav.dashboard', href: '/', icon: LayoutDashboard },
-  { name: 'nav.pages', href: '/pages', icon: FileText },
-  { name: 'nav.surveys', href: '/surveys', icon: ClipboardList },
+  { name: 'nav.dashboard', href: '/admin', icon: LayoutDashboard },
+  { name: 'nav.pages', href: '/admin/pages', icon: FileText },
+  { name: 'nav.surveys', href: '/admin/surveys', icon: ClipboardList },
 ];
 
 export function Sidebar() {

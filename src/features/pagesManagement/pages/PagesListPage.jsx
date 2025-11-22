@@ -82,7 +82,7 @@ export function PagesListPage() {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => navigate(`/pages/${page.id}/builder`)}
+              onClick={() => navigate(`/admin/pages/${page.id}/builder`)}
             >
               Page Builder
             </Button>
@@ -90,7 +90,7 @@ export function PagesListPage() {
               variant="ghost"
               size="sm"
               icon={Edit}
-              onClick={() => navigate(`/pages/${page.id}/edit`)}
+              onClick={() => navigate(`/admin/pages/${page.id}/edit`)}
               title="Edit Page"
             />
             <Button
@@ -120,7 +120,7 @@ export function PagesListPage() {
             Manage your website structure and content
           </p>
         </div>
-        <Button icon={Plus} onClick={() => navigate('/pages/new')}>
+        <Button icon={Plus} onClick={() => navigate('/admin/pages/new')}>
           {t('pages.createPage')}
         </Button>
       </div>

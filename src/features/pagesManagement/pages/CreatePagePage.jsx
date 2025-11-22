@@ -16,7 +16,7 @@ export function CreatePagePage() {
           variant="ghost"
           size="sm"
           icon={ArrowLeft}
-          onClick={() => navigate('/pages')}
+          onClick={() => navigate('/admin/pages')}
         >
           Back to Pages
         </Button>
@@ -33,8 +33,8 @@ export function CreatePagePage() {
 
       <Card>
         <PageForm
-          onSuccess={(pageId) => navigate(`/pages/${pageId}/builder`)}
-          onCancel={() => navigate('/pages')}
+          onSuccess={(pageId) => navigate(`/admin/pages/${pageId}/builder`)}
+          onCancel={() => navigate('/admin/pages')}
         />
       </Card>
     </div>

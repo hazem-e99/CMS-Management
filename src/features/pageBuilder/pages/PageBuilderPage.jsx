@@ -96,7 +96,7 @@ export function PageBuilderPage() {
             variant="ghost"
             size="sm"
             icon={ArrowLeft}
-            onClick={() => navigate('/pages')}
+            onClick={() => navigate('/admin/pages')}
           >
             Back
           </Button>

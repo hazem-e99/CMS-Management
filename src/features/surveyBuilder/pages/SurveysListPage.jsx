@@ -35,7 +35,7 @@ export function SurveysListPage() {
         </div>
         <Button
           icon={Plus}
-          onClick={() => navigate('/surveys/new')}
+          onClick={() => navigate('/admin/surveys/new')}
         >
           {t('surveys.createSurvey')}
         </Button>
@@ -59,7 +59,7 @@ export function SurveysListPage() {
                 variant="outline"
                 size="sm"
                 icon={Eye}
-                onClick={() => navigate(`/surveys/${survey.id}/edit`)}
+                onClick={() => navigate(`/admin/surveys/${survey.id}/edit`)}
                 className="flex-1"
               >
                 Edit
@@ -68,7 +68,7 @@ export function SurveysListPage() {
                 variant="outline"
                 size="sm"
                 icon={BarChart}
-                onClick={() => navigate(`/surveys/${survey.id}/responses`)}
+                onClick={() => navigate(`/admin/surveys/${survey.id}/responses`)}
                 className="flex-1"
               >
                 Responses
@@ -96,7 +96,7 @@ export function SurveysListPage() {
               Get started by creating a new survey.
             </p>
             <div className="mt-6">
-              <Button icon={Plus} onClick={() => navigate('/surveys/new')}>
+              <Button icon={Plus} onClick={() => navigate('/admin/surveys/new')}>
                 {t('surveys.createSurvey')}
               </Button>
             </div>

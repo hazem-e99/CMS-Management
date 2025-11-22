@@ -130,7 +130,7 @@ export function SurveyBuilderPage() {
     } else {
       await createSurvey.mutateAsync(surveyData);
     }
-    navigate('/surveys');
+    navigate('/admin/surveys');
   };
 
   if (isLoading && isEditing) {
@@ -150,7 +150,7 @@ export function SurveyBuilderPage() {
             variant="ghost"
             size="sm"
             icon={ArrowLeft}
-            onClick={() => navigate('/surveys')}
+            onClick={() => navigate('/admin/surveys')}
           >
             Back
           </Button>

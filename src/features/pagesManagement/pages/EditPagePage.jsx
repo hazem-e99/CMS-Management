@@ -31,7 +31,7 @@ export function EditPagePage() {
           <p className="mt-2 text-gray-600 dark:text-gray-400">
             The page you're looking for doesn't exist.
           </p>
-          <Button onClick={() => navigate('/pages')} className="mt-4">
+          <Button onClick={() => navigate('/admin/pages')} className="mt-4">
             Back to Pages
           </Button>
         </div>
@@ -47,7 +47,7 @@ export function EditPagePage() {
             variant="ghost"
             size="sm"
             icon={ArrowLeft}
-            onClick={() => navigate('/pages')}
+            onClick={() => navigate('/admin/pages')}
           >
             Back to Pages
           </Button>
@@ -56,7 +56,7 @@ export function EditPagePage() {
         <Button
           variant="outline"
           icon={Layout}
-          onClick={() => navigate(`/pages/${pageId}/builder`)}
+          onClick={() => navigate(`/admin/pages/${pageId}/builder`)}
         >
           Go to Page Builder
         </Button>
@@ -74,8 +74,8 @@ export function EditPagePage() {
       <Card>
         <PageEditForm
           page={page}
-          onSuccess={() => navigate('/pages')}
-          onCancel={() => navigate('/pages')}
+          onSuccess={() => navigate('/admin/pages')}
+          onCancel={() => navigate('/admin/pages')}
         />
       </Card>
     </div>

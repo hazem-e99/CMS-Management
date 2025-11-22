@@ -7,12 +7,15 @@ import { PageBuilderPage } from './features/pageBuilder/pages/PageBuilderPage';
 import { SurveyBuilderPage } from './features/surveyBuilder/pages/SurveyBuilderPage';
 import { SurveyResponsesPage } from './features/surveyBuilder/pages/SurveyResponsesPage';
 import { SurveysListPage } from './features/surveyBuilder/pages/SurveysListPage';
+import { PublicLayout } from './features/public/layout/PublicLayout';
+import { PublicPage } from './features/public/pages/PublicPage';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<DashboardLayout />}>
-        <Route index element={<Navigate to="/pages" replace />} />
+      {/* Admin Dashboard Routes */}
+      <Route path="/admin" element={<DashboardLayout />}>
+        <Route index element={<Navigate to="/admin/pages" replace />} />
         <Route path="pages" element={<PagesListPage />} />
         <Route path="pages/new" element={<CreatePagePage />} />
         <Route path="pages/:pageId/edit" element={<EditPagePage />} />
@@ -21,6 +24,13 @@ function App() {
         <Route path="surveys/new" element={<SurveyBuilderPage />} />
         <Route path="surveys/:surveyId/edit" element={<SurveyBuilderPage />} />
         <Route path="surveys/:surveyId/responses" element={<SurveyResponsesPage />} />
+      </Route>
+
+      {/* Public Website Routes */}
+      <Route path="/" element={<PublicLayout />}>
+        <Route index element={<Navigate to="/pgs-academy" replace />} />
+        <Route path=":slug" element={<PublicPage />} />
+        <Route path=":slug/:childSlug" element={<PublicPage />} />
       </Route>
     </Routes>
   );

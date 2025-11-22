@@ -8,6 +8,7 @@ export function usePages() {
   return useQuery({
     queryKey: ['pages'],
     queryFn: pagesService.getPages,
+    select: (response) => response.data,
   });
 }
 
@@ -18,6 +19,7 @@ export function usePage(id) {
   return useQuery({
     queryKey: ['pages', id],
     queryFn: () => pagesService.getPage(id),
+    select: (response) => response.data,
     enabled: !!id,
   });
 }

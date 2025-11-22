@@ -15,10 +15,12 @@ export function usePageBuilder(pageId, initialSections = [], onSave) {
 
   // Update sections when initial data changes
   useEffect(() => {
-    setSections(initialSections);
-    setHistory([initialSections]);
-    setHistoryIndex(0);
-  }, [pageId]);
+    if (initialSections && initialSections.length >= 0) {
+      setSections(initialSections);
+      setHistory([initialSections]);
+      setHistoryIndex(0);
+    }
+  }, [JSON.stringify(initialSections)]);
 
   // Add to history
   const addToHistory = (newSections) => {
