@@ -1,20 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLanguage } from '../../../contexts/LanguageContext';
-import { publicPagesService } from '../../../services/publicPagesService';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { settingsService } from '../../../services/settingsService';
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 export function PublicFooter() {
   const { language } = useLanguage();
-  const { data: settings } = useQuery({
-    queryKey: ['siteSettings'],
-    queryFn: publicPagesService.getSiteSettings,
+  const { data: settingsData } = useQuery({
+    queryKey: ['settings'],
+    queryFn: settingsService.getSettings,
   });
 
-  if (!settings) return null;
+  const settings = settingsData?.data || {};
+  if (!settings.footer) return null;
 
   const footer = settings.footer;
-  const address = footer.address[language] || footer.address.en;
-  const copyright = settings.copyright[language] || settings.copyright.en;
+  const address = footer.address?.[language] || footer.address?.en || '';
+  const copyright = settings.copyright?.[language] || settings.copyright?.en || '';
+  const socialMedia = footer.socialMedia || {};
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -26,7 +28,7 @@ export function PublicFooter() {
               {language === 'ar' ? 'اتصل بنا' : language === 'ku' ? 'پەیوەندیمان پێوە بکە' : 'Contact Us'}
             </h3>
             <div className="space-y-3">
-              {footer.phones.map((phone, idx) => (
+              {footer.phones?.map((phone, idx) => (
                 <div key={idx} className="flex items-center gap-2">
                   <Phone className="h-4 w-4" />
                   <a href={`tel:${phone}`} className="hover:text-primary-400 transition-colors">
@@ -34,16 +36,20 @@ export function PublicFooter() {
                   </a>
                 </div>
               ))}
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <a href={`mailto:${footer.email}`} className="hover:text-primary-400 transition-colors">
-                  {footer.email}
-                </a>
-              </div>
-              <div className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 mt-1" />
-                <span>{address}</span>
-              </div>
+              {footer.email && (
+                <div className="flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
+                  <a href={`mailto:${footer.email}`} className="hover:text-primary-400 transition-colors">
+                    {footer.email}
+                  </a>
+                </div>
+              )}
+              {address && (
+                <div className="flex items-start gap-2">
+                  <MapPin className="h-4 w-4 mt-1" />
+                  <span>{address}</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -65,18 +71,44 @@ export function PublicFooter() {
             </div>
           </div>
 
-          {/* About */}
+          {/* About & Social Media */}
           <div>
             <h3 className="text-lg font-semibold mb-4">
               {language === 'ar' ? 'عن PGS' : language === 'ku' ? 'دەربارەی PGS' : 'About PGS'}
             </h3>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-300 text-sm mb-4">
               {language === 'ar'
                 ? 'نحن ملتزمون بتطوير القيادة وبناء المجتمع من خلال التعليم والمشاركة.'
                 : language === 'ku'
                 ? 'ئێمە پابەندین بە گەشەپێدانی سەرکردایەتی و بنیاتنانی کۆمەڵگا لە ڕێگەی پەروەردە و بەشداریکردن.'
                 : 'We are committed to developing leadership and building community through education and engagement.'}
             </p>
+            
+            {/* Social Media Links */}
+            {(socialMedia.facebook || socialMedia.twitter || socialMedia.instagram || socialMedia.linkedin) && (
+              <div className="flex gap-4 mt-4">
+                {socialMedia.facebook && (
+                  <a href={socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors">
+                    <Facebook className="h-5 w-5" />
+                  </a>
+                )}
+                {socialMedia.twitter && (
+                  <a href={socialMedia.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors">
+                    <Twitter className="h-5 w-5" />
+                  </a>
+                )}
+                {socialMedia.instagram && (
+                  <a href={socialMedia.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors">
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                )}
+                {socialMedia.linkedin && (
+                  <a href={socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
 

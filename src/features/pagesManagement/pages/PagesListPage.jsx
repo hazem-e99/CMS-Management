@@ -37,13 +37,13 @@ export function PagesListPage() {
 
   const renderPageItem = (page, level = 0) => {
     const hasChildren = pages.some((p) => p.parentId === page.id);
-    const paddingLeft = level * 24;
+    const paddingInline = level * 24;
 
     return (
       <div key={page.id}>
         <div
           className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors"
-          style={{ paddingLeft: `${paddingLeft + 16}px` }}
+          style={{ paddingInlineStart: `${paddingInline + 16}px` }}
         >
           <div className="flex items-center gap-3">
             {hasChildren ? (
@@ -59,14 +59,14 @@ export function PagesListPage() {
                 <span>/{page.slug}</span>
                 {page.metadata.isPublished ? (
                   <span className="px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300">
-                    Published
+                    {t('pages.published')}
                   </span>
                 ) : (
                   <span className="px-1.5 py-0.5 rounded bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300">
-                    Draft
+                    {t('pages.draft')}
                   </span>
                 )}
-                <span>• {page.sections?.length || 0} sections</span>
+                <span>• {page.sections?.length || 0} {t('pages.sections')}</span>
               </div>
             </div>
           </div>
@@ -77,21 +77,21 @@ export function PagesListPage() {
               size="sm"
               icon={Eye}
               onClick={() => setPreviewPage(page)}
-              title="Preview Page"
+              title={t('pages.previewPage')}
             />
             <Button
               variant="outline"
               size="sm"
               onClick={() => navigate(`/admin/pages/${page.id}/builder`)}
             >
-              Page Builder
+              {t('pages.pageBuilder')}
             </Button>
             <Button
               variant="ghost"
               size="sm"
               icon={Edit}
               onClick={() => navigate(`/admin/pages/${page.id}/edit`)}
-              title="Edit Page"
+              title={t('pages.editPageInfo')}
             />
             <Button
               variant="ghost"
@@ -117,7 +117,7 @@ export function PagesListPage() {
             {t('pages.title')}
           </h1>
           <p className="mt-1 text-gray-600 dark:text-gray-400">
-            Manage your website structure and content
+            {t('pages.manageSite')}
           </p>
         </div>
         <Button icon={Plus} onClick={() => navigate('/admin/pages/new')}>
@@ -133,7 +133,7 @@ export function PagesListPage() {
           
           {pages.length === 0 && (
             <div className="p-8 text-center text-gray-500 dark:text-gray-400">
-              No pages found. Create your first page to get started.
+              {t('pages.noPages')}
             </div>
           )}
         </div>
@@ -145,25 +145,25 @@ export function PagesListPage() {
       <Modal
         isOpen={!!pageToDelete}
         onClose={() => setPageToDelete(null)}
-        title="Delete Page"
+        title={t('pages.deletePage')}
       >
         <div className="space-y-4">
           <p className="text-gray-600 dark:text-gray-300">
-            Are you sure you want to delete "{pageToDelete?.title?.en}"? This action cannot be undone.
+            {t('pages.deleteConfirm')} "{pageToDelete?.title?.en}"? {t('pages.deleteWarning')}
           </p>
           <div className="flex justify-end gap-3">
             <Button
               variant="ghost"
               onClick={() => setPageToDelete(null)}
             >
-              Cancel
+              {t('common.cancel')}
             </Button>
             <Button
               variant="danger"
               onClick={handleDelete}
               loading={deletePage.isPending}
             >
-              Delete
+              {t('common.delete')}
             </Button>
           </div>
         </div>

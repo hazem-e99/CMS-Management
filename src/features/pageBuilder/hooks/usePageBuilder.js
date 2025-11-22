@@ -137,21 +137,6 @@ export function usePageBuilder(pageId, initialSections = [], onSave) {
     }
   };
 
-  // Debounced autosave
-  const debouncedSave = useCallback(
-    debounce(() => {
-      save();
-    }, 2000),
-    [sections]
-  );
-
-  // Trigger autosave when sections change
-  useEffect(() => {
-    if (sections.length > 0 || initialSections.length > 0) {
-      debouncedSave();
-    }
-  }, [sections]);
-
   return {
     sections,
     addSection,

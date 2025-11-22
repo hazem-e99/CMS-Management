@@ -58,7 +58,7 @@ export function EditPagePage() {
           icon={Layout}
           onClick={() => navigate(`/admin/pages/${pageId}/builder`)}
         >
-          Go to Page Builder
+          {t('pages.goToBuilder')}
         </Button>
       </div>
 

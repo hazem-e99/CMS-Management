@@ -39,15 +39,16 @@
           },
           "settings": {
             "backgroundType": "color",
-            "backgroundColor": "#0ea5e9",
-            "textColor": "#ffffff",
+            "backgroundColor": "#ffffff",
+            "textColor": "#0",
             "backgroundImage": "",
             "backgroundVideo": "",
-            "backgroundOverlay": true,
+            "backgroundOverlay": false,
             "overlayOpacity": 0.5,
             "paddingTop": "80px",
             "paddingBottom": "80px",
-            "minHeight": "500px"
+            "minHeight": "500px",
+            "backgroundImageMode": "upload"
           },
           "id": "90c99510-248c-4899-ac3d-3c06a91be77a",
           "order": 1
@@ -127,9 +128,48 @@
           },
           "id": "bad6d06d-9fb1-4d2b-b4be-a6b78968497d",
           "order": 2
+        },
+        {
+          "id": "image-text-ct3cf5efn51k",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About PGS Academy",
+              "text": "Learn more about our pgs academy programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "PGS Academy",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول أكاديمية PGS",
+              "text": "تعرف على المزيد حول برامجنا في أكاديمية PGS. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "أكاديمية PGS",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی ئەکادیمیای PGS",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "ئەکادیمیای PGS",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
         }
       ],
-      "updatedAt": "2025-11-22T13:25:00.506Z"
+      "updatedAt": "2025-11-22T17:01:20.014Z"
     },
     {
       "id": "leadership",
@@ -145,7 +185,250 @@
         "isPublished": true,
         "order": 1
       },
-      "sections": []
+      "sections": [
+        {
+          "type": "image-text-left",
+          "content": {
+            "en": {
+              "title": "Welcome ",
+              "description": "We are passionate about creating amazing experiences for our customers. Our journey started with a simple idea and has grown into something truly special.",
+              "imageUrl": "",
+              "imageAlt": "Feature image",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "اكتشف قصتنا",
+              "description": "نحن شغوفون بخلق تجارب رائعة لعملائنا. بدأت رحلتنا بفكرة بسيطة ونمت لتصبح شيئًا مميزًا حقًا.",
+              "imageUrl": "",
+              "imageAlt": "صورة الميزة",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "چیرۆکەکەمان بزانە",
+              "description": "ئێمە حەزمان لە دروستکردنی ئەزموونی سەرنجڕاکێش بۆ کڕیارەکانمان هەیە. گەشتەکەمان بە بیرۆکەیەکی سادە دەستی پێکرد و بووە شتێکی تایبەت.",
+              "imageUrl": "",
+              "imageAlt": "وێنەی تایبەتمەندی",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "media",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "backgroundImage": "",
+            "paddingTop": "64px",
+            "paddingBottom": "64px",
+            "imageWidth": "50%"
+          },
+          "id": "1d69987e-f7d8-4b5a-a66b-f8de78363f4e",
+          "order": 1
+        },
+        {
+          "id": "hero-pviy1okxgnrn",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "eadershipssssss",
+              "subtitle": "Discover our leadership programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في القيادة",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ سەرکردایەتی",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 2
+        },
+        {
+          "type": "cta",
+          "content": {
+            "en": {
+              "title": "Ready to Get Started?",
+              "description": "Join thousands of satisfied customers today",
+              "buttonText": "Sign Up Now",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "هل أنت مستعد للبدء؟",
+              "description": "انضم إلى آلاف العملاء الراضين اليوم",
+              "buttonText": "سجل الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "ئامادەیت بۆ دەستپێکردن؟",
+              "description": "ئەمڕۆ بەشداری هەزاران کڕیاری ڕازی بە",
+              "buttonText": "ئێستا تۆمار بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "media",
+            "backgroundColor": "#0ea5e9",
+            "textColor": "#ffffff",
+            "backgroundImage": "",
+            "backgroundVideo": "",
+            "backgroundOverlay": true,
+            "overlayOpacity": 0.3,
+            "paddingTop": "64px",
+            "paddingBottom": "64px"
+          },
+          "id": "3b2783aa-ea9a-45cd-b22d-e4d1a8639560",
+          "order": 3
+        },
+        {
+          "type": "testimonials",
+          "content": {
+            "en": {
+              "title": "What Our Customers Say",
+              "testimonials": [
+                {
+                  "content": "This product changed my life! Highly recommended.",
+                  "name": "John Doe",
+                  "role": "CEO, Company Inc",
+                  "avatar": ""
+                },
+                {
+                  "content": "Amazing service and great support team.",
+                  "name": "Jane Smith",
+                  "role": "Marketing Director",
+                  "avatar": ""
+                }
+              ]
+            },
+            "ar": {
+              "title": "ماذا يقول عملاؤنا",
+              "testimonials": [
+                {
+                  "content": "هذا المنتج غير حياتي! أوصي به بشدة.",
+                  "name": "أحمد محمد",
+                  "role": "المدير التنفيذي",
+                  "avatar": ""
+                },
+                {
+                  "content": "خدمة رائعة وفريق دعم ممتاز.",
+                  "name": "فاطمة علي",
+                  "role": "مديرة التسويق",
+                  "avatar": ""
+                }
+              ]
+            },
+            "ku": {
+              "title": "کڕیارەکانمان چی دەڵێن",
+              "testimonials": [
+                {
+                  "content": "ئەم بەرهەمە ژیانی منی گۆڕی! زۆر باشە.",
+                  "name": "ئەحمەد محەمەد",
+                  "role": "بەڕێوەبەری گشتی",
+                  "avatar": ""
+                },
+                {
+                  "content": "خزمەتگوزاری نایاب و تیمی پشتگیری نایاب.",
+                  "name": "فاتیمە عەلی",
+                  "role": "بەڕێوەبەری مارکێتینگ",
+                  "avatar": ""
+                }
+              ]
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "backgroundImage": "",
+            "paddingTop": "64px",
+            "paddingBottom": "64px"
+          },
+          "id": "b1670988-2dd3-4b91-896f-a35e7dcee84c",
+          "order": 4
+        },
+        {
+          "type": "faq",
+          "content": {
+            "en": {
+              "title": "Frequently Asked Questions",
+              "faqs": [
+                {
+                  "question": "What is your return policy?",
+                  "answer": "We offer a 30-day money-back guarantee on all purchases."
+                },
+                {
+                  "question": "How long does shipping take?",
+                  "answer": "Standard shipping takes 5-7 business days."
+                },
+                {
+                  "question": "Do you offer customer support?",
+                  "answer": "Yes, we provide 24/7 customer support via email and chat."
+                }
+              ]
+            },
+            "ar": {
+              "title": "الأسئلة الشائعة",
+              "faqs": [
+                {
+                  "question": "ما هي سياسة الإرجاع؟",
+                  "answer": "نقدم ضمان استرداد الأموال لمدة 30 يومًا على جميع المشتريات."
+                },
+                {
+                  "question": "كم من الوقت يستغرق الشحن؟",
+                  "answer": "يستغرق الشحن القياسي من 5 إلى 7 أيام عمل."
+                },
+                {
+                  "question": "هل تقدمون دعم العملاء؟",
+                  "answer": "نعم، نقدم دعم العملاء على مدار الساعة عبر البريد الإلكتروني والدردشة."
+                }
+              ]
+            },
+            "ku": {
+              "title": "پرسیارە دووبارەکان",
+              "faqs": [
+                {
+                  "question": "سیاسەتی گەڕاندنەوە چییە؟",
+                  "answer": "مۆڵەتی گەڕاندنەوەی پارە بۆ 30 ڕۆژ پێشکەش دەکەین."
+                },
+                {
+                  "question": "گەیاندن چەند کات دەخایەنێت؟",
+                  "answer": "گەیاندنی ئاسایی 5-7 ڕۆژی کاری دەخایەنێت."
+                },
+                {
+                  "question": "پشتگیری کڕیار پێشکەش دەکەن؟",
+                  "answer": "بەڵێ، پشتگیری 24/7 لە ڕێگەی ئیمەیڵ و چات پێشکەش دەکەین."
+                }
+              ]
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "backgroundImage": "",
+            "paddingTop": "64px",
+            "paddingBottom": "64px"
+          },
+          "id": "6cd62be2-3856-4464-9ee7-e31488fef97a",
+          "order": 5
+        }
+      ],
+      "updatedAt": "2025-11-22T18:27:05.723Z"
     },
     {
       "id": "women-leadership",
@@ -161,7 +444,80 @@
         "isPublished": true,
         "order": 2
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-k6keo2tpo5aj",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Women's Leadership",
+              "subtitle": "Discover our women's leadership programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في قيادة نسائية",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ سەرکردایەتی ژنان",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-qd74cz2j76bm",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Women's Leadership",
+              "text": "Learn more about our women's leadership programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Women's Leadership",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول قيادة نسائية",
+              "text": "تعرف على المزيد حول برامجنا في قيادة نسائية. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "قيادة نسائية",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی سەرکردایەتی ژنان",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "سەرکردایەتی ژنان",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "youth-leadership",
@@ -177,7 +533,80 @@
         "isPublished": true,
         "order": 3
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-9h0wifehhrff",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Youth Leadership",
+              "subtitle": "Discover our youth leadership programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في قيادة شبابية",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ سەرکردایەتی گەنجان",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-g3dwdo7n99ug",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Youth Leadership",
+              "text": "Learn more about our youth leadership programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Youth Leadership",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول قيادة شبابية",
+              "text": "تعرف على المزيد حول برامجنا في قيادة شبابية. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "قيادة شبابية",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی سەرکردایەتی گەنجان",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "سەرکردایەتی گەنجان",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "individual-development",
@@ -193,7 +622,80 @@
         "isPublished": true,
         "order": 4
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-lld2p92ecw93",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Individual Development",
+              "subtitle": "Discover our individual development programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في تنمية فردية",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ گەشەپێدانی تاکەکەسی",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-mn7xswb9ytj6",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Individual Development",
+              "text": "Learn more about our individual development programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Individual Development",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول تنمية فردية",
+              "text": "تعرف على المزيد حول برامجنا في تنمية فردية. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "تنمية فردية",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی گەشەپێدانی تاکەکەسی",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "گەشەپێدانی تاکەکەسی",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "professional-development",
@@ -209,7 +711,80 @@
         "isPublished": true,
         "order": 5
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-9o3amtr74kfa",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Professional Development",
+              "subtitle": "Discover our professional development programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في تنمية مهنية",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ گەشەپێدانی پیشەیی",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-2wnvbgeehuot",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Professional Development",
+              "text": "Learn more about our professional development programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Professional Development",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول تنمية مهنية",
+              "text": "تعرف على المزيد حول برامجنا في تنمية مهنية. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "تنمية مهنية",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی گەشەپێدانی پیشەیی",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "گەشەپێدانی پیشەیی",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "community",
@@ -300,6 +875,45 @@
             "paddingBottom": "80px",
             "columns": 3
           }
+        },
+        {
+          "id": "image-text-4ezsicn5919d",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Community",
+              "text": "Learn more about our community programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Community",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول المجتمع",
+              "text": "تعرف على المزيد حول برامجنا في المجتمع. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "المجتمع",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی کۆمەڵگا",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "کۆمەڵگا",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
         }
       ]
     },
@@ -317,7 +931,80 @@
         "isPublished": true,
         "order": 1
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-tcha8jkiqaju",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Universities & Institutes",
+              "subtitle": "Discover our universities & institutes programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في الجامعات والمعاهد",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ زانکۆ و پەیمانگاکان",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-hp3cwdmpw789",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Universities & Institutes",
+              "text": "Learn more about our universities & institutes programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Universities & Institutes",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول الجامعات والمعاهد",
+              "text": "تعرف على المزيد حول برامجنا في الجامعات والمعاهد. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "الجامعات والمعاهد",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی زانکۆ و پەیمانگاکان",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "زانکۆ و پەیمانگاکان",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "women",
@@ -333,7 +1020,80 @@
         "isPublished": true,
         "order": 2
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-x6lqwejgao54",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Women",
+              "subtitle": "Discover our women programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في النساء",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ ژنان",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-vqpklrfbiobc",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Women",
+              "text": "Learn more about our women programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Women",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول النساء",
+              "text": "تعرف على المزيد حول برامجنا في النساء. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "النساء",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی ژنان",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "ژنان",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "students-youth",
@@ -349,7 +1109,80 @@
         "isPublished": true,
         "order": 3
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-94cksbuxcku6",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Students & Youth",
+              "subtitle": "Discover our students & youth programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في الطلبة والشباب",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ قوتابی و گەنجان",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-ngj4tl9hjoty",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Students & Youth",
+              "text": "Learn more about our students & youth programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Students & Youth",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول الطلبة والشباب",
+              "text": "تعرف على المزيد حول برامجنا في الطلبة والشباب. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "الطلبة والشباب",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی قوتابی و گەنجان",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "قوتابی و گەنجان",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "belonging",
@@ -365,7 +1198,80 @@
         "isPublished": true,
         "order": 4
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-fpz5s8rbdn21",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Belonging",
+              "subtitle": "Discover our belonging programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في الانتماء",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ سەربەخۆیی",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-2k69r4xai5x0",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Belonging",
+              "text": "Learn more about our belonging programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Belonging",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول الانتماء",
+              "text": "تعرف على المزيد حول برامجنا في الانتماء. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "الانتماء",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی سەربەخۆیی",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "سەربەخۆیی",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "online-surveys",
@@ -381,7 +1287,80 @@
         "isPublished": true,
         "order": 3
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-txxut3vwh9o2",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Online Surveys",
+              "subtitle": "Discover our online surveys programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في استطلاعات إلكترونية",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ ڕاپرسییە ئەلیکترۆنییەکان",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-3eus529phqys",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Online Surveys",
+              "text": "Learn more about our online surveys programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Online Surveys",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول استطلاعات إلكترونية",
+              "text": "تعرف على المزيد حول برامجنا في استطلاعات إلكترونية. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "استطلاعات إلكترونية",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی ڕاپرسییە ئەلیکترۆنییەکان",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "ڕاپرسییە ئەلیکترۆنییەکان",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "general",
@@ -397,7 +1376,80 @@
         "isPublished": true,
         "order": 4
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-0lvta2o4qrdd",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to General",
+              "subtitle": "Discover our general programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في عام",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ گشتی",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-sk5jzpkd0ny6",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About General",
+              "text": "Learn more about our general programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "General",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول عام",
+              "text": "تعرف على المزيد حول برامجنا في عام. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "عام",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی گشتی",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "گشتی",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "society",
@@ -413,7 +1465,80 @@
         "isPublished": true,
         "order": 1
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-vcsvooqqm5my",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Society",
+              "subtitle": "Discover our society programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في المجتمع",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ کۆمەڵگا",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-xm5rptcfu5ei",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Society",
+              "text": "Learn more about our society programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Society",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول المجتمع",
+              "text": "تعرف على المزيد حول برامجنا في المجتمع. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "المجتمع",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی کۆمەڵگا",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "کۆمەڵگا",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "economy",
@@ -429,7 +1554,80 @@
         "isPublished": true,
         "order": 2
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-wkax5jlsq6rs",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Economy",
+              "subtitle": "Discover our economy programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في الاقتصاد",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ ئابووری",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-zjozp7kulcgx",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Economy",
+              "text": "Learn more about our economy programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Economy",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول الاقتصاد",
+              "text": "تعرف على المزيد حول برامجنا في الاقتصاد. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "الاقتصاد",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی ئابووری",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "ئابووری",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "health",
@@ -445,7 +1643,80 @@
         "isPublished": true,
         "order": 3
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-zx39z0zoz32c",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Health",
+              "subtitle": "Discover our health programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في الصحة",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ تەندروستی",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-1er428nxixsr",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Health",
+              "text": "Learn more about our health programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Health",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول الصحة",
+              "text": "تعرف على المزيد حول برامجنا في الصحة. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "الصحة",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی تەندروستی",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "تەندروستی",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "environment",
@@ -461,7 +1732,80 @@
         "isPublished": true,
         "order": 4
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-gglxg36kglqp",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Environment",
+              "subtitle": "Discover our environment programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في البيئة",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ ژینگە",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-7t92d83joinj",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Environment",
+              "text": "Learn more about our environment programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Environment",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول البيئة",
+              "text": "تعرف على المزيد حول برامجنا في البيئة. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "البيئة",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی ژینگە",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "ژینگە",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "education",
@@ -477,7 +1821,80 @@
         "isPublished": true,
         "order": 5
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-lqz7bcvl81po",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Education",
+              "subtitle": "Discover our education programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في التعليم",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ پەروەردە",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-t4d3lxgyw78o",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Education",
+              "text": "Learn more about our education programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Education",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول التعليم",
+              "text": "تعرف على المزيد حول برامجنا في التعليم. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "التعليم",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی پەروەردە",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "پەروەردە",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "management",
@@ -493,7 +1910,80 @@
         "isPublished": true,
         "order": 6
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-e2mmr6voequw",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Management",
+              "subtitle": "Discover our management programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في الإدارة",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ بەڕێوەبردن",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-92njw7f9uum3",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Management",
+              "text": "Learn more about our management programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Management",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول الإدارة",
+              "text": "تعرف على المزيد حول برامجنا في الإدارة. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "الإدارة",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی بەڕێوەبردن",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "بەڕێوەبردن",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "masters-theses",
@@ -509,7 +1999,80 @@
         "isPublished": true,
         "order": 7
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-upd08d2rauk9",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Master's Theses",
+              "subtitle": "Discover our master's theses programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في رسائل الماجستير",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ تێزی ماستەر",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-kjirn1sxivdj",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Master's Theses",
+              "text": "Learn more about our master's theses programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Master's Theses",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول رسائل الماجستير",
+              "text": "تعرف على المزيد حول برامجنا في رسائل الماجستير. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "رسائل الماجستير",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی تێزی ماستەر",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "تێزی ماستەر",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "phd-dissertations",
@@ -525,7 +2088,80 @@
         "isPublished": true,
         "order": 8
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-dzzoek2gl8o1",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to PhD Dissertations",
+              "subtitle": "Discover our phd dissertations programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في رسائل الدكتوراه",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ تێزی دکتۆرا",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-8qod7veu86nt",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About PhD Dissertations",
+              "text": "Learn more about our phd dissertations programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "PhD Dissertations",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول رسائل الدكتوراه",
+              "text": "تعرف على المزيد حول برامجنا في رسائل الدكتوراه. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "رسائل الدكتوراه",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی تێزی دکتۆرا",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "تێزی دکتۆرا",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "music-arts",
@@ -541,7 +2177,80 @@
         "isPublished": true,
         "order": 5
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-ichk9ycjqkpz",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Music & Arts",
+              "subtitle": "Discover our music & arts programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في الموسيقى",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ مۆزیک و هونەر",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-k8g85c3eymjq",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Music & Arts",
+              "text": "Learn more about our music & arts programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Music & Arts",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول الموسيقى",
+              "text": "تعرف على المزيد حول برامجنا في الموسيقى. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "الموسيقى",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی مۆزیک و هونەر",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "مۆزیک و هونەر",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "theater",
@@ -557,7 +2266,80 @@
         "isPublished": true,
         "order": 1
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-31z4zs92oeyq",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Theater",
+              "subtitle": "Discover our theater programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في المسرح",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ شانۆ",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-iupn8i13aqp6",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Theater",
+              "text": "Learn more about our theater programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Theater",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول المسرح",
+              "text": "تعرف على المزيد حول برامجنا في المسرح. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "المسرح",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی شانۆ",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "شانۆ",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "painting",
@@ -573,7 +2355,80 @@
         "isPublished": true,
         "order": 2
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-vp9sfj4u6gt1",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Painting",
+              "subtitle": "Discover our painting programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في الرسم",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ وێنەکێشان",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-byj4vne6cxal",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Painting",
+              "text": "Learn more about our painting programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Painting",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول الرسم",
+              "text": "تعرف على المزيد حول برامجنا في الرسم. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "الرسم",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی وێنەکێشان",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "وێنەکێشان",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "sculpture",
@@ -589,7 +2444,80 @@
         "isPublished": true,
         "order": 3
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-0y77qktzf6se",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Sculpture",
+              "subtitle": "Discover our sculpture programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في النحت",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ پەیکەرتاشی",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-qn30gioseo06",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Sculpture",
+              "text": "Learn more about our sculpture programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Sculpture",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول النحت",
+              "text": "تعرف على المزيد حول برامجنا في النحت. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "النحت",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی پەیکەرتاشی",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "پەیکەرتاشی",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "handicrafts",
@@ -605,7 +2533,80 @@
         "isPublished": true,
         "order": 4
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-ctf8qbiyc612",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Handicrafts",
+              "subtitle": "Discover our handicrafts programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في أعمال يدوية",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ دەستکردەکان",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-dkmpa5oxhe0w",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Handicrafts",
+              "text": "Learn more about our handicrafts programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Handicrafts",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول أعمال يدوية",
+              "text": "تعرف على المزيد حول برامجنا في أعمال يدوية. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "أعمال يدوية",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی دەستکردەکان",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "دەستکردەکان",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "creations",
@@ -621,7 +2622,80 @@
         "isPublished": true,
         "order": 5
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-89x9til0t3fl",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Creations",
+              "subtitle": "Discover our creations programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في الإبداعات",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ داهێنانەکان",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-e2es19m8lg2q",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Creations",
+              "text": "Learn more about our creations programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Creations",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول الإبداعات",
+              "text": "تعرف على المزيد حول برامجنا في الإبداعات. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "الإبداعات",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی داهێنانەکان",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "داهێنانەکان",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "at-pgs",
@@ -637,7 +2711,80 @@
         "isPublished": true,
         "order": 6
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-5bdwqgbpfvrc",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to At PGS",
+              "subtitle": "Discover our at pgs programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في في PGS",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ لە PGS",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-198zn25ozyu7",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About At PGS",
+              "text": "Learn more about our at pgs programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "At PGS",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول في PGS",
+              "text": "تعرف على المزيد حول برامجنا في في PGS. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "في PGS",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی لە PGS",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "لە PGS",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "work-at-pgs",
@@ -653,7 +2800,80 @@
         "isPublished": true,
         "order": 1
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-88li59wf3d4s",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Work at PGS",
+              "subtitle": "Discover our work at pgs programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في العمل في PGS",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ کارکردن لە PGS",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-istin7qfqu6i",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Work at PGS",
+              "text": "Learn more about our work at pgs programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Work at PGS",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول العمل في PGS",
+              "text": "تعرف على المزيد حول برامجنا في العمل في PGS. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "العمل في PGS",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی کارکردن لە PGS",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "کارکردن لە PGS",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "work-elsewhere",
@@ -669,7 +2889,80 @@
         "isPublished": true,
         "order": 2
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-d0sir5a8iisi",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Work Elsewhere",
+              "subtitle": "Discover our work elsewhere programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في العمل في أماكن أخرى",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ کارکردن لە شوێنی تر",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-rm7by4s133zo",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Work Elsewhere",
+              "text": "Learn more about our work elsewhere programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Work Elsewhere",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول العمل في أماكن أخرى",
+              "text": "تعرف على المزيد حول برامجنا في العمل في أماكن أخرى. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "العمل في أماكن أخرى",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی کارکردن لە شوێنی تر",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "کارکردن لە شوێنی تر",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
     },
     {
       "id": "volunteer-elsewhere",
@@ -685,11 +2978,229 @@
         "isPublished": true,
         "order": 3
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "hero-050q1ndfjvqa",
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Volunteer Work Elsewhere",
+              "subtitle": "Discover our volunteer work elsewhere programs and initiatives",
+              "buttonText": "Learn More",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في العمل الطوعي في أماكن أخرى",
+              "subtitle": "اكتشف برامجنا ومبادراتنا",
+              "buttonText": "اعرف المزيد",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ کاری خۆبەخشانە لە شوێنی تر",
+              "subtitle": "بەرنامە و دەستپێشخەریەکانمان بدۆزەرەوە",
+              "buttonText": "زیاتر بزانە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+            "backgroundImage": "",
+            "paddingTop": "100px",
+            "paddingBottom": "100px"
+          },
+          "order": 1
+        },
+        {
+          "id": "image-text-b234ihaqpc2p",
+          "type": "image-text",
+          "content": {
+            "en": {
+              "title": "About Volunteer Work Elsewhere",
+              "text": "Learn more about our volunteer work elsewhere programs. We provide comprehensive support and resources to help you achieve your goals. Our experienced team is dedicated to delivering excellence in every aspect of our work.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "Volunteer Work Elsewhere",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "حول العمل الطوعي في أماكن أخرى",
+              "text": "تعرف على المزيد حول برامجنا في العمل الطوعي في أماكن أخرى. نحن نقدم الدعم الشامل والموارد لمساعدتك على تحقيق أهدافك. فريقنا ذو الخبرة ملتزم بتقديم التميز في كل جانب من جوانب عملنا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "العمل الطوعي في أماكن أخرى",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "دەربارەی کاری خۆبەخشانە لە شوێنی تر",
+              "text": "زیاتر بزانە دەربارەی بەرنامەکانمان. ئێمە پشتگیری و سەرچاوەی تەواو پێشکەش دەکەین بۆ یارمەتیدانت لە گەیشتن بە ئامانجەکانت. تیمی شارەزامان پابەندە بە گەیاندنی باشترین لە هەموو لایەکی کارەکەماندا.",
+              "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+              "imageAlt": "کاری خۆبەخشانە لە شوێنی تر",
+              "buttonText": "دەست پێ بکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "imagePosition": "left",
+            "backgroundType": "color",
+            "backgroundColor": "#ffffff",
+            "textColor": "#111827",
+            "paddingTop": "80px",
+            "paddingBottom": "80px"
+          },
+          "order": 2
+        }
+      ]
+    },
+    {
+      "id": "page-1763837486847",
+      "title": {
+        "en": "Home",
+        "ar": "الرئيسية",
+        "ku": "kjffff"
+      },
+      "slug": "home",
+      "parentId": null,
+      "metadata": {
+        "description": {
+          "en": "home page",
+          "ar": "home page",
+          "ku": "home page"
+        },
+        "isPublished": true,
+        "showInNav": true,
+        "order": 999
+      },
+      "sections": [
+        {
+          "type": "hero",
+          "content": {
+            "en": {
+              "title": "Welcome to Our Website",
+              "subtitle": "Build amazing experiences with our platform",
+              "buttonText": "Get Started",
+              "buttonLink": "#"
+            },
+            "ar": {
+              "title": "مرحباً بك في موقعنا",
+              "subtitle": "قم ببناء تجارب رائعة مع منصتنا",
+              "buttonText": "ابدأ الآن",
+              "buttonLink": "#"
+            },
+            "ku": {
+              "title": "بەخێربێیت بۆ ماڵپەڕەکەمان",
+              "subtitle": "ئەزموونی سەرنجڕاکێش دروست بکە",
+              "buttonText": "دەست پێبکە",
+              "buttonLink": "#"
+            }
+          },
+          "settings": {
+            "backgroundType": "media",
+            "backgroundColor": "#0ea5e9",
+            "textColor": "#ffffff",
+            "backgroundImage": "",
+            "backgroundVideo": "https://www.pexels.com/download/video/2098989/",
+            "backgroundOverlay": true,
+            "overlayOpacity": 0.5,
+            "paddingTop": "80px",
+            "paddingBottom": "80px",
+            "minHeight": "500px"
+          },
+          "id": "b003af6c-0bbc-48b9-ace7-087dea5b90b6",
+          "order": 1
+        },
+        {
+          "type": "features",
+          "content": {
+            "en": {
+              "title": "Our Features",
+              "features": [
+                {
+                  "title": "Fast Performance",
+                  "description": "Lightning fast load times",
+                  "icon": "⚡"
+                },
+                {
+                  "title": "Secure",
+                  "description": "Enterprise-grade security",
+                  "icon": "🔒"
+                },
+                {
+                  "title": "Scalable",
+                  "description": "Grows with your business",
+                  "icon": "📈"
+                }
+              ]
+            },
+            "ar": {
+              "title": "مميزاتنا",
+              "features": [
+                {
+                  "title": "أداء سريع",
+                  "description": "أوقات تحميل سريعة للغاية",
+                  "icon": "⚡"
+                },
+                {
+                  "title": "آمن",
+                  "description": "أمان على مستوى المؤسسات",
+                  "icon": "🔒"
+                },
+                {
+                  "title": "قابل للتوسع",
+                  "description": "ينمو مع عملك",
+                  "icon": "📈"
+                }
+              ]
+            },
+            "ku": {
+              "title": "تایبەتمەندییەکانمان",
+              "features": [
+                {
+                  "title": "کارکردنی خێرا",
+                  "description": "کاتی بارکردنی زۆر خێرا",
+                  "icon": "⚡"
+                },
+                {
+                  "title": "پارێزراو",
+                  "description": "پاراستنی ئاستی کۆمپانیا",
+                  "icon": "🔒"
+                },
+                {
+                  "title": "گەشەپێدراو",
+                  "description": "لەگەڵ کارەکەت گەشە دەکات",
+                  "icon": "📈"
+                }
+              ]
+            }
+          },
+          "settings": {
+            "backgroundType": "color",
+            "backgroundColor": "#f9fafb",
+            "textColor": "#111827",
+            "backgroundImage": "",
+            "paddingTop": "64px",
+            "paddingBottom": "64px",
+            "columns": 3
+          },
+          "id": "6d0907b0-36d7-4c3c-a79e-918a0a3d58bb",
+          "order": 2
+        }
+      ],
+      "createdAt": "2025-11-22T18:51:26.844Z",
+      "updatedAt": "2025-11-22T18:54:24.694Z"
     }
   ],
   "surveys": [],
   "siteSettings": {
+    "logo": {
+      "url": "",
+      "alt": {
+        "en": "PGS Logo",
+        "ar": "شعار PGS",
+        "ku": "لۆگۆی PGS"
+      }
+    },
     "siteName": {
       "en": "PGS",
       "ar": "PGS",

@@ -7,6 +7,7 @@ import { PageBuilderPage } from './features/pageBuilder/pages/PageBuilderPage';
 import { SurveyBuilderPage } from './features/surveyBuilder/pages/SurveyBuilderPage';
 import { SurveyResponsesPage } from './features/surveyBuilder/pages/SurveyResponsesPage';
 import { SurveysListPage } from './features/surveyBuilder/pages/SurveysListPage';
+import SettingsPage from './features/settings/pages/SettingsPage';
 import { PublicLayout } from './features/public/layout/PublicLayout';
 import { PublicPage } from './features/public/pages/PublicPage';
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="surveys/new" element={<SurveyBuilderPage />} />
         <Route path="surveys/:surveyId/edit" element={<SurveyBuilderPage />} />
         <Route path="surveys/:surveyId/responses" element={<SurveyResponsesPage />} />
+        <Route path="settings" element={<SettingsPage />} />
       </Route>
 
       {/* Public Website Routes */}

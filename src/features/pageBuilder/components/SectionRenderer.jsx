@@ -21,6 +21,11 @@ export function SectionRenderer({ section }) {
       return <GallerySection content={content} settings={settings} />;
     case 'faq':
       return <FAQSection content={content} settings={settings} />;
+    case 'image-text':
+      // Handle image-text with dynamic positioning
+      return settings.imagePosition === 'right' 
+        ? <ImageTextRightSection content={content} settings={settings} />
+        : <ImageTextLeftSection content={content} settings={settings} />;
     case 'image-text-left':
       return <ImageTextLeftSection content={content} settings={settings} />;
     case 'image-text-right':
@@ -110,7 +115,7 @@ function HeroSection({ content, settings }) {
         {content.buttonText && (
           <a
             href={content.buttonLink || '#'}
-            className="inline-block px-8 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            className="inline-block px-8 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors"
           >
             {content.buttonText}
           </a>
@@ -288,7 +293,7 @@ function ImageTextLeftSection({ content, settings }) {
           {/* Text on Right */}
           <div className="order-1 md:order-2">
             <h2 className="text-3xl font-bold mb-4">{content.title}</h2>
-            <p className="text-lg mb-6 opacity-90">{content.description}</p>
+            <p className="text-lg mb-6 opacity-90">{content.text || content.description}</p>
             {content.buttonText && (
               <a
                 href={content.buttonLink || '#'}
@@ -312,7 +317,7 @@ function ImageTextRightSection({ content, settings }) {
           {/* Text on Left */}
           <div>
             <h2 className="text-3xl font-bold mb-4">{content.title}</h2>
-            <p className="text-lg mb-6 opacity-90">{content.description}</p>
+            <p className="text-lg mb-6 opacity-90">{content.text || content.description}</p>
             {content.buttonText && (
               <a
                 href={content.buttonLink || '#'}

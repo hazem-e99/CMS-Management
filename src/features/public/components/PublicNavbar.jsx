@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useLanguage } from '../../../contexts/LanguageContext';
 import { useTheme } from '../../../contexts/ThemeContext';
 import { publicPagesService } from '../../../services/publicPagesService';
+import { settingsService } from '../../../services/settingsService';
 import { Menu, X, ChevronDown, Sun, Moon, Globe } from 'lucide-react';
 
 export function PublicNavbar() {
@@ -16,6 +17,15 @@ export function PublicNavbar() {
     queryKey: ['navigationMenu'],
     queryFn: publicPagesService.getNavigationMenu,
   });
+
+  const { data: settingsData } = useQuery({
+    queryKey: ['settings'],
+    queryFn: settingsService.getSettings,
+  });
+
+  const settings = settingsData?.data || {};
+  const logo = settings.logo || {};
+  const siteName = settings.siteName || { en: 'PGS', ar: 'PGS', ku: 'PGS' };
 
   // Close menu on route change
   useEffect(() => {
@@ -38,8 +48,18 @@ export function PublicNavbar() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-            PGS
+          <Link to="/" className="flex items-center gap-2">
+            {logo.url ? (
+              <img 
+                src={logo.url} 
+                alt={logo.alt?.[language] || siteName[language]} 
+                className="h-10 object-contain"
+              />
+            ) : (
+              <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                {siteName[language] || siteName.en}
+              </span>
+            )}
           </Link>
 
           {/* Desktop Menu */}
@@ -56,7 +76,7 @@ export function PublicNavbar() {
                       <ChevronDown className="h-4 w-4" />
                     </button>
                     {/* Dropdown */}
-                    <div className="absolute top-full left-0 rtl:left-auto rtl:right-0 mt-1 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="absolute top-full start-0 mt-1 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                       <div className="py-2">
                         {item.children.map((child) => (
                           <Link
@@ -96,7 +116,7 @@ export function PublicNavbar() {
                 <Globe className="h-5 w-5" />
                 <span className="text-sm">{language.toUpperCase()}</span>
               </button>
-              <div className="absolute top-full right-0 mt-1 w-32 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute top-full end-0 mt-1 w-32 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="py-2">
                   {languages.map((lang) => (
                     <button

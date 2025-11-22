@@ -13,6 +13,26 @@ const resources = {
         surveys: 'Surveys',
         settings: 'Settings',
       },
+      // Settings
+      settings: {
+        title: 'Site Settings',
+        logoSettings: 'Logo Settings',
+        logoUrl: 'Logo URL',
+        preview: 'Preview',
+        altText: 'Alt Text',
+        siteName: 'Site Name',
+        footerSettings: 'Footer Settings',
+        phoneNumbers: 'Phone Numbers',
+        addPhone: '+ Add Phone',
+        remove: 'Remove',
+        email: 'Email',
+        address: 'Address',
+        socialMedia: 'Social Media Links',
+        copyrightText: 'Copyright Text',
+        english: 'English',
+        arabic: 'Arabic',
+        kurdish: 'Kurdish',
+      },
       // Common
       common: {
         save: 'Save',
@@ -34,6 +54,9 @@ const resources = {
         publish: 'Publish',
         draft: 'Draft',
         actions: 'Actions',
+        saveChanges: 'Save Changes',
+        saving: 'Saving...',
+        order: 'Order',
       },
       // Pages
       pages: {
@@ -51,6 +74,18 @@ const resources = {
         isPublished: 'Published',
         createdAt: 'Created At',
         updatedAt: 'Updated At',
+        published: 'Published',
+        draft: 'Draft',
+        sections: 'sections',
+        pageBuilder: 'Page Builder',
+        previewPage: 'Preview Page',
+        editPageInfo: 'Edit Page',
+        manageSite: 'Manage your website structure and content',
+        noPages: 'No pages found. Create your first page to get started.',
+        deletePage: 'Delete Page',
+        deleteConfirm: 'Are you sure you want to delete',
+        deleteWarning: 'This action cannot be undone.',
+        goToBuilder: 'Go to Page Builder',
       },
       // Page Builder
       builder: {
@@ -113,6 +148,26 @@ const resources = {
         surveys: 'الاستبيانات',
         settings: 'الإعدادات',
       },
+      // Settings
+      settings: {
+        title: 'إعدادات الموقع',
+        logoSettings: 'إعدادات الشعار',
+        logoUrl: 'رابط الشعار',
+        preview: 'معاينة',
+        altText: 'نص بديل',
+        siteName: 'اسم الموقع',
+        footerSettings: 'إعدادات التذييل',
+        phoneNumbers: 'أرقام الهاتف',
+        addPhone: '+ إضافة هاتف',
+        remove: 'إزالة',
+        email: 'البريد الإلكتروني',
+        address: 'العنوان',
+        socialMedia: 'روابط التواصل الاجتماعي',
+        copyrightText: 'نص حقوق النشر',
+        english: 'الإنجليزية',
+        arabic: 'العربية',
+        kurdish: 'الكردية',
+      },
       // Common
       common: {
         save: 'حفظ',
@@ -134,6 +189,9 @@ const resources = {
         publish: 'نشر',
         draft: 'مسودة',
         actions: 'إجراءات',
+        saveChanges: 'حفظ التغييرات',
+        saving: 'جاري الحفظ...',
+        order: 'الترتيب',
       },
       // Pages
       pages: {
@@ -151,6 +209,17 @@ const resources = {
         isPublished: 'منشور',
         createdAt: 'تاريخ الإنشاء',
         updatedAt: 'تاريخ التحديث',
+        published: 'منشور',
+        draft: 'مسودة',
+        sections: 'أقسام',
+        pageBuilder: 'منشئ الصفحات',
+        previewPage: 'معاينة الصفحة',
+        editPageInfo: 'تعديل الصفحة',
+        manageSite: 'إدارة بنية موقعك والمحتوى',
+        noPages: 'لا توجد صفحات. أنشئ صفحتك الأولى للبدء.',
+        deleteConfirm: 'هل أنت متأكد من حذف',
+        deleteWarning: 'لا يمكن التراجع عن هذا الإجراء.',
+        goToBuilder: 'الذهاب إلى منشئ الصفحات',
       },
       // Page Builder
       builder: {
@@ -213,6 +282,26 @@ const resources = {
         surveys: 'ڕاپرسییەکان',
         settings: 'ڕێکخستنەکان',
       },
+      // Settings
+      settings: {
+        title: 'ڕێکخستنەکانی ماڵپەڕ',
+        logoSettings: 'ڕێکخستنەکانی لۆگۆ',
+        logoUrl: 'بەستەری لۆگۆ',
+        preview: 'پێشبینین',
+        altText: 'دەقی جێگر',
+        siteName: 'ناوی ماڵپەڕ',
+        footerSettings: 'ڕێکخستنەکانی پێپەڕە',
+        phoneNumbers: 'ژمارەکانی تەلەفۆن',
+        addPhone: '+ زیادکردنی تەلەفۆن',
+        remove: 'لابردن',
+        email: 'ئیمەیڵ',
+        address: 'ناونیشان',
+        socialMedia: 'بەستەرەکانی تۆڕە کۆمەڵایەتییەکان',
+        copyrightText: 'دەقی مافی لەبەرگرتنەوە',
+        english: 'ئینگلیزی',
+        arabic: 'عەرەبی',
+        kurdish: 'کوردی',
+      },
       // Common
       common: {
         save: 'پاشەکەوت',
@@ -234,6 +323,9 @@ const resources = {
         publish: 'بڵاوکردنەوە',
         draft: 'ڕەشنووس',
         actions: 'کردارەکان',
+        saveChanges: 'پاشەکەوتی گۆڕانکارییەکان',
+        saving: 'پاشەکەوتکردن...',
+        order: 'ڕیزبەندی',
       },
       // Pages
       pages: {
@@ -251,6 +343,17 @@ const resources = {
         isPublished: 'بڵاوکراوەتەوە',
         createdAt: 'بەرواری دروستکردن',
         updatedAt: 'بەرواری نوێکردنەوە',
+        published: 'بڵاوکراوەتەوە',
+        draft: 'ڕەشنووس',
+        sections: 'بەشەکان',
+        pageBuilder: 'دروستکەری پەڕە',
+        previewPage: 'پێشبینینی پەڕە',
+        editPageInfo: 'دەستکاری پەڕە',
+        manageSite: 'بەڕێوەبردنی پێکهاتەی ماڵپەڕ و ناوەڕۆک',
+        noPages: 'هێشتا پەڕەیەک نییە. یەکەمین دروست بکە بۆ دەستپێکردن.',
+        deleteConfirm: 'دڵنیایی لە سڕینەوەی',
+        deleteWarning: 'ناتوانیت گەڕانەوە لەم کردارە.',
+        goToBuilder: 'چوون بۆ دروستکەری پەڕە',
       },
       // Page Builder
       builder: {

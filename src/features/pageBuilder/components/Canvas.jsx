@@ -58,6 +58,7 @@ function SortableSection({
   onMoveUp,
   onMoveDown,
 }) {
+  const { t } = useTranslation();
   const {
     attributes,
     listeners,
@@ -85,7 +86,7 @@ function SortableSection({
       )}
     >
       {/* Drag Handle & Actions */}
-      <div className="absolute top-2 right-2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+      <div className="absolute top-2 end-2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
         <button
           {...attributes}
           {...listeners}
@@ -136,7 +137,7 @@ function SortableSection({
             {section.type}
           </span>
           <span className="text-xs text-gray-500 dark:text-gray-400">
-            Order: {section.order}
+            {t('common.order')}: {section.order}
           </span>
         </div>
         

@@ -153,8 +153,8 @@ export function PageBuilderPage() {
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Section Library Sidebar */}
-        <div className="w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 overflow-y-auto">
-          <SectionLibrary onAddSection={addSection} />
+        <div className="w-64 bg-white dark:bg-gray-800 border-e border-gray-200 dark:border-gray-700 overflow-hidden flex flex-col">
+          <SectionLibrary onAddSection={addSection} onSave={save} isSaving={isSaving} />
         </div>
 
         {/* Canvas */}
