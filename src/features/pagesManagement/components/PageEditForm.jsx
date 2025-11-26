@@ -12,79 +12,82 @@ export function PageEditForm({ page, onSuccess, onCancel }) {
   
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      titleEn: page.title.en || '',
-      titleAr: page.title.ar || '',
-      titleKu: page.title.ku || '',
+      nameEn: page.nameEn || page.title?.en || '',
+      nameAr: page.nameAr || page.title?.ar || '',
+      nameKu: page.nameKu || page.title?.ku || '',
       slug: page.slug || '',
-      parentId: page.parentId || '',
-      descriptionEn: page.metadata?.description?.en || '',
-      descriptionAr: page.metadata?.description?.ar || '',
-      descriptionKu: page.metadata?.description?.ku || '',
-      showInNav: page.metadata?.showInNav !== false,
-      isPublished: page.metadata?.isPublished || false,
+      categoryId: page.categoryId || '',
+      descriptionEn: page.descriptionEn || page.metadata?.description?.en || '',
+      descriptionAr: page.descriptionAr || page.metadata?.description?.ar || '',
+      descriptionKu: page.descriptionKu || page.metadata?.description?.ku || '',
+      metaTitleEn: page.metaTitleEn || '',
+      metaTitleAr: page.metaTitleAr || '',
+      metaTitleKu: page.metaTitleKu || '',
+      metaDescriptionEn: page.metaDescriptionEn || '',
+      metaDescriptionAr: page.metaDescriptionAr || '',
+      metaDescriptionKu: page.metaDescriptionKu || '',
+      isPublished: page.isPublished || false,
+      isHomepage: page.isHomepage || false,
     },
   });
 
   const onSubmit = async (data) => {
     try {
       const pageData = {
-        ...page,
-        title: {
-          en: data.titleEn,
-          ar: data.titleAr,
-          ku: data.titleKu,
-        },
+        id: page.id,
+        categoryId: parseInt(data.categoryId) || page.categoryId,
+        nameEn: data.nameEn,
+        nameAr: data.nameAr,
+        nameKu: data.nameKu,
         slug: data.slug,
-        parentId: data.parentId || null,
-        metadata: {
-          ...page.metadata,
-          description: {
-            en: data.descriptionEn || '',
-            ar: data.descriptionAr || '',
-            ku: data.descriptionKu || '',
-          },
-          isPublished: data.isPublished || false,
-          showInNav: data.showInNav !== false,
-        },
-        updatedAt: new Date().toISOString(),
+        descriptionEn: data.descriptionEn || null,
+        descriptionAr: data.descriptionAr || null,
+        descriptionKu: data.descriptionKu || null,
+        metaTitleEn: data.metaTitleEn || null,
+        metaTitleAr: data.metaTitleAr || null,
+        metaTitleKu: data.metaTitleKu || null,
+        metaDescriptionEn: data.metaDescriptionEn || null,
+        metaDescriptionAr: data.metaDescriptionAr || null,
+        metaDescriptionKu: data.metaDescriptionKu || null,
+        isPublished: data.isPublished || false,
+        isHomepage: data.isHomepage || false,
       };
 
-      await updatePage.mutateAsync({
-        id: page.id,
-        data: pageData,
-      });
+      await updatePage.mutateAsync(pageData);
       onSuccess?.();
     } catch (error) {
       console.error('Failed to update page:', error);
+      alert('Failed to update page: ' + (error.message || 'Unknown error'));
     }
   };
 
-  const parentPages = pages?.filter((p) => !p.parentId && p.id !== page.id) || [];
+  // Get all pages for parent selection (categories)
+  const parentPages = pages?.filter((p) => p.id !== page.id) || [];
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Title - English */}
+      {/* Name - English */}
       <Input
-        label="Title (English)"
-        {...register('titleEn', { required: 'English title is required' })}
-        error={errors.titleEn?.message}
+        label="Page Name (English)"
+        {...register('nameEn', { required: 'English name is required' })}
+        error={errors.nameEn?.message}
         required
       />
 
-      {/* Title - Arabic */}
+      {/* Name - Arabic */}
       <Input
-        label="Title (Arabic)"
-        {...register('titleAr', { required: 'Arabic title is required' })}
-        error={errors.titleAr?.message}
+        label="Page Name (Arabic)"
+        {...register('nameAr', { required: 'Arabic name is required' })}
+        error={errors.nameAr?.message}
         required
         dir="rtl"
       />
 
-      {/* Title - Kurdish */}
+      {/* Name - Kurdish */}
       <Input
-        label="Title (Kurdish)"
-        {...register('titleKu', { required: 'Kurdish title is required' })}
-        error={errors.titleKu?.message}
+        label="Page Name (Kurdish)"
+        {...register('nameKu', { required: 'Kurdish name is required' })}
+        error={errors.nameKu?.message}
         required
         dir="rtl"
       />
@@ -104,15 +107,17 @@ export function PageEditForm({ page, onSuccess, onCancel }) {
         required
       />
 
-      {/* Parent Page */}
+      {/* Category */}
       <Select
-        label={t('pages.parent')}
-        {...register('parentId')}
+        label="Category"
+        {...register('categoryId', { required: 'Category is required' })}
+        error={errors.categoryId?.message}
+        required
       >
-        <option value="">{t('pages.noParent')}</option>
+        <option value="">Select a category</option>
         {parentPages.map((p) => (
           <option key={p.id} value={p.id}>
-            {p.title.en}
+            {p.nameEn || p.title?.en || `Page ${p.id}`}
           </option>
         ))}
       </Select>
@@ -155,18 +160,28 @@ export function PageEditForm({ page, onSuccess, onCancel }) {
         />
       </div>
 
+      {/* Meta Title - English */}
+      <Input
+        label="Meta Title (English)"
+        {...register('metaTitleEn')}
+        placeholder="SEO title for English"
+      />
+
+      {/* Meta Description - English */}
+      <div>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Meta Description (English)
+        </label>
+        <textarea
+          {...register('metaDescriptionEn')}
+          rows={2}
+          className="input w-full"
+          placeholder="SEO description for English"
+        />
+      </div>
+
       {/* Checkboxes */}
       <div className="space-y-2">
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            {...register('showInNav')}
-            className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
-          />
-          <span className="text-sm text-gray-700 dark:text-gray-300">
-            {t('pages.showInNav')}
-          </span>
-        </label>
         <label className="flex items-center gap-2">
           <input
             type="checkbox"
@@ -175,6 +190,16 @@ export function PageEditForm({ page, onSuccess, onCancel }) {
           />
           <span className="text-sm text-gray-700 dark:text-gray-300">
             {t('pages.isPublished')}
+          </span>
+        </label>
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            {...register('isHomepage')}
+            className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+          />
+          <span className="text-sm text-gray-700 dark:text-gray-300">
+            Set as Homepage
           </span>
         </label>
       </div>

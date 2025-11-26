@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { cn } from '../lib/cn';
 
 export const Input = forwardRef(
-  ({ label, error, className, type = 'text', ...props }, ref) => {
+  ({ label, error, helperText, className, type = 'text', ...props }, ref) => {
     return (
       <div className="w-full">
         {label && (
@@ -27,6 +27,9 @@ export const Input = forwardRef(
         />
         {error && (
           <p className="mt-1 text-sm text-red-600 dark:text-red-400">{error}</p>
+        )}
+        {!error && helperText && (
+          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{helperText}</p>
         )}
       </div>
     );

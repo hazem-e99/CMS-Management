@@ -1,0 +1,4776 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Bellatrix WebAPIs",
+        "description": "Bellatrix APIs using ASP.NET Core 8 By Yousry Essam.",
+        "version": "v1"
+    },
+    "paths": {
+        "/api/Authentication/Login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginViewModelApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginViewModelApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginViewModelApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Authentication/Verification": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VerificationDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VerificationDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VerificationDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Authentication/Forgot-Password": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ForgotPasswordDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ForgotPasswordDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ForgotPasswordDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Authentication/Registration": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegistrationDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegistrationDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegistrationDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Authentication/Reset-Password": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResetPasswordDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResetPasswordDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResetPasswordDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Authentication/Change-Password": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePasswordDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePasswordDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePasswordDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Categories/navbar": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryWithPagesDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryWithPagesDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryWithPagesDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Categories/public/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Categories": {
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateCategoryDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateCategoryDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateCategoryDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "parameters": [
+                    {
+                        "name": "includePages",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Categories"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateCategoryDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateCategoryDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateCategoryDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Categories/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "includePages",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categories"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Categories/name/{name}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "includePages",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Categories/search": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "parameters": [
+                    {
+                        "name": "searchTerm",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Categories/reorder": {
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Media/public/{id}": {
+            "get": {
+                "tags": [
+                    "Media"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Media/upload": {
+            "post": {
+                "tags": [
+                    "Media"
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "File"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "File": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "AlternateText": {
+                                        "type": "string"
+                                    },
+                                    "Caption": {
+                                        "type": "string"
+                                    },
+                                    "SortOrder": {
+                                        "type": "integer",
+                                        "format": "int32"
+                                    }
+                                }
+                            },
+                            "encoding": {
+                                "File": {
+                                    "style": "form"
+                                },
+                                "AlternateText": {
+                                    "style": "form"
+                                },
+                                "Caption": {
+                                    "style": "form"
+                                },
+                                "SortOrder": {
+                                    "style": "form"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Media/upload-multiple": {
+            "post": {
+                "tags": [
+                    "Media"
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "Files"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "Files": {
+                                        "minItems": 1,
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "binary"
+                                        }
+                                    },
+                                    "SortOrder": {
+                                        "type": "integer",
+                                        "format": "int32"
+                                    }
+                                }
+                            },
+                            "encoding": {
+                                "Files": {
+                                    "style": "form"
+                                },
+                                "SortOrder": {
+                                    "style": "form"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Media": {
+            "get": {
+                "tags": [
+                    "Media"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "searchTerm",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOPagedResultApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOPagedResultApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOPagedResultApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Media"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateMediaDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateMediaDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateMediaDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Media/{id}": {
+            "get": {
+                "tags": [
+                    "Media"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Media"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Media/bulk": {
+            "delete": {
+                "tags": [
+                    "Media"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Media/search": {
+            "get": {
+                "tags": [
+                    "Media"
+                ],
+                "parameters": [
+                    {
+                        "name": "searchTerm",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOPagedResultApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOPagedResultApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaDTOPagedResultApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Media/reorder": {
+            "post": {
+                "tags": [
+                    "Media"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/public/{slug}": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/public/id/{id}": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/public/homepage": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/public/category/{categoryId}": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageSummaryDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageSummaryDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageSummaryDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePageDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePageDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePageDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "publishedOnly",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageSummaryDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageSummaryDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageSummaryDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Pages"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePageDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePageDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePageDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/{id}": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "includeComponents",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/{id}/publish": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/{id}/unpublish": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/{id}/set-homepage": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/search": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "searchTerm",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageSummaryDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageSummaryDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageSummaryDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/slug-exists": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "excludeId",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/{id}/duplicate": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/with-components": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePageWithComponentsDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePageWithComponentsDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePageWithComponentsDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/{pageId}/components": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "pageId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePageComponentDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePageComponentDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePageComponentDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageComponentDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageComponentDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageComponentDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "pageId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageComponentDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageComponentDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageComponentDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/components/{componentId}": {
+            "put": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "componentId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePageComponentDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePageComponentDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePageComponentDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageComponentDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageComponentDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageComponentDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "componentId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Pages/{pageId}/components/reorder": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "parameters": [
+                    {
+                        "name": "pageId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings/public": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings/public/dictionary": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StringStringDictionaryApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StringStringDictionaryApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StringStringDictionaryApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateSettingDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateSettingDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateSettingDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Settings"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateSettingDTO"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateSettingDTO"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateSettingDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings/grouped": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingsByCategoryDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingsByCategoryDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingsByCategoryDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings/dictionary": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StringStringDictionaryApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StringStringDictionaryApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StringStringDictionaryApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings/{id}": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Settings"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings/key/{key}": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings/category/{category}": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings/bulk": {
+            "put": {
+                "tags": [
+                    "Settings"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/UpdateSettingDTO"
+                                }
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/UpdateSettingDTO"
+                                }
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/UpdateSettingDTO"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings/search": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "parameters": [
+                    {
+                        "name": "searchTerm",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingDTOListApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Settings/exists": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "excludeId",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BooleanApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BooleanApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "boolean"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CategoryDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nameAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nameEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nameKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sortOrder": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "pageCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PageSummaryDTO"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CategoryDTOApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/CategoryDTO"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CategoryDTOListApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryDTO"
+                        },
+                        "nullable": true
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CategoryWithPagesDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nameAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nameEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nameKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sortOrder": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PageSummaryDTO"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CategoryWithPagesDTOListApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryWithPagesDTO"
+                        },
+                        "nullable": true
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ChangePasswordDTO": {
+                "required": [
+                    "confirmPassword",
+                    "currentPassword",
+                    "newPassword"
+                ],
+                "type": "object",
+                "properties": {
+                    "currentPassword": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "newPassword": {
+                        "minLength": 6,
+                        "type": "string"
+                    },
+                    "confirmPassword": {
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateCategoryDTO": {
+                "required": [
+                    "nameAr",
+                    "nameEn",
+                    "nameKu"
+                ],
+                "type": "object",
+                "properties": {
+                    "nameAr": {
+                        "maxLength": 50,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "nameEn": {
+                        "maxLength": 50,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "nameKu": {
+                        "maxLength": 50,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "descriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sortOrder": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreatePageComponentDTO": {
+                "required": [
+                    "componentType",
+                    "contentJsonAr",
+                    "contentJsonEn",
+                    "contentJsonKu",
+                    "isVisible",
+                    "orderIndex",
+                    "pageId",
+                    "theme"
+                ],
+                "type": "object",
+                "properties": {
+                    "pageId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "componentType": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "componentName": {
+                        "maxLength": 100,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contentJsonAr": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "contentJsonEn": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "contentJsonKu": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "isVisible": {
+                        "type": "boolean"
+                    },
+                    "theme": {
+                        "$ref": "#/components/schemas/ThemeMode"
+                    },
+                    "orderIndex": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreatePageDTO": {
+                "required": [
+                    "categoryId",
+                    "nameAr",
+                    "nameEn",
+                    "nameKu"
+                ],
+                "type": "object",
+                "properties": {
+                    "categoryId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nameAr": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "nameEn": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "nameKu": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "descriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "slug": {
+                        "maxLength": 200,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleAr": {
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleEn": {
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleKu": {
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionAr": {
+                        "maxLength": 160,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionEn": {
+                        "maxLength": 160,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionKu": {
+                        "maxLength": 160,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "isHomepage": {
+                        "type": "boolean"
+                    },
+                    "isPublished": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreatePageWithComponentsDTO": {
+                "required": [
+                    "categoryId",
+                    "nameAr",
+                    "nameEn",
+                    "nameKu"
+                ],
+                "type": "object",
+                "properties": {
+                    "categoryId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nameAr": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "nameEn": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "nameKu": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "descriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "slug": {
+                        "maxLength": 200,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleAr": {
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleEn": {
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleKu": {
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionAr": {
+                        "maxLength": 160,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionEn": {
+                        "maxLength": 160,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionKu": {
+                        "maxLength": 160,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "isHomepage": {
+                        "type": "boolean"
+                    },
+                    "isPublished": {
+                        "type": "boolean"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NewPageComponentDTO"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateSettingDTO": {
+                "required": [
+                    "key",
+                    "value"
+                ],
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "value": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "description": {
+                        "maxLength": 500,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "isPublic": {
+                        "type": "boolean"
+                    },
+                    "dataType": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ErrorCode": {
+                "enum": [
+                    0,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    300,
+                    301,
+                    302,
+                    303,
+                    304,
+                    305,
+                    306,
+                    307,
+                    308,
+                    309,
+                    400,
+                    401,
+                    402,
+                    403,
+                    404,
+                    405,
+                    406,
+                    407,
+                    408,
+                    409,
+                    410,
+                    411,
+                    600,
+                    601,
+                    602,
+                    604,
+                    605,
+                    606,
+                    607,
+                    608,
+                    609,
+                    610,
+                    611,
+                    612,
+                    613,
+                    614,
+                    615,
+                    616,
+                    617,
+                    700,
+                    701,
+                    702,
+                    703,
+                    704,
+                    705,
+                    706,
+                    707,
+                    708,
+                    709,
+                    800,
+                    801,
+                    802,
+                    803,
+                    804,
+                    805,
+                    806,
+                    807,
+                    808,
+                    809,
+                    810,
+                    811,
+                    812,
+                    813,
+                    814,
+                    900,
+                    901,
+                    902,
+                    903,
+                    904,
+                    905,
+                    906,
+                    907,
+                    908,
+                    909,
+                    910,
+                    911,
+                    912,
+                    913,
+                    914,
+                    915,
+                    916,
+                    917,
+                    918,
+                    919,
+                    1100,
+                    1101,
+                    1102,
+                    1103,
+                    1104,
+                    1105,
+                    1106,
+                    1107,
+                    1200,
+                    1201,
+                    1202,
+                    1203,
+                    1204,
+                    1205,
+                    1206,
+                    1207,
+                    1208,
+                    1209,
+                    1210,
+                    1211,
+                    1212,
+                    1213
+                ],
+                "type": "integer",
+                "format": "int32"
+            },
+            "ForgotPasswordDTO": {
+                "required": [
+                    "email"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "email"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "LoginDTO": {
+                "required": [
+                    "emailOrUserName",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "emailOrUserName": {
+                        "maxLength": 100,
+                        "minLength": 3,
+                        "type": "string"
+                    },
+                    "password": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "password"
+                    },
+                    "rememberMe": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "LoginViewModel": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "token": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "userName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "fullName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "expiration": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "LoginViewModelApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/LoginViewModel"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MediaDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "uploadedById": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "uploadedByName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "fileName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "originalName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "fileUrl": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "fileSizeInBytes": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "fileSizeFormatted": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "alternateText": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "caption": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sortOrder": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MediaDTOApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/MediaDTO"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MediaDTOListApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MediaDTO"
+                        },
+                        "nullable": true
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MediaDTOPagedResult": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MediaDTO"
+                        },
+                        "nullable": true
+                    },
+                    "totalCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "hasNextPage": {
+                        "type": "boolean",
+                        "readOnly": true
+                    },
+                    "hasPreviousPage": {
+                        "type": "boolean",
+                        "readOnly": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MediaDTOPagedResultApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/MediaDTOPagedResult"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "NewPageComponentDTO": {
+                "required": [
+                    "componentType",
+                    "contentJsonAr",
+                    "contentJsonEn",
+                    "contentJsonKu",
+                    "isVisible",
+                    "orderIndex",
+                    "theme"
+                ],
+                "type": "object",
+                "properties": {
+                    "componentType": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "componentName": {
+                        "maxLength": 100,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contentJsonAr": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "contentJsonEn": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "contentJsonKu": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "orderIndex": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "isVisible": {
+                        "type": "boolean"
+                    },
+                    "theme": {
+                        "$ref": "#/components/schemas/ThemeMode"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PageComponentDTO": {
+                "required": [
+                    "componentType",
+                    "contentJsonAr",
+                    "contentJsonEn",
+                    "contentJsonKu",
+                    "createdAt",
+                    "id",
+                    "isVisible",
+                    "pageId",
+                    "theme"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "componentType": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "componentName": {
+                        "maxLength": 100,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contentJsonAr": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "contentJsonEn": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "contentJsonKu": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "orderIndex": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "isVisible": {
+                        "type": "boolean"
+                    },
+                    "theme": {
+                        "$ref": "#/components/schemas/ThemeMode"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PageComponentDTOApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/PageComponentDTO"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PageComponentDTOListApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PageComponentDTO"
+                        },
+                        "nullable": true
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PageDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "categoryId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "categoryNameAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "categoryNameEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "categoryNameKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdById": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createdByName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nameAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nameEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nameKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "slug": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "isHomepage": {
+                        "type": "boolean"
+                    },
+                    "isPublished": {
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PageComponentDTO"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PageDTOApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/PageDTO"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PageSummaryDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nameAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nameEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nameKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "slug": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "categoryName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "isPublished": {
+                        "type": "boolean"
+                    },
+                    "isHomepage": {
+                        "type": "boolean"
+                    },
+                    "createdByName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PageSummaryDTOListApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PageSummaryDTO"
+                        },
+                        "nullable": true
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "RegistrationDTO": {
+                "required": [
+                    "email",
+                    "firstName",
+                    "lastName",
+                    "username"
+                ],
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "maxLength": 50,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "maxLength": 50,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "email": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "username": {
+                        "maxLength": 20,
+                        "minLength": 2,
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ResetPasswordDTO": {
+                "required": [
+                    "confirmPassword",
+                    "email",
+                    "newPassword",
+                    "resetToken"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "resetToken": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "newPassword": {
+                        "maxLength": 100,
+                        "minLength": 6,
+                        "type": "string"
+                    },
+                    "confirmPassword": {
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SettingDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "key": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "value": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "isPublic": {
+                        "type": "boolean"
+                    },
+                    "dataType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SettingDTOApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/SettingDTO"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SettingDTOListApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SettingDTO"
+                        },
+                        "nullable": true
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SettingsByCategoryDTO": {
+                "type": "object",
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "settings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SettingDTO"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SettingsByCategoryDTOListApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SettingsByCategoryDTO"
+                        },
+                        "nullable": true
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "StringStringDictionaryApiResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "nullable": true
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "errorCode": {
+                        "$ref": "#/components/schemas/ErrorCode"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ThemeMode": {
+                "enum": [
+                    1,
+                    2
+                ],
+                "type": "integer",
+                "format": "int32"
+            },
+            "UpdateCategoryDTO": {
+                "required": [
+                    "id",
+                    "nameAr",
+                    "nameEn",
+                    "nameKu"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nameAr": {
+                        "maxLength": 50,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "nameEn": {
+                        "maxLength": 50,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "nameKu": {
+                        "maxLength": 50,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "descriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sortOrder": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateMediaDTO": {
+                "required": [
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "alternateText": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "caption": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sortOrder": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdatePageComponentDTO": {
+                "required": [
+                    "componentType",
+                    "contentJson",
+                    "id",
+                    "isVisible",
+                    "theme"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "componentType": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "componentName": {
+                        "maxLength": 100,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contentJson": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "orderIndex": {
+                        "maximum": 2147483647,
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "isVisible": {
+                        "type": "boolean"
+                    },
+                    "theme": {
+                        "$ref": "#/components/schemas/ThemeMode"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdatePageDTO": {
+                "required": [
+                    "categoryId",
+                    "id",
+                    "nameAr",
+                    "nameEn",
+                    "nameKu"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nameAr": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "nameEn": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "nameKu": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "descriptionAr": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionEn": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "descriptionKu": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "categoryId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "slug": {
+                        "maxLength": 200,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleAr": {
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleEn": {
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaTitleKu": {
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionAr": {
+                        "maxLength": 160,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionEn": {
+                        "maxLength": 160,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "metaDescriptionKu": {
+                        "maxLength": 160,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "isHomepage": {
+                        "type": "boolean"
+                    },
+                    "isPublished": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateSettingDTO": {
+                "required": [
+                    "id",
+                    "key",
+                    "value"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "key": {
+                        "maxLength": 100,
+                        "minLength": 2,
+                        "type": "string"
+                    },
+                    "value": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "description": {
+                        "maxLength": 500,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "isPublic": {
+                        "type": "boolean"
+                    },
+                    "dataType": {
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "VerificationDTO": {
+                "required": [
+                    "email",
+                    "verificationCode"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "minLength": 1,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "verificationCode": {
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "securitySchemes": {
+            "Bearer": {
+                "type": "apiKey",
+                "description": "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ]
+}

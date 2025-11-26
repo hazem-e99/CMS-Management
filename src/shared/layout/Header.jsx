@@ -1,13 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import { Moon, Sun, Globe } from 'lucide-react';
+import { Moon, Sun, Globe, LogOut, User } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { Button } from '../ui/Button';
 
 export function Header() {
   const { t } = useTranslation();
   const { theme, toggleTheme } = useTheme();
   const { language, changeLanguage, availableLanguages } = useLanguage();
+  const { user, logout } = useAuth();
 
   const languageNames = {
     en: 'English',
@@ -26,8 +28,18 @@ export function Header() {
             </h1>
           </div>
 
-          {/* Right side - Theme and Language toggles */}
+          {/* Right side - User info, Theme and Language toggles */}
           <div className="flex items-center gap-3">
+            {/* User Info */}
+            {user && (
+              <div className="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-gray-700 rounded-md">
+                <User className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                <span className="text-sm text-gray-700 dark:text-gray-300">
+                  {user.email || user.userName || 'Admin'}
+                </span>
+              </div>
+            )}
+
             {/* Language Selector */}
             <div className="relative">
               <select
@@ -53,6 +65,16 @@ export function Header() {
               onClick={toggleTheme}
               icon={theme === 'dark' ? Sun : Moon}
               aria-label={t('theme.toggle')}
+            />
+
+            {/* Logout Button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={logout}
+              icon={LogOut}
+              aria-label="Logout"
+              className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20"
             />
           </div>
         </div>

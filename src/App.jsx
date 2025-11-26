@@ -10,16 +10,29 @@ import { SurveysListPage } from './features/surveyBuilder/pages/SurveysListPage'
 import SettingsPage from './features/settings/pages/SettingsPage';
 import { PublicLayout } from './features/public/layout/PublicLayout';
 import { PublicPage } from './features/public/pages/PublicPage';
+import LoginPage from './features/auth/pages/LoginPage';
+import { ProtectedRoute } from './shared/components/ProtectedRoute';
 
 function App() {
   return (
     <Routes>
-      {/* Admin Dashboard Routes */}
-      <Route path="/admin" element={<DashboardLayout />}>
+      {/* Login Route */}
+      <Route path="/login" element={<LoginPage />} />
+
+      {/* Admin Dashboard Routes - Protected */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
         <Route index element={<Navigate to="/admin/pages" replace />} />
         <Route path="pages" element={<PagesListPage />} />
         <Route path="pages/new" element={<CreatePagePage />} />
         <Route path="pages/:pageId/edit" element={<EditPagePage />} />
+        <Route path="pages/builder/new" element={<PageBuilderPage />} />
         <Route path="pages/:pageId/builder" element={<PageBuilderPage />} />
         <Route path="surveys" element={<SurveysListPage />} />
         <Route path="surveys/new" element={<SurveyBuilderPage />} />

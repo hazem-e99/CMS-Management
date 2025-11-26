@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - Page Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 { color: #333; }
+        h2 { color: #666; margin-top: 30px; }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #45a049; }
+        button.delete { background: #f44336; }
+        button.delete:hover { background: #da190b; }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Page Builder API Test</h1>
+    
+    <div class="container">
+        <h2>1. Create Page with Components</h2>
+        <label>Category ID:</label>
+        <input type="number" id="categoryId" value="1">
+        
+        <label>Page Name (EN):</label>
+        <input type="text" id="nameEn" value="Test Page">
+        
+        <label>Page Name (AR):</label>
+        <input type="text" id="nameAr" value="صفحة تجريبية">
+        
+        <label>Page Name (KU):</label>
+        <input type="text" id="nameKu" value="پەڕەی تاقیکردنەوە">
+        
+        <button onclick="createPageWithComponents()">Create Page with Components</button>
+        <div id="createResult"></div>
+    </div>
+
+    <div class="container">
+        <h2>2. Get Page Details</h2>
+        <label>Page ID:</label>
+        <input type="number" id="getPageId" value="">
+        <button onclick="getPage()">Get Page</button>
+        <div id="getResult"></div>
+    </div>
+
+    <div class="container">
+        <h2>3. Add Component to Page</h2>
+        <label>Page ID:</label>
+        <input type="number" id="addCompPageId" value="">
+        <button onclick="addComponent()">Add Component</button>
+        <div id="addResult"></div>
+    </div>
+
+    <div class="container">
+        <h2>4. Update Component</h2>
+        <label>Component ID:</label>
+        <input type="number" id="updateCompId" value="">
+        <button onclick="updateComponent()">Update Component</button>
+        <div id="updateResult"></div>
+    </div>
+
+    <div class="container">
+        <h2>5. Delete Component</h2>
+        <label>Component ID:</label>
+        <input type="number" id="deleteCompId" value="">
+        <button class="delete" onclick="deleteComponent()">Delete Component</button>
+        <div id="deleteResult"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://pgs.runasp.net/api';
+
+        async function apiCall(endpoint, method = 'GET', data = null) {
+            try {
+                const options = {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                };
+                
+                if (data) {
+                    options.body = JSON.stringify(data);
+                }
+
+                console.log(`${method} ${API_BASE}${endpoint}`, data);
+                const response = await fetch(`${API_BASE}${endpoint}`, options);
+                const result = await response.json();
+                console.log('Response:', result);
+                return result;
+            } catch (error) {
+                console.error('Error:', error);
+                throw error;
+            }
+        }
+
+        async function createPageWithComponents() {
+            const resultDiv = document.getElementById('createResult');
+            resultDiv.innerHTML = '<p>Creating page...</p>';
+
+            const data = {
+                categoryId: parseInt(document.getElementById('categoryId').value),
+                nameEn: document.getElementById('nameEn').value,
+                nameAr: document.getElementById('nameAr').value,
+                nameKu: document.getElementById('nameKu').value,
+                slug: `test-page-${Date.now()}`,
+                isPublished: false,
+                isHomepage: false,
+                components: [
+                    {
+                        componentType: "HeroSection",
+                        componentName: "Hero Section",
+                        contentJsonEn: JSON.stringify({
+                            title: "Welcome to Test Page",
+                            subtitle: "This is a test",
+                            buttonText: "Learn More"
+                        }),
+                        contentJsonAr: JSON.stringify({
+                            title: "مرحباً بك في الصفحة التجريبية",
+                            subtitle: "هذا اختبار",
+                            buttonText: "اعرف المزيد"
+                        }),
+                        contentJsonKu: JSON.stringify({
+                            title: "بەخێربێیت بۆ پەڕەی تاقیکردنەوە",
+                            subtitle: "ئەمە تاقیکردنەوەیە",
+                            buttonText: "زیاتر بزانە"
+                        }),
+                        orderIndex: 0,
+                        isVisible: true,
+                        theme: 1
+                    },
+                    {
+                        componentType: "FeaturesSection",
+                        componentName: "Features",
+                        contentJsonEn: JSON.stringify({
+                            title: "Our Features",
+                            features: [
+                                { title: "Feature 1", description: "Description 1" },
+                                { title: "Feature 2", description: "Description 2" }
+                            ]
+                        }),
+                        contentJsonAr: JSON.stringify({
+                            title: "ميزاتنا",
+                            features: [
+                                { title: "ميزة 1", description: "وصف 1" },
+                                { title: "ميزة 2", description: "وصف 2" }
+                            ]
+                        }),
+                        contentJsonKu: JSON.stringify({
+                            title: "تایبەتمەندییەکانمان",
+                            features: [
+                                { title: "تایبەتمەندی 1", description: "وەسف 1" },
+                                { title: "تایبەتمەندی 2", description: "وەسف 2" }
+                            ]
+                        }),
+                        orderIndex: 1,
+                        isVisible: true,
+                        theme: 1
+                    }
+                ]
+            };
+
+            try {
+                const result = await apiCall('/Pages/with-components', 'POST', data);
+                const pageId = result.data?.id || result.data?.data?.id;
+                
+                if (pageId) {
+                    document.getElementById('getPageId').value = pageId;
+                    document.getElementById('addCompPageId').value = pageId;
+                }
+
+                resultDiv.innerHTML = `
+                    <p class="success">✅ Page created successfully!</p>
+                    <pre>${JSON.stringify(result, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ Error: ${error.message}</p>
+                    <pre>${error.stack}</pre>
+                `;
+            }
+        }
+
+        async function getPage() {
+            const pageId = document.getElementById('getPageId').value;
+            const resultDiv = document.getElementById('getResult');
+            
+            if (!pageId) {
+                resultDiv.innerHTML = '<p class="error">Please enter a page ID</p>';
+                return;
+            }
+
+            resultDiv.innerHTML = '<p>Loading...</p>';
+
+            try {
+                const result = await apiCall(`/Pages/${pageId}?includeComponents=true`);
+                resultDiv.innerHTML = `
+                    <p class="success">✅ Page loaded!</p>
+                    <pre>${JSON.stringify(result, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ Error: ${error.message}</p>
+                `;
+            }
+        }
+
+        async function addComponent() {
+            const pageId = document.getElementById('addCompPageId').value;
+            const resultDiv = document.getElementById('addResult');
+            
+            if (!pageId) {
+                resultDiv.innerHTML = '<p class="error">Please enter a page ID</p>';
+                return;
+            }
+
+            resultDiv.innerHTML = '<p>Adding component...</p>';
+
+            const data = {
+                componentType: "CtaSection",
+                componentName: "Call to Action",
+                contentJsonEn: JSON.stringify({
+                    title: "Get Started Today",
+                    description: "Join us now!",
+                    buttonText: "Sign Up"
+                }),
+                contentJsonAr: JSON.stringify({
+                    title: "ابدأ اليوم",
+                    description: "انضم إلينا الآن!",
+                    buttonText: "سجل"
+                }),
+                contentJsonKu: JSON.stringify({
+                    title: "ئەمڕۆ دەست پێبکە",
+                    description: "ئێستا بەشداربە!",
+                    buttonText: "تۆمارکردن"
+                }),
+                orderIndex: 2,
+                isVisible: true,
+                theme: 1
+            };
+
+            try {
+                const result = await apiCall(`/Pages/${pageId}/components`, 'POST', data);
+                const compId = result.data?.id || result.data?.data?.id;
+                
+                if (compId) {
+                    document.getElementById('updateCompId').value = compId;
+                    document.getElementById('deleteCompId').value = compId;
+                }
+
+                resultDiv.innerHTML = `
+                    <p class="success">✅ Component added!</p>
+                    <pre>${JSON.stringify(result, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ Error: ${error.message}</p>
+                `;
+            }
+        }
+
+        async function updateComponent() {
+            const compId = document.getElementById('updateCompId').value;
+            const resultDiv = document.getElementById('updateResult');
+            
+            if (!compId) {
+                resultDiv.innerHTML = '<p class="error">Please enter a component ID</p>';
+                return;
+            }
+
+            resultDiv.innerHTML = '<p>Updating component...</p>';
+
+            const data = {
+                id: parseInt(compId),
+                componentType: "CtaSection",
+                componentName: "Updated CTA",
+                contentJsonEn: JSON.stringify({
+                    title: "UPDATED: Get Started Today",
+                    description: "This content was updated!",
+                    buttonText: "Join Now"
+                }),
+                contentJsonAr: JSON.stringify({
+                    title: "محدث: ابدأ اليوم",
+                    description: "تم تحديث هذا المحتوى!",
+                    buttonText: "انضم الآن"
+                }),
+                contentJsonKu: JSON.stringify({
+                    title: "نوێکراوە: ئەمڕۆ دەست پێبکە",
+                    description: "ئەم ناوەڕۆکە نوێکرایەوە!",
+                    buttonText: "ئێستا بەشداربە"
+                }),
+                orderIndex: 2,
+                isVisible: true,
+                theme: 1
+            };
+
+            try {
+                const result = await apiCall(`/Pages/components/${compId}`, 'PUT', data);
+                resultDiv.innerHTML = `
+                    <p class="success">✅ Component updated!</p>
+                    <pre>${JSON.stringify(result, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ Error: ${error.message}</p>
+                `;
+            }
+        }
+
+        async function deleteComponent() {
+            const compId = document.getElementById('deleteCompId').value;
+            const resultDiv = document.getElementById('deleteResult');
+            
+            if (!compId) {
+                resultDiv.innerHTML = '<p class="error">Please enter a component ID</p>';
+                return;
+            }
+
+            if (!confirm('Are you sure you want to delete this component?')) {
+                return;
+            }
+
+            resultDiv.innerHTML = '<p>Deleting component...</p>';
+
+            try {
+                const result = await apiCall(`/Pages/components/${compId}`, 'DELETE');
+                resultDiv.innerHTML = `
+                    <p class="success">✅ Component deleted!</p>
+                    <pre>${JSON.stringify(result, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ Error: ${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,6 @@
-const API_URL = 'http://localhost:3001';
+import { API_CONFIG } from '../api/config';
+
+const API_URL = API_CONFIG.baseURL;
 
 /**
  * Settings Service

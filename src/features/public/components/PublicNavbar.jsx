@@ -43,6 +43,35 @@ export function PublicNavbar() {
     { code: 'ku', label: 'کوردی' },
   ];
 
+  const getItemTitle = (item) => {
+    if (!item) return '';
+    
+    // Try API format (nameEn, nameAr, nameKu)
+    const apiName = item[`name${language.charAt(0).toUpperCase() + language.slice(1)}`];
+    if (apiName) return apiName;
+    
+    // Fallback to nameEn
+    if (item.nameEn) return item.nameEn;
+    
+    // Try title object format (for backward compatibility)
+    if (item.title) {
+      if (typeof item.title === 'object') {
+        return item.title[language] || item.title.en || '';
+      }
+      return item.title;
+    }
+    
+    // Try name object format
+    if (item.name) {
+      if (typeof item.name === 'object') {
+        return item.name[language] || item.name.en || '';
+      }
+      return item.name;
+    }
+    
+    return '';
+  };
+
   return (
     <nav className="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -52,39 +81,41 @@ export function PublicNavbar() {
             {logo.url ? (
               <img 
                 src={logo.url} 
-                alt={logo.alt?.[language] || siteName[language]} 
+                alt={logo.alt?.[language] || siteName[language] || ''} 
                 className="h-10 object-contain"
               />
             ) : (
               <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                {siteName[language] || siteName.en}
+                {siteName[language] || siteName.en || 'PGS'}
               </span>
             )}
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-4 rtl:space-x-reverse">
-            {menu?.map((item) => (
+            {menu?.map((item) => {
+              const children = item.pages || item.children || [];
+              return (
               <div key={item.id} className="relative group">
-                {item.children && item.children.length > 0 ? (
+                {children.length > 0 ? (
                   <>
                     <button
                       className="flex items-center gap-1 px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                       onClick={() => toggleDropdown(item.id)}
                     >
-                      <span>{item.title[language] || item.title.en}</span>
+                      <span>{getItemTitle(item)}</span>
                       <ChevronDown className="h-4 w-4" />
                     </button>
                     {/* Dropdown */}
                     <div className="absolute top-full start-0 mt-1 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                       <div className="py-2">
-                        {item.children.map((child) => (
+                        {children.map((child) => (
                           <Link
                             key={child.id}
-                            to={`/${item.slug}/${child.slug}`}
+                            to={`/${item.slug || item.nameEn?.toLowerCase()}/${child.slug || child.nameEn?.toLowerCase()}`}
                             className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                           >
-                            {child.title[language] || child.title.en}
+                            {getItemTitle(child)}
                           </Link>
                         ))}
                       </div>
@@ -92,14 +123,15 @@ export function PublicNavbar() {
                   </>
                 ) : (
                   <Link
-                    to={`/${item.slug}`}
+                    to={`/${item.slug || item.nameEn?.toLowerCase()}`}
                     className="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                   >
-                    {item.title[language] || item.title.en}
+                    {getItemTitle(item)}
                   </Link>
                 )}
               </div>
-            ))}
+            )})}
+
 
             {/* Theme Toggle */}
             <button
@@ -146,15 +178,17 @@ export function PublicNavbar() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t dark:border-gray-700">
-            {menu?.map((item) => (
+            {menu?.map((item) => {
+              const children = item.pages || item.children || [];
+              return (
               <div key={item.id}>
-                {item.children && item.children.length > 0 ? (
+                {children.length > 0 ? (
                   <>
                     <button
                       onClick={() => toggleDropdown(item.id)}
                       className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                     >
-                      <span>{item.title[language] || item.title.en}</span>
+                      <span>{getItemTitle(item)}</span>
                       <ChevronDown
                         className={`h-4 w-4 transition-transform ${
                           openDropdown === item.id ? 'rotate-180' : ''
@@ -163,14 +197,14 @@ export function PublicNavbar() {
                     </button>
                     {openDropdown === item.id && (
                       <div className="bg-gray-50 dark:bg-gray-900">
-                        {item.children.map((child) => (
+                        {children.map((child) => (
                           <Link
                             key={child.id}
-                            to={`/${item.slug}/${child.slug}`}
+                            to={`/${item.slug || item.nameEn?.toLowerCase()}/${child.slug || child.nameEn?.toLowerCase()}`}
                             className="block px-8 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                             onClick={() => setIsMenuOpen(false)}
                           >
-                            {child.title[language] || child.title.en}
+                            {getItemTitle(child)}
                           </Link>
                         ))}
                       </div>
@@ -178,15 +212,16 @@ export function PublicNavbar() {
                   </>
                 ) : (
                   <Link
-                    to={`/${item.slug}`}
+                    to={`/${item.slug || item.nameEn?.toLowerCase()}`}
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {item.title[language] || item.title.en}
+                    {getItemTitle(item)}
                   </Link>
                 )}
               </div>
-            ))}
+            )})}
+
 
             {/* Mobile Theme & Language */}
             <div className="mt-4 pt-4 border-t dark:border-gray-700 px-4 space-y-2">

@@ -9,6 +9,7 @@ import { Modal } from '../../../shared/ui/Modal';
 import { LoadingSpinner } from '../../../shared/ui/LoadingSpinner';
 import { PagePreview } from '../../pageBuilder/components/PagePreview';
 import { useLanguage } from '../../../contexts/LanguageContext';
+import { transformComponentsToSections } from '../../pageBuilder/utils/transformers';
 
 export function PagesListPage() {
   const { t } = useTranslation();
@@ -50,28 +51,9 @@ export function PagesListPage() {
     const topLevelPages = sortedPages.filter(p => !p.parentId);
     const prevPage = topLevelPages[currentIndex - 1];
 
-    // Swap orders
-    await updatePage.mutateAsync({
-      id: page.id,
-      data: {
-        ...page,
-        metadata: {
-          ...page.metadata,
-          order: prevPage.metadata.order,
-        },
-      },
-    });
-
-    await updatePage.mutateAsync({
-      id: prevPage.id,
-      data: {
-        ...prevPage,
-        metadata: {
-          ...prevPage.metadata,
-          order: page.metadata.order,
-        },
-      },
-    });
+    // Note: This functionality needs to be implemented with proper order management
+    // For now, we'll skip the update since the API doesn't support order field
+    console.warn('Page reordering not yet implemented in backend');
   };
 
   // Move page down
@@ -81,28 +63,9 @@ export function PagesListPage() {
     const topLevelPages = sortedPages.filter(p => !p.parentId);
     const nextPage = topLevelPages[currentIndex + 1];
 
-    // Swap orders
-    await updatePage.mutateAsync({
-      id: page.id,
-      data: {
-        ...page,
-        metadata: {
-          ...page.metadata,
-          order: nextPage.metadata.order,
-        },
-      },
-    });
-
-    await updatePage.mutateAsync({
-      id: nextPage.id,
-      data: {
-        ...nextPage,
-        metadata: {
-          ...nextPage.metadata,
-          order: page.metadata.order,
-        },
-      },
-    });
+    // Note: This functionality needs to be implemented with proper order management
+    // For now, we'll skip the update since the API doesn't support order field
+    console.warn('Page reordering not yet implemented in backend');
   };
 
   const renderPageItem = (page, level = 0, index = 0, totalPages = 0) => {
@@ -124,11 +87,11 @@ export function PagesListPage() {
             )}
             <div>
               <h3 className="font-medium text-gray-900 dark:text-white">
-                {page.title[language] || page.title.en}
+                {language === 'ar' ? page.nameAr : language === 'ku' ? page.nameKu : page.nameEn}
               </h3>
               <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
                 <span>/{page.slug}</span>
-                {page.metadata.isPublished ? (
+                {page.isPublished ? (
                   <span className="px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300">
                     {t('pages.published')}
                   </span>
@@ -137,7 +100,6 @@ export function PagesListPage() {
                     {t('pages.draft')}
                   </span>
                 )}
-                <span>• {page.sections?.length || 0} {t('pages.sections')}</span>
               </div>
             </div>
           </div>
@@ -244,7 +206,7 @@ export function PagesListPage() {
       >
         <div className="space-y-4">
           <p className="text-gray-600 dark:text-gray-300">
-            {t('pages.deleteConfirm')} "{pageToDelete?.title?.en}"? {t('pages.deleteWarning')}
+            {t('pages.deleteConfirm')} "{pageToDelete?.nameEn}"? {t('pages.deleteWarning')}
           </p>
           <div className="flex justify-end gap-3">
             <Button
@@ -267,9 +229,9 @@ export function PagesListPage() {
       {/* Page Preview Modal */}
       {previewPage && (
         <PagePreview
-          sections={previewPage.sections || []}
+          sections={transformComponentsToSections(previewPage.components || [])}
           onClose={() => setPreviewPage(null)}
-          title={previewPage.title[language] || previewPage.title.en}
+          title={language === 'ar' ? previewPage.nameAr : language === 'ku' ? previewPage.nameKu : previewPage.nameEn}
         />
       )}
     </div>

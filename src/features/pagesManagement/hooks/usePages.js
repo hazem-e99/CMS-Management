@@ -1,37 +1,37 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { pagesService } from '../../../services/pagesService';
+import { pagesApi } from '../../../api/pages';
 
 /**
  * Hook to fetch all pages
  */
-export function usePages() {
+export function usePages(params) {
   return useQuery({
-    queryKey: ['pages'],
-    queryFn: pagesService.getPages,
-    select: (response) => response.data,
+    queryKey: ['pages', params],
+    queryFn: () => pagesApi.getPages(params),
+    select: (response) => response.data || response,
   });
 }
 
 /**
  * Hook to fetch single page
  */
-export function usePage(id) {
+export function usePage(id, params = {}) {
   return useQuery({
-    queryKey: ['pages', id],
-    queryFn: () => pagesService.getPage(id),
-    select: (response) => response.data,
+    queryKey: ['pages', id, params],
+    queryFn: () => pagesApi.getPage(id, { includeComponents: true, ...params }),
+    select: (response) => response.data || response,
     enabled: !!id,
   });
 }
 
 /**
- * Hook to create page
+ * Hook to create page with components
  */
 export function useCreatePage() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: pagesService.createPage,
+    mutationFn: pagesApi.createPageWithComponents, // Use with-components endpoint
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pages'] });
     },
@@ -45,10 +45,12 @@ export function useUpdatePage() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ id, data }) => pagesService.updatePage(id, data),
-    onSuccess: (_, variables) => {
+    mutationFn: pagesApi.updatePage,
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['pages'] });
-      queryClient.invalidateQueries({ queryKey: ['pages', variables.id] });
+      if (data?.id) {
+        queryClient.invalidateQueries({ queryKey: ['pages', data.id] });
+      }
     },
   });
 }
@@ -60,7 +62,7 @@ export function useDeletePage() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: pagesService.deletePage,
+    mutationFn: pagesApi.deletePage,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pages'] });
     },

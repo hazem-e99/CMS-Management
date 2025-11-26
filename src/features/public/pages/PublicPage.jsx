@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { publicPagesService } from '../../../services/publicPagesService';
 import { SectionRenderer } from '../../pageBuilder/components/SectionRenderer';
 import { useLanguage } from '../../../contexts/LanguageContext';
+import { transformComponentsToSections } from '../../pageBuilder/utils/transformers';
 
 export function PublicPage() {
   const { slug, childSlug } = useParams();
@@ -48,13 +49,45 @@ export function PublicPage() {
     );
   }
 
+  const getPageTitle = (p) => {
+    if (!p) return '';
+    
+    // Try API format (nameEn, nameAr, nameKu)
+    const apiName = p[`name${language.charAt(0).toUpperCase() + language.slice(1)}`];
+    if (apiName) return apiName;
+    
+    // Fallback to nameEn
+    if (p.nameEn) return p.nameEn;
+    
+    // Try title object format
+    if (p.title) {
+      if (typeof p.title === 'object') {
+        return p.title[language] || p.title.en || '';
+      }
+      return p.title;
+    }
+    
+    // Try name object format
+    if (p.name) {
+      if (typeof p.name === 'object') {
+        return p.name[language] || p.name.en || '';
+      }
+      return p.name;
+    }
+    
+    return '';
+  };
+
+  // Transform components to sections
+  const sections = transformComponentsToSections(page.components || []);
+
   // If page has no sections, show a default message
-  if (!page.sections || page.sections.length === 0) {
+  if (sections.length === 0) {
     return (
       <div className="min-h-screen">
         <div className="max-w-4xl mx-auto px-4 py-16">
           <h1 className="text-4xl font-bold mb-4">
-            {page.title[language] || page.title.en}
+            {getPageTitle(page)}
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
             {language === 'ar'
@@ -71,7 +104,7 @@ export function PublicPage() {
   // Render page sections
   return (
     <div className="min-h-screen">
-      {page.sections.map((section) => (
+      {sections.map((section) => (
         <SectionRenderer key={section.id} section={section} />
       ))}
     </div>

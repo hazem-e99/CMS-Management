@@ -33,7 +33,6 @@ export function CreatePagePage() {
 
       <Card>
         <PageForm
-          onSuccess={(pageId) => navigate(`/admin/pages/${pageId}/builder`)}
           onCancel={() => navigate('/admin/pages')}
         />
       </Card>

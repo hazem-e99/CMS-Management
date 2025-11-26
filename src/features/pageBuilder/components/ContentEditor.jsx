@@ -63,7 +63,10 @@ export function ContentEditor({ section, onUpdate, onClose }) {
     const lang = activeLanguage;
     const langContent = content[lang] || {};
 
-    switch (section.type) {
+    // Normalize section type to lowercase for comparison (same as SectionRenderer)
+    const sectionType = (section.type || '').toLowerCase().replace('section', '');
+
+    switch (sectionType) {
       case 'hero':
         return (
           <div className="space-y-4">
@@ -395,7 +398,9 @@ export function ContentEditor({ section, onUpdate, onClose }) {
         );
 
       case 'image-text-left':
+      case 'imagetextleft':
       case 'image-text-right':
+      case 'imagetextright':
         return (
           <div className="space-y-4">
             <Input
@@ -443,6 +448,7 @@ export function ContentEditor({ section, onUpdate, onClose }) {
         );
 
       case 'pricing-table':
+      case 'pricingtable':
         return (
           <div className="space-y-4">
             <Input
@@ -562,6 +568,7 @@ export function ContentEditor({ section, onUpdate, onClose }) {
         );
 
       case 'data-table':
+      case 'datatable':
         return (
           <div className="space-y-4">
             <Input

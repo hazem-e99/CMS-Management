@@ -8,7 +8,10 @@ export function SectionRenderer({ section }) {
   const content = section.content?.[language] || section.content?.en || {};
   const settings = section.settings || {};
 
-  switch (section.type) {
+  // Normalize section type to lowercase for comparison
+  const sectionType = (section.type || '').toLowerCase().replace('section', '');
+
+  switch (sectionType) {
     case 'hero':
       return <HeroSection content={content} settings={settings} />;
     case 'features':
@@ -27,12 +30,16 @@ export function SectionRenderer({ section }) {
         ? <ImageTextRightSection content={content} settings={settings} />
         : <ImageTextLeftSection content={content} settings={settings} />;
     case 'image-text-left':
+    case 'imagetextleft':
       return <ImageTextLeftSection content={content} settings={settings} />;
     case 'image-text-right':
+    case 'imagetextright':
       return <ImageTextRightSection content={content} settings={settings} />;
     case 'pricing-table':
+    case 'pricingtable':
       return <PricingTableSection content={content} settings={settings} />;
     case 'data-table':
+    case 'datatable':
       return <DataTableSection content={content} settings={settings} />;
     default:
       return <DefaultSection content={content} type={section.type} />;
