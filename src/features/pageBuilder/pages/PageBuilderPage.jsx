@@ -6,6 +6,7 @@ import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from 
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { usePage, useUpdatePage } from '../../pagesManagement/hooks/usePages';
 import { pagesApi } from '../../../api/pages';
+import { categoriesApi } from '../../../api/categories';
 import { usePageBuilder } from '../hooks/usePageBuilder';
 import { Button } from '../../../shared/ui/Button';
 import { LoadingSpinner } from '../../../shared/ui/LoadingSpinner';
@@ -31,80 +32,7 @@ export function PageBuilderPage() {
   const [selectedSection, setSelectedSection] = useState(null);
   const [isPreview, setIsPreview] = useState(false);
 
-  // Helper: Classify operations needed
-  const classifyOperations = (newSections, existingComponents) => {
-    const toUpdate = [];
-    const toCreate = [];
-    const toDelete = [];
 
-    // Process each new section
-    newSections.forEach((section, index) => {
-      const existing = existingComponents[index];
-      const componentData = transformSection(section, index, existing);
-
-      if (existing?.id) {
-        toUpdate.push({ id: existing.id, data: componentData });
-      } else {
-        toCreate.push(componentData);
-      }
-    });
-
-    // Mark extra components for deletion
-    if (existingComponents.length > newSections.length) {
-      for (let i = newSections.length; i < existingComponents.length; i++) {
-        if (existingComponents[i]?.id) {
-          toDelete.push(existingComponents[i].id);
-        }
-      }
-    }
-
-    return { toUpdate, toCreate, toDelete };
-  };
-
-  // Helper: Transform section to component format
-  const transformSection = (section, index, existingComponent) => {
-    return {
-      pageId: parseInt(pageId),
-      componentType: section.type || existingComponent?.componentType || 'section',
-      componentName: section.name || section.type || existingComponent?.componentName || `Section ${index + 1}`,
-      contentJsonAr: JSON.stringify(section.content?.ar || {}),
-      contentJsonEn: JSON.stringify(section.content?.en || {}),
-      contentJsonKu: JSON.stringify(section.content?.ku || {}),
-      isVisible: section.isVisible !== false,
-      theme: section.theme || existingComponent?.theme || 1,
-      orderIndex: index,
-    };
-  };
-
-  // Helper: Execute updates
-  const executeUpdates = async (updates) => {
-    for (const { id, data } of updates) {
-      console.log(`Updating component ${id}`);
-      await pagesApi.updatePageComponent(id, { id, ...data });
-      await new Promise(resolve => setTimeout(resolve, 50));
-    }
-  };
-
-  // Helper: Execute deletes
-  const executeDeletes = async (deleteIds) => {
-    for (const id of deleteIds) {
-      console.log(`Deleting component ${id}`);
-      await pagesApi.deletePageComponent(id);
-      await new Promise(resolve => setTimeout(resolve, 50));
-    }
-  };
-
-  // Helper: Execute creates
-  const executeCreates = async (creates) => {
-    for (const data of creates) {
-      console.log(`Creating component at index ${data.orderIndex}`);
-      const result = await pagesApi.createPageComponent(pageId, data);
-      if (result.success === false) {
-        throw new Error(`Failed to create component: ${result.message}`);
-      }
-      await new Promise(resolve => setTimeout(resolve, 50));
-    }
-  };
 
   // Main save handler
   const handleSave = async (sections) => {
@@ -135,18 +63,46 @@ export function PageBuilderPage() {
           return {
             componentType: type,
             componentName: section.name || type,
-            contentJsonAr: JSON.stringify(section.content?.ar || {}),
-            contentJsonEn: JSON.stringify(section.content?.en || {}),
-            contentJsonKu: JSON.stringify(section.content?.ku || {}),
+            contentJsonAr: JSON.stringify({ ...section.content?.ar, styles: section.settings } || {}),
+            contentJsonEn: JSON.stringify({ ...section.content?.en, styles: section.settings } || {}),
+            contentJsonKu: JSON.stringify({ ...section.content?.ku, styles: section.settings } || {}),
             orderIndex: index,
             isVisible: section.isVisible !== false,
             theme: parseInt(section.theme) || 1,
           };
         });
 
+
+
+        // Check if categoryId is missing and create new category if needed
+        let categoryId = pageData.categoryId;
+        if (!categoryId) {
+          console.log('No category selected. Creating new category from page name...');
+          try {
+            const categoryData = {
+              nameEn: pageData.nameEn,
+              nameAr: pageData.nameAr,
+              nameKu: pageData.nameKu,
+              slug: pageData.slug, // Use page slug for category slug
+            };
+            const newCategoryResponse = await categoriesApi.createCategory(categoryData);
+            // Handle different response structures
+            categoryId = newCategoryResponse.data?.id || newCategoryResponse.data?.data?.id || newCategoryResponse.id;
+            
+            if (!categoryId) {
+                throw new Error('Could not retrieve ID from created category');
+            }
+            console.log('✅ New category created with ID:', categoryId);
+          } catch (error) {
+            console.error('Failed to create auto-category:', error);
+            alert('Failed to create category automatically. Please go back and select a category manually.');
+            return;
+          }
+        }
+
         // Prepare data for CreatePageWithComponentsDTO
         const createData = {
-          categoryId: pageData.categoryId,
+          categoryId: categoryId,
           nameEn: pageData.nameEn || "New Page",
           nameAr: pageData.nameAr || "صفحة جديدة",
           nameKu: pageData.nameKu || "پەڕەی نوێ",
@@ -202,35 +158,54 @@ export function PageBuilderPage() {
       }
 
       // Handle EXISTING PAGE update
+      // Handle EXISTING PAGE update - Manual Bulk Update (Delete All -> Create All)
+      // This is necessary because the API does not support bulk update via a single endpoint
+      
+      console.log('Starting manual bulk update...');
+      
+      // 1. Delete all existing components
       const existingComponents = page?.components || [];
-      console.log('Existing components:', existingComponents.length);
-
-      // Step 1: Classify operations
-      const operations = classifyOperations(sections, existingComponents);
-      console.log('Operations:', {
-        updates: operations.toUpdate.length,
-        creates: operations.toCreate.length,
-        deletes: operations.toDelete.length,
-      });
-
-      // Step 2: Execute in order - UPDATE → DELETE → CREATE
-      if (operations.toUpdate.length > 0) {
-        console.log('Executing updates...');
-        await executeUpdates(operations.toUpdate);
-        console.log('✅ Updates completed');
+      if (existingComponents.length > 0) {
+        console.log(`Deleting ${existingComponents.length} existing components...`);
+        // Execute deletes sequentially to avoid server overload
+        for (const comp of existingComponents) {
+          try {
+            await pagesApi.deletePageComponent(comp.id);
+          } catch (err) {
+            console.warn(`Failed to delete component ${comp.id}:`, err);
+            // Continue even if delete fails, to ensure we try to save new state
+          }
+        }
+        console.log('✅ Existing components deleted');
       }
 
-      if (operations.toDelete.length > 0) {
-        console.log('Executing deletes...');
-        await executeDeletes(operations.toDelete);
-        console.log('✅ Deletes completed');
-      }
+      // 2. Create new components
+      console.log(`Creating ${sections.length} new components...`);
+      for (const [index, section] of sections.entries()) {
+        // Normalize section type
+        let type = section.type;
+        if (!type.toLowerCase().includes('section')) {
+            type = type.charAt(0).toUpperCase() + type.slice(1) + 'Section';
+        }
+        if (type.includes('-')) {
+            type = type.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('') + 'Section';
+            type = type.replace('SectionSection', 'Section');
+        }
 
-      if (operations.toCreate.length > 0) {
-        console.log('Executing creates...');
-        await executeCreates(operations.toCreate);
-        console.log('✅ Creates completed');
+        const componentData = {
+          componentType: type,
+          componentName: section.name || section.type,
+          contentJsonAr: JSON.stringify({ ...section.content?.ar, styles: section.settings } || {}),
+          contentJsonEn: JSON.stringify({ ...section.content?.en, styles: section.settings } || {}),
+          contentJsonKu: JSON.stringify({ ...section.content?.ku, styles: section.settings } || {}),
+          orderIndex: index,
+          isVisible: section.isVisible !== false,
+          theme: parseInt(section.theme) || 1,
+        };
+
+        await pagesApi.createPageComponent(pageId, componentData);
       }
+      console.log('✅ New components created successfully');
 
       // Step 3: Update page metadata
       const updateData = {
@@ -341,6 +316,41 @@ export function PageBuilderPage() {
     );
   }
 
+  const handleSaveComponent = async () => {
+    if (!selectedSection || isNewPage) return;
+
+    // Normalize section type
+    let type = selectedSection.type;
+    if (!type.toLowerCase().includes('section')) {
+        type = type.charAt(0).toUpperCase() + type.slice(1) + 'Section';
+    }
+    if (type.includes('-')) {
+        type = type.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('') + 'Section';
+        type = type.replace('SectionSection', 'Section');
+    }
+
+    const componentData = {
+      id: selectedSection.id,
+      pageId: parseInt(pageId),
+      componentType: type,
+      componentName: selectedSection.name || selectedSection.type,
+      contentJsonAr: JSON.stringify({ ...selectedSection.content?.ar, styles: selectedSection.settings } || {}),
+      contentJsonEn: JSON.stringify({ ...selectedSection.content?.en, styles: selectedSection.settings } || {}),
+      contentJsonKu: JSON.stringify({ ...selectedSection.content?.ku, styles: selectedSection.settings } || {}),
+      orderIndex: sections.findIndex(s => s.id === selectedSection.id),
+      isVisible: selectedSection.isVisible !== false,
+      theme: parseInt(selectedSection.theme) || 1,
+    };
+
+    try {
+        await pagesApi.updatePageComponent(selectedSection.id, componentData);
+        console.log('✅ Component updated successfully via API');
+    } catch (error) {
+        console.error('Failed to update component:', error);
+        throw error;
+    }
+  };
+
   return (
     <div className="fixed inset-0 bg-gray-50 dark:bg-gray-900 flex flex-col">
       {/* Top Toolbar */}
@@ -445,8 +455,12 @@ export function PageBuilderPage() {
           <div className="w-96 bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700 overflow-y-auto">
             <ContentEditor
               section={selectedSection}
-              onUpdate={(updates) => updateSection(selectedSection.id, updates)}
+              onUpdate={(updates) => {
+                updateSection(selectedSection.id, updates);
+                setSelectedSection(prev => ({ ...prev, ...updates }));
+              }}
               onClose={() => setSelectedSection(null)}
+              onSave={!isNewPage ? handleSaveComponent : undefined}
             />
           </div>
         )}

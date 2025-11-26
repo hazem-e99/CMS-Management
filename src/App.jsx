@@ -12,6 +12,7 @@ import { PublicLayout } from './features/public/layout/PublicLayout';
 import { PublicPage } from './features/public/pages/PublicPage';
 import LoginPage from './features/auth/pages/LoginPage';
 import { ProtectedRoute } from './shared/components/ProtectedRoute';
+import { CategoriesListPage } from './features/categories/pages/CategoriesListPage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="pages/:pageId/edit" element={<EditPagePage />} />
         <Route path="pages/builder/new" element={<PageBuilderPage />} />
         <Route path="pages/:pageId/builder" element={<PageBuilderPage />} />
+        <Route path="categories" element={<CategoriesListPage />} />
         <Route path="surveys" element={<SurveysListPage />} />
         <Route path="surveys/new" element={<SurveyBuilderPage />} />
         <Route path="surveys/:surveyId/edit" element={<SurveyBuilderPage />} />

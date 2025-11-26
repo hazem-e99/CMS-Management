@@ -6,7 +6,8 @@ import { useLanguage } from '../../../contexts/LanguageContext';
 export function SectionRenderer({ section }) {
   const { language } = useLanguage();
   const content = section.content?.[language] || section.content?.en || {};
-  const settings = section.settings || {};
+  // Extract settings from content.styles if not available directly (backward compatibility)
+  const settings = section.settings || content.styles || {};
 
   // Normalize section type to lowercase for comparison
   const sectionType = (section.type || '').toLowerCase().replace('section', '');

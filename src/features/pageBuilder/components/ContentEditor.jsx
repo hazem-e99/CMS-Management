@@ -4,12 +4,30 @@ import { X, Image, Video, Palette, Layout } from 'lucide-react';
 import { Input } from '../../../shared/ui/Input';
 import { Button } from '../../../shared/ui/Button';
 
-export function ContentEditor({ section, onUpdate, onClose }) {
+export function ContentEditor({ section, onUpdate, onClose, onSave }) {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('content'); // content, style, settings
   const [activeLanguage, setActiveLanguage] = useState('en');
   const [content, setContent] = useState(section.content || {});
   const [settings, setSettings] = useState(section.settings || {});
+  const [isSaving, setIsSaving] = useState(false);
+
+  const handleSave = async () => {
+    if (onSave) {
+      setIsSaving(true);
+      try {
+        await onSave();
+        onClose();
+      } catch (error) {
+        console.error('Failed to save:', error);
+        alert('Failed to save changes. Please try again.');
+      } finally {
+        setIsSaving(false);
+      }
+    } else {
+      onClose();
+    }
+  };
 
   const languages = [
     { code: 'en', name: 'English' },
@@ -1148,8 +1166,8 @@ export function ContentEditor({ section, onUpdate, onClose }) {
 
       {/* Footer */}
       <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-        <Button onClick={onClose} className="w-full">
-          Done
+        <Button onClick={handleSave} className="w-full" loading={isSaving}>
+          {onSave ? 'Save' : 'Done'}
         </Button>
       </div>
     </div>

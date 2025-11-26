@@ -83,9 +83,8 @@ export function PageForm({ onCancel, initialData }) {
         {/* Category */}
         <Select
           label="Category"
-          {...register('categoryId', { required: 'Category is required' })}
+          {...register('categoryId')}
           error={errors.categoryId?.message}
-          required
         >
           <option value="">Select a category</option>
           {categories.map((category) => (
