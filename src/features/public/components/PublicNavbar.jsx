@@ -6,7 +6,7 @@ import { useTheme } from '../../../contexts/ThemeContext';
 import { publicPagesService } from '../../../services/publicPagesService';
 import { settingsService } from '../../../services/settingsService';
 import { API_CONFIG } from '../../../api/config';
-import { Menu, X, ChevronDown, Sun, Moon, Globe } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon, Globe, LogIn } from 'lucide-react';
 
 export function PublicNavbar() {
   const { language, changeLanguage } = useLanguage();
@@ -96,38 +96,51 @@ export function PublicNavbar() {
     <>
       {/* 1. Top Strip: Toggles Only */}
       <div className="bg-gray-100 dark:bg-gray-900 border-b dark:border-gray-800 py-1">
-        <div className="max-w-7xl mx-auto px-4 flex justify-end items-center gap-4 h-8">
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
+        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-8">
+            
+            {/* Login Link */}
+            <Link 
+              to="/login" 
               className="flex items-center gap-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              title={language === 'ar' ? 'تسجيل الدخول' : 'Login'}
             >
-              {theme === 'dark' ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
-              <span>{theme === 'dark' ? (language === 'ar' ? 'وضع النهار' : 'Light Mode') : (language === 'ar' ? 'وضع الليل' : 'Dark Mode')}</span>
-            </button>
+              <LogIn className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">{language === 'ar' ? 'دخول' : 'Login'}</span>
+            </Link>
 
-            {/* Language Selector */}
-            <div className="relative group z-50">
-              <button className="flex items-center gap-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                <Globe className="h-3.5 w-3.5" />
-                <span className="uppercase">{language}</span>
-                <ChevronDown className="h-3 w-3" />
-              </button>
-              <div className="absolute top-full end-0 mt-1 w-28 bg-white dark:bg-gray-800 rounded shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="py-1">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => changeLanguage(lang.code)}
-                      className={`block w-full text-start px-3 py-1.5 text-xs hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
-                        language === lang.code ? 'text-primary-600 font-bold bg-primary-50 dark:bg-primary-900/10' : 'text-gray-600 dark:text-gray-300'
-                      }`}
-                    >
-                      {lang.label}
-                    </button>
-                  ))}
+            <div className="flex items-center gap-4">
+                {/* Theme Toggle */}
+                <button
+                onClick={toggleTheme}
+                className="flex items-center gap-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                {theme === 'dark' ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
+                <span>{theme === 'dark' ? (language === 'ar' ? 'وضع النهار' : 'Light Mode') : (language === 'ar' ? 'وضع الليل' : 'Dark Mode')}</span>
+                </button>
+
+                {/* Language Selector */}
+                <div className="relative group z-50">
+                <button className="flex items-center gap-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    <Globe className="h-3.5 w-3.5" />
+                    <span className="uppercase">{language}</span>
+                    <ChevronDown className="h-3 w-3" />
+                </button>
+                <div className="absolute top-full end-0 mt-1 w-28 bg-white dark:bg-gray-800 rounded shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="py-1">
+                    {languages.map((lang) => (
+                        <button
+                        key={lang.code}
+                        onClick={() => changeLanguage(lang.code)}
+                        className={`block w-full text-start px-3 py-1.5 text-xs hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
+                            language === lang.code ? 'text-primary-600 font-bold bg-primary-50 dark:bg-primary-900/10' : 'text-gray-600 dark:text-gray-300'
+                        }`}
+                        >
+                        {lang.label}
+                        </button>
+                    ))}
+                    </div>
                 </div>
-              </div>
+                </div>
             </div>
         </div>
       </div>

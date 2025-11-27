@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 
 export default function LoginPage() {
@@ -107,9 +107,9 @@ export default function LoginPage() {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
               نسيت كلمة المرور؟{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
+              <Link to="/forgot-password" className="text-blue-600 hover:text-blue-700 font-medium">
                 استعادة الحساب
-              </a>
+              </Link>
             </p>
           </div>
         </div>

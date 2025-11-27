@@ -11,6 +11,7 @@ import SettingsPage from './features/settings/pages/SettingsPage';
 import { PublicLayout } from './features/public/layout/PublicLayout';
 import { PublicPage } from './features/public/pages/PublicPage';
 import LoginPage from './features/auth/pages/LoginPage';
+import ForgotPasswordPage from './features/auth/pages/ForgotPasswordPage';
 import { ProtectedRoute } from './shared/components/ProtectedRoute';
 import { CategoriesListPage } from './features/categories/pages/CategoriesListPage';
 
@@ -19,6 +20,7 @@ function App() {
     <Routes>
       {/* Login Route */}
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
       {/* Admin Dashboard Routes - Protected */}
       <Route
