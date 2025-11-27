@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../hooks/useAuth';
+import { API_CONFIG } from '../api/config';
 
 const AuthContext = createContext(null);
 
@@ -26,7 +27,7 @@ export const AuthProvider = ({ children }) => {
     try {
       console.log('Login attempt with:', credentials);
       
-      const response = await fetch('http://pgs.runasp.net/api/Authentication/Login', {
+      const response = await fetch(`${API_CONFIG.baseURL}/Authentication/Login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
