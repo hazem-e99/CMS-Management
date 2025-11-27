@@ -1,13 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FileText, Layout, ClipboardList, LayoutDashboard, Settings, Folder } from 'lucide-react';
+import { FileText, Layout, Settings, Folder } from 'lucide-react';
 import { cn } from '../lib/cn';
 
 const navigation = [
-  { name: 'nav.dashboard', href: '/admin', icon: LayoutDashboard },
   { name: 'nav.pages', href: '/admin/pages', icon: FileText },
   { name: 'Categories', href: '/admin/categories', icon: Folder },
-  { name: 'nav.surveys', href: '/admin/surveys', icon: ClipboardList },
   { name: 'nav.settings', href: '/admin/settings', icon: Settings },
 ];
 

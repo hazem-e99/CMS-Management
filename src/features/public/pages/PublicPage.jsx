@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
 import { publicPagesService } from '../../../services/publicPagesService';
 import { SectionRenderer } from '../../pageBuilder/components/SectionRenderer';
 import { useLanguage } from '../../../contexts/LanguageContext';
@@ -7,6 +8,8 @@ import { transformComponentsToSections } from '../../pageBuilder/utils/transform
 
 export function PublicPage() {
   const { slug, childSlug } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { language } = useLanguage();
   
   // Determine which slug to use
@@ -18,6 +21,21 @@ export function PublicPage() {
       ? publicPagesService.getPageBySlug(pageSlug)
       : publicPagesService.getHomepage(),
   });
+
+  // Redirect homepage to its full URL
+  useEffect(() => {
+    if (!isLoading && page && location.pathname === '/') {
+      const categorySlug = page.categoryNameEn 
+        ? page.categoryNameEn.toLowerCase().trim().replace(/\s+/g, '-') 
+        : 'uncategorized';
+        
+      const targetSlug = page.slug;
+      
+      if (categorySlug && targetSlug) {
+        navigate(`/${categorySlug}/${targetSlug}`, { replace: true });
+      }
+    }
+  }, [page, isLoading, location.pathname, navigate]);
 
   if (isLoading) {
     return (
