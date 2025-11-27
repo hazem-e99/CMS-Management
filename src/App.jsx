@@ -45,7 +45,7 @@ function App() {
 
       {/* Public Website Routes */}
       <Route path="/" element={<PublicLayout />}>
-        <Route index element={<Navigate to="/pgs-academy" replace />} />
+        <Route index element={<PublicPage />} />
         <Route path=":slug" element={<PublicPage />} />
         <Route path=":slug/:childSlug" element={<PublicPage />} />
       </Route>

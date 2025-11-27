@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { settingsService } from '../../../services/settingsService';
+import { mediaService } from '../../../services/mediaService';
 import { useLanguage } from '../../../contexts/LanguageContext';
 import { useTranslation } from 'react-i18next';
-import { Settings, Save, Image, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Settings, Save, LayoutTemplate, Type, Image, Phone, Mail, MapPin, Megaphone, ListChecks, Upload } from 'lucide-react';
 
 export default function SettingsPage() {
   const { language } = useLanguage();
   const { t } = useTranslation();
   const queryClient = useQueryClient();
+  const [activeTab, setActiveTab] = useState('header');
+  const [isUploading, setIsUploading] = useState(false);
   
   // Fetch settings
   const { data: settingsData, isLoading } = useQuery({
@@ -18,32 +21,50 @@ export default function SettingsPage() {
 
   const settings = settingsData?.data || {};
 
+  // Default States
+  const defaultHeader = {
+    instituteName: { en: 'Institute for People and Politics', ar: 'معهد الشعب والسياسة', ku: 'پەیمانگەی گەل و سیاسەت' },
+    slogan: { en: 'Your future starts today', ar: 'مستقبلك يبدأ اليوم', ku: 'داهاتووت ئەمڕۆ دەست پێ دەکات' },
+    logo: { url: '/logo.png', alt: { en: 'PGS Logo', ar: 'شعار PGS', ku: 'لۆگۆی PGS' } }
+  };
+
+  const defaultFooter = {
+    phones: ['+964 750 123 4567', '+964 750 765 4321'],
+    email: 'info@pgs.krd',
+    address: { en: 'Erbil, Kurdistan Region, Iraq', ar: 'أربيل، إقليم كردستان، العراق', ku: 'هەولێر، هەرێمی کوردستان، عێراق' },
+    copyright: { en: '© 2024 PGS. All rights reserved.', ar: '© 2024 PGS. جميع الحقوق محفوظة.', ku: '© 2024 PGS. هەموو مافەکان پارێزراون.' }
+  };
+
+  const defaultSidebar = {
+    poll: {
+      question: { en: 'Do you support digital transformation?', ar: 'هل تؤيد التحول الرقمي؟', ku: 'ئایا پشتگیری لە گۆڕانی دیجیتاڵی دەکەیت؟' },
+      isActive: true
+    },
+    ad: {
+      title: { en: 'Voor', ar: 'إعلان', ku: 'ڕیکلام' },
+      subtitle: { en: 'Reklame', ar: 'مساحة إعلانية', ku: 'شوێنی ڕیکلام' },
+      isActive: true
+    }
+  };
+
   // Local state for form
   const [formData, setFormData] = useState({
-    logo: settings.logo || { url: '', alt: { en: '', ar: '', ku: '' } },
-    siteName: settings.siteName || { en: '', ar: '', ku: '' },
-    footer: settings.footer || {
-      phones: [],
-      email: '',
-      address: { en: '', ar: '', ku: '' },
-      socialMedia: { facebook: '', twitter: '', instagram: '', linkedin: '' },
-    },
-    copyright: settings.copyright || { en: '', ar: '', ku: '' },
+    site_header: defaultHeader,
+    site_footer: defaultFooter,
+    site_sidebar: defaultSidebar
   });
 
   // Update form data when settings load
-  useState(() => {
+  useEffect(() => {
     if (settings && Object.keys(settings).length > 0) {
       setFormData({
-        logo: settings.logo || { url: '', alt: { en: '', ar: '', ku: '' } },
-        siteName: settings.siteName || { en: '', ar: '', ku: '' },
-        footer: settings.footer || {
-          phones: [],
-          email: '',
-          address: { en: '', ar: '', ku: '' },
-          socialMedia: { facebook: '', twitter: '', instagram: '', linkedin: '' },
-        },
-        copyright: settings.copyright || { en: '', ar: '', ku: '' },
+        site_header: { ...defaultHeader, ...settings.site_header },
+        site_footer: { ...defaultFooter, ...settings.site_footer },
+        site_sidebar: { ...defaultSidebar, ...settings.site_sidebar },
+        // Keep IDs if they exist
+        site_header_id: settings.site_header_id,
+        site_footer_id: settings.site_footer_id,
+        site_sidebar_id: settings.site_sidebar_id
       });
     }
   }, [settings]);
@@ -53,11 +74,11 @@ export default function SettingsPage() {
     mutationFn: settingsService.updateSettings,
     onSuccess: () => {
       queryClient.invalidateQueries(['settings']);
-      alert('Settings updated successfully!');
+      alert(language === 'ar' ? 'تم حفظ الإعدادات بنجاح' : 'Settings updated successfully!');
     },
     onError: (error) => {
       console.error('Error updating settings:', error);
-      alert('Failed to update settings');
+      alert(language === 'ar' ? 'فشل حفظ الإعدادات' : 'Failed to update settings');
     },
   });
 
@@ -66,36 +87,52 @@ export default function SettingsPage() {
     updateMutation.mutate(formData);
   };
 
-  const addPhone = () => {
-    setFormData({
-      ...formData,
-      footer: {
-        ...formData.footer,
-        phones: [...formData.footer.phones, ''],
-      },
-    });
+  const handleLogoUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    try {
+      const result = await mediaService.uploadMedia(file, 'Site Logo', 'Logo');
+      if (result.success && result.data?.fileUrl) {
+        updateField('site_header', 'logo', 'url', result.data.fileUrl);
+        alert(language === 'ar' ? 'تم رفع الشعار بنجاح' : 'Logo uploaded successfully');
+      } else {
+        throw new Error('Invalid response');
+      }
+    } catch (error) {
+      console.error('Upload failed:', error);
+      alert(language === 'ar' ? 'فشل رفع الشعار' : 'Failed to upload logo');
+    } finally {
+      setIsUploading(false);
+      e.target.value = '';
+    }
   };
 
-  const removePhone = (index) => {
-    setFormData({
-      ...formData,
-      footer: {
-        ...formData.footer,
-        phones: formData.footer.phones.filter((_, i) => i !== index),
-      },
-    });
+  // Helper to update nested state
+  const updateField = (section, field, subField, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [section]: {
+        ...prev[section],
+        [field]: subField ? {
+          ...prev[section][field],
+          [subField]: value
+        } : value
+      }
+    }));
   };
 
-  const updatePhone = (index, value) => {
-    const newPhones = [...formData.footer.phones];
-    newPhones[index] = value;
-    setFormData({
-      ...formData,
-      footer: {
-        ...formData.footer,
-        phones: newPhones,
-      },
-    });
+  const updateArrayField = (section, field, index, value) => {
+    const newArray = [...formData[section][field]];
+    newArray[index] = value;
+    setFormData(prev => ({
+      ...prev,
+      [section]: {
+        ...prev[section],
+        [field]: newArray
+      }
+    }));
   };
 
   if (isLoading) {
@@ -106,390 +143,269 @@ export default function SettingsPage() {
     );
   }
 
+  const tabs = [
+    { id: 'header', label: language === 'ar' ? 'رأس الصفحة (Header)' : 'Header', icon: LayoutTemplate },
+    { id: 'footer', label: language === 'ar' ? 'تذييل الصفحة (Footer)' : 'Footer', icon: LayoutTemplate },
+    { id: 'sidebar', label: language === 'ar' ? 'الشريط الجانبي (Sidebar)' : 'Sidebar', icon: ListChecks },
+  ];
+
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <Settings className="w-8 h-8 text-primary-600" />
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-          {t('settings.title')}
-        </h1>
+    <div className="max-w-5xl mx-auto p-6">
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center gap-3">
+          <Settings className="w-8 h-8 text-primary-600" />
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+            {language === 'ar' ? 'إعدادات الموقع' : 'Site Settings'}
+          </h1>
+        </div>
+        <button
+          onClick={handleSubmit}
+          disabled={updateMutation.isPending}
+          className="px-6 py-2.5 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 flex items-center gap-2 shadow-sm"
+        >
+          <Save className="w-5 h-5" />
+          {updateMutation.isPending 
+            ? (language === 'ar' ? 'جاري الحفظ...' : 'Saving...') 
+            : (language === 'ar' ? 'حفظ التغييرات' : 'Save Changes')}
+        </button>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-8">
-        {/* Logo Settings */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <Image className="w-5 h-5 text-primary-600" />
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">{t('settings.logoSettings')}</h2>
-          </div>
-          
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('settings.logoUrl')}
-              </label>
-              <input
-                type="url"
-                value={formData.logo.url}
-                onChange={(e) => setFormData({
-                  ...formData,
-                  logo: { ...formData.logo, url: e.target.value }
-                })}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                placeholder="https://example.com/logo.png"
-              />
+      {/* Tabs */}
+      <div className="flex gap-2 mb-6 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
+        {tabs.map(tab => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`flex items-center gap-2 px-6 py-3 font-medium text-sm transition-colors whitespace-nowrap ${
+              activeTab === tab.id
+                ? 'text-primary-600 border-b-2 border-primary-600 bg-primary-50 dark:bg-primary-900/10'
+                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+            }`}
+          >
+            <tab.icon className="w-4 h-4" />
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        
+        {/* HEADER SETTINGS */}
+        {activeTab === 'header' && (
+          <div className="space-y-6 animate-fadeIn">
+            {/* Institute Name */}
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Type className="w-5 h-5 text-primary-600" />
+                <h2 className="text-xl font-semibold">{language === 'ar' ? 'اسم المعهد' : 'Institute Name'}</h2>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {['en', 'ar', 'ku'].map(lang => (
+                  <div key={lang}>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 uppercase">{lang}</label>
+                    <input
+                      type="text"
+                      value={formData.site_header.instituteName[lang]}
+                      onChange={(e) => updateField('site_header', 'instituteName', lang, e.target.value)}
+                      className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+                      dir={lang === 'en' ? 'ltr' : 'rtl'}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {formData.logo.url && (
-              <div className="mt-4">
-                <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t('settings.preview')}:</p>
-                <img 
-                  src={formData.logo.url} 
-                  alt="Logo preview" 
-                  className="h-16 object-contain"
-                  onError={(e) => e.target.style.display = 'none'}
-                />
+            {/* Slogan */}
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Megaphone className="w-5 h-5 text-primary-600" />
+                <h2 className="text-xl font-semibold">{language === 'ar' ? 'الشعار اللفظي (Slogan)' : 'Slogan'}</h2>
               </div>
-            )}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {['en', 'ar', 'ku'].map(lang => (
+                  <div key={lang}>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 uppercase">{lang}</label>
+                    <input
+                      type="text"
+                      value={formData.site_header.slogan[lang]}
+                      onChange={(e) => updateField('site_header', 'slogan', lang, e.target.value)}
+                      className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+                      dir={lang === 'en' ? 'ltr' : 'rtl'}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  {t('settings.altText')} ({t('settings.english')})
-                </label>
-                <input
-                  type="text"
-                  value={formData.logo.alt.en}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    logo: { ...formData.logo, alt: { ...formData.logo.alt, en: e.target.value } }
-                  })}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  {t('settings.altText')} ({t('settings.arabic')})
-                </label>
-                <input
-                  type="text"
-                  value={formData.logo.alt.ar}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    logo: { ...formData.logo, alt: { ...formData.logo.alt, ar: e.target.value } }
-                  })}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                  dir="rtl"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  {t('settings.altText')} ({t('settings.kurdish')})
-                </label>
-                <input
-                  type="text"
-                  value={formData.logo.alt.ku}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    logo: { ...formData.logo, alt: { ...formData.logo.alt, ku: e.target.value } }
-                  })}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                  dir="rtl"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Site Name */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{t('settings.siteName')}</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('settings.english')}
-              </label>
-              <input
-                type="text"
-                value={formData.siteName.en}
-                onChange={(e) => setFormData({
-                  ...formData,
-                  siteName: { ...formData.siteName, en: e.target.value }
-                })}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('settings.arabic')}
-              </label>
-              <input
-                type="text"
-                value={formData.siteName.ar}
-                onChange={(e) => setFormData({
-                  ...formData,
-                  siteName: { ...formData.siteName, ar: e.target.value }
-                })}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                dir="rtl"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('settings.kurdish')}
-              </label>
-              <input
-                type="text"
-                value={formData.siteName.ku}
-                onChange={(e) => setFormData({
-                  ...formData,
-                  siteName: { ...formData.siteName, ku: e.target.value }
-                })}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                dir="rtl"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Footer Settings */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{t('settings.footerSettings')}</h2>
-          
-          <div className="space-y-6">
-            {/* Phone Numbers */}
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Phone className="w-4 h-4 text-primary-600" />
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {t('settings.phoneNumbers')}
-                </label>
-              </div>
-              {formData.footer.phones.map((phone, index) => (
-                <div key={index} className="flex gap-2 mb-2">
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => updatePhone(index, e.target.value)}
-                    className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                    placeholder="+964 750 123 4567"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => removePhone(index)}
-                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-                  >
-                    {t('settings.remove')}
-                  </button>
+            {/* Logo */}
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <Image className="w-5 h-5 text-primary-600" />
+                  <h2 className="text-xl font-semibold">{language === 'ar' ? 'الشعار (Logo)' : 'Logo'}</h2>
                 </div>
-              ))}
-              <button
-                type="button"
-                onClick={addPhone}
-                className="mt-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700"
-              >
-                {t('settings.addPhone')}
-              </button>
+                <label className="cursor-pointer px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                  <Upload className="w-4 h-4" />
+                  {isUploading 
+                    ? (language === 'ar' ? 'جاري الرفع...' : 'Uploading...') 
+                    : (language === 'ar' ? 'رفع صورة' : 'Upload Image')}
+                  <input 
+                    type="file" 
+                    className="hidden" 
+                    accept="image/*"
+                    onChange={handleLogoUpload}
+                    disabled={isUploading}
+                  />
+                </label>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">URL</label>
+                  <input
+                    type="text"
+                    value={formData.site_header.logo.url}
+                    onChange={(e) => updateField('site_header', 'logo', 'url', e.target.value)}
+                    className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+                    dir="ltr"
+                  />
+                </div>
+                {formData.site_header.logo.url && (
+                    <div className="p-4 bg-gray-100 dark:bg-gray-900 rounded-lg flex justify-center">
+                        <img src={formData.site_header.logo.url} alt="Preview" className="h-16 object-contain" />
+                    </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* FOOTER SETTINGS */}
+        {activeTab === 'footer' && (
+          <div className="space-y-6 animate-fadeIn">
+            {/* Phones */}
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Phone className="w-5 h-5 text-primary-600" />
+                <h2 className="text-xl font-semibold">{language === 'ar' ? 'أرقام الهاتف' : 'Phone Numbers'}</h2>
+              </div>
+              <div className="space-y-3">
+                {formData.site_footer.phones.map((phone, idx) => (
+                  <div key={idx} className="flex gap-2">
+                    <input
+                      type="text"
+                      value={phone}
+                      onChange={(e) => updateArrayField('site_footer', 'phones', idx, e.target.value)}
+                      className="flex-1 px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+                      dir="ltr"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Email */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <Mail className="w-4 h-4 text-primary-600" />
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {t('settings.email')}
-                </label>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Mail className="w-5 h-5 text-primary-600" />
+                <h2 className="text-xl font-semibold">{language === 'ar' ? 'البريد الإلكتروني' : 'Email'}</h2>
               </div>
               <input
                 type="email"
-                value={formData.footer.email}
-                onChange={(e) => setFormData({
-                  ...formData,
-                  footer: { ...formData.footer, email: e.target.value }
-                })}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                placeholder="info@example.com"
+                value={formData.site_footer.email}
+                onChange={(e) => updateField('site_footer', 'email', null, e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+                dir="ltr"
               />
             </div>
 
             {/* Address */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <MapPin className="w-4 h-4 text-primary-600" />
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {t('settings.address')}
-                </label>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <MapPin className="w-5 h-5 text-primary-600" />
+                <h2 className="text-xl font-semibold">{language === 'ar' ? 'العنوان' : 'Address'}</h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <input
-                  type="text"
-                  value={formData.footer.address.en}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    footer: { ...formData.footer, address: { ...formData.footer.address, en: e.target.value } }
-                  })}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                  placeholder={t('settings.english')}
-                />
-                <input
-                  type="text"
-                  value={formData.footer.address.ar}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    footer: { ...formData.footer, address: { ...formData.footer.address, ar: e.target.value } }
-                  })}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                  placeholder={t('settings.arabic')}
-                  dir="rtl"
-                />
-                <input
-                  type="text"
-                  value={formData.footer.address.ku}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    footer: { ...formData.footer, address: { ...formData.footer.address, ku: e.target.value } }
-                  })}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                  placeholder={t('settings.kurdish')}
-                  dir="rtl"
-                />
+                {['en', 'ar', 'ku'].map(lang => (
+                  <div key={lang}>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 uppercase">{lang}</label>
+                    <input
+                      type="text"
+                      value={formData.site_footer.address[lang]}
+                      onChange={(e) => updateField('site_footer', 'address', lang, e.target.value)}
+                      className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+                      dir={lang === 'en' ? 'ltr' : 'rtl'}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* SIDEBAR SETTINGS */}
+        {activeTab === 'sidebar' && (
+          <div className="space-y-6 animate-fadeIn">
+            {/* Poll */}
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <ListChecks className="w-5 h-5 text-primary-600" />
+                <h2 className="text-xl font-semibold">{language === 'ar' ? 'استطلاع الرأي' : 'Poll Widget'}</h2>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {['en', 'ar', 'ku'].map(lang => (
+                  <div key={lang}>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 uppercase">{lang}</label>
+                    <textarea
+                      value={formData.site_sidebar.poll.question[lang]}
+                      onChange={(e) => updateField('site_sidebar', 'poll', 'question', { ...formData.site_sidebar.poll.question, [lang]: e.target.value })}
+                      className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 h-24 resize-none"
+                      dir={lang === 'en' ? 'ltr' : 'rtl'}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Social Media */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-                {t('settings.socialMedia')}
-              </label>
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <Facebook className="w-4 h-4 text-blue-600" />
-                  <input
-                    type="url"
-                    value={formData.footer.socialMedia.facebook}
-                    onChange={(e) => setFormData({
-                      ...formData,
-                      footer: { ...formData.footer, socialMedia: { ...formData.footer.socialMedia, facebook: e.target.value } }
-                    })}
-                    className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                    placeholder="Facebook URL"
-                  />
+            {/* Ad */}
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Megaphone className="w-5 h-5 text-primary-600" />
+                <h2 className="text-xl font-semibold">{language === 'ar' ? 'الإعلان' : 'Ad Widget'}</h2>
+              </div>
+              <div className="space-y-4">
+                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {['en', 'ar', 'ku'].map(lang => (
+                    <div key={lang}>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 uppercase">{lang} Title</label>
+                        <input
+                        type="text"
+                        value={formData.site_sidebar.ad.title[lang]}
+                        onChange={(e) => updateField('site_sidebar', 'ad', 'title', { ...formData.site_sidebar.ad.title, [lang]: e.target.value })}
+                        className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+                        dir={lang === 'en' ? 'ltr' : 'rtl'}
+                        />
+                    </div>
+                    ))}
                 </div>
-                <div className="flex items-center gap-2">
-                  <Twitter className="w-4 h-4 text-sky-500" />
-                  <input
-                    type="url"
-                    value={formData.footer.socialMedia.twitter}
-                    onChange={(e) => setFormData({
-                      ...formData,
-                      footer: { ...formData.footer, socialMedia: { ...formData.footer.socialMedia, twitter: e.target.value } }
-                    })}
-                    className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                    placeholder="Twitter URL"
-                  />
-                </div>
-                <div className="flex items-center gap-2">
-                  <Instagram className="w-4 h-4 text-pink-600" />
-                  <input
-                    type="url"
-                    value={formData.footer.socialMedia.instagram}
-                    onChange={(e) => setFormData({
-                      ...formData,
-                      footer: { ...formData.footer, socialMedia: { ...formData.footer.socialMedia, instagram: e.target.value } }
-                    })}
-                    className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                    placeholder="Instagram URL"
-                  />
-                </div>
-                <div className="flex items-center gap-2">
-                  <Linkedin className="w-4 h-4 text-blue-700" />
-                  <input
-                    type="url"
-                    value={formData.footer.socialMedia.linkedin}
-                    onChange={(e) => setFormData({
-                      ...formData,
-                      footer: { ...formData.footer, socialMedia: { ...formData.footer.socialMedia, linkedin: e.target.value } }
-                    })}
-                    className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                    placeholder="LinkedIn URL"
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {['en', 'ar', 'ku'].map(lang => (
+                    <div key={lang}>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 uppercase">{lang} Subtitle</label>
+                        <input
+                        type="text"
+                        value={formData.site_sidebar.ad.subtitle[lang]}
+                        onChange={(e) => updateField('site_sidebar', 'ad', 'subtitle', { ...formData.site_sidebar.ad.subtitle, [lang]: e.target.value })}
+                        className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+                        dir={lang === 'en' ? 'ltr' : 'rtl'}
+                        />
+                    </div>
+                    ))}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
 
-        {/* Copyright */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{t('settings.copyrightText')}</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('settings.english')}
-              </label>
-              <input
-                type="text"
-                value={formData.copyright.en}
-                onChange={(e) => setFormData({
-                  ...formData,
-                  copyright: { ...formData.copyright, en: e.target.value }
-                })}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('settings.arabic')}
-              </label>
-              <input
-                type="text"
-                value={formData.copyright.ar}
-                onChange={(e) => setFormData({
-                  ...formData,
-                  copyright: { ...formData.copyright, ar: e.target.value }
-                })}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                dir="rtl"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('settings.kurdish')}
-              </label>
-              <input
-                type="text"
-                value={formData.copyright.ku}
-                onChange={(e) => setFormData({
-                  ...formData,
-                  copyright: { ...formData.copyright, ku: e.target.value }
-                })}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
-                dir="rtl"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Submit Button */}
-        <div className="flex justify-end gap-4">
-          <button
-            type="button"
-            onClick={() => window.location.reload()}
-            className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
-          >
-            {t('common.cancel')}
-          </button>
-          <button
-            type="submit"
-            disabled={updateMutation.isPending}
-            className="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-          >
-            <Save className="w-5 h-5" />
-            {updateMutation.isPending ? t('common.saving') : t('common.saveChanges')}
-          </button>
-        </div>
       </form>
     </div>
   );

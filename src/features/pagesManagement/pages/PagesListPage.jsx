@@ -6,6 +6,7 @@ import { usePages, useDeletePage, useUpdatePage } from '../hooks/usePages';
 import { Button } from '../../../shared/ui/Button';
 import { Card } from '../../../shared/ui/Card';
 import { Modal } from '../../../shared/ui/Modal';
+import { Select } from '../../../shared/ui/Select';
 import { LoadingSpinner } from '../../../shared/ui/LoadingSpinner';
 import { PagePreview } from '../../pageBuilder/components/PagePreview';
 import { useLanguage } from '../../../contexts/LanguageContext';
@@ -164,6 +165,56 @@ export function PagesListPage() {
     );
   };
 
+  // Helper to prepare page object for API update
+  const preparePageForUpdate = (page, overrides = {}) => {
+    return {
+      id: page.id,
+      categoryId: page.categoryId || 1, // Ensure categoryId is present
+      nameEn: page.nameEn || page.title?.en || '',
+      nameAr: page.nameAr || page.title?.ar || '',
+      nameKu: page.nameKu || page.title?.ku || '',
+      slug: page.slug || '',
+      descriptionEn: page.descriptionEn || page.metadata?.description?.en || null,
+      descriptionAr: page.descriptionAr || page.metadata?.description?.ar || null,
+      descriptionKu: page.descriptionKu || page.metadata?.description?.ku || null,
+      metaTitleEn: page.metaTitleEn || null,
+      metaTitleAr: page.metaTitleAr || null,
+      metaTitleKu: page.metaTitleKu || null,
+      metaDescriptionEn: page.metaDescriptionEn || null,
+      metaDescriptionAr: page.metaDescriptionAr || null,
+      metaDescriptionKu: page.metaDescriptionKu || null,
+      isPublished: page.isPublished || false,
+      isHomepage: page.isHomepage || false,
+      ...overrides
+    };
+  };
+
+  // Handle homepage change
+  const handleHomepageChange = async (e) => {
+    const newHomepageId = parseInt(e.target.value);
+    if (!newHomepageId) return;
+
+    try {
+      // 1. Find current homepage and unset it
+      const currentHomepage = pages.find(p => p.isHomepage);
+      if (currentHomepage && currentHomepage.id !== newHomepageId) {
+        const updateData = preparePageForUpdate(currentHomepage, { isHomepage: false });
+        await updatePage.mutateAsync(updateData);
+      }
+
+      // 2. Set new homepage
+      const newHomepage = pages.find(p => p.id === newHomepageId);
+      if (newHomepage) {
+        const updateData = preparePageForUpdate(newHomepage, { isHomepage: true });
+        await updatePage.mutateAsync(updateData);
+      }
+      
+    } catch (error) {
+      console.error('Failed to update homepage:', error);
+      alert('Failed to update homepage: ' + (error.response?.data?.message || error.message));
+    }
+  };
+
   const topLevelPages = sortedPages.filter((page) => !page.parentId);
 
   return (
@@ -177,9 +228,29 @@ export function PagesListPage() {
             {t('pages.manageSite')}
           </p>
         </div>
-        <Button icon={Plus} onClick={() => navigate('/admin/pages/new')}>
-          {t('pages.createPage')}
-        </Button>
+
+        <div className="flex items-end gap-4">
+            {/* Homepage Selector */}
+            <div className="w-64">
+                <Select
+                    label="Set Homepage"
+                    value={pages?.find(p => p.isHomepage)?.id || ''}
+                    onChange={handleHomepageChange}
+                    disabled={updatePage.isPending}
+                >
+                    <option value="">Select Homepage</option>
+                    {pages?.map(page => (
+                        <option key={page.id} value={page.id}>
+                            {language === 'ar' ? page.nameAr : language === 'ku' ? page.nameKu : page.nameEn}
+                        </option>
+                    ))}
+                </Select>
+            </div>
+
+            <Button icon={Plus} onClick={() => navigate('/admin/pages/new')} className="mb-[2px]">
+              {t('pages.createPage')}
+            </Button>
+        </div>
       </div>
 
       <Card className="overflow-hidden p-0">

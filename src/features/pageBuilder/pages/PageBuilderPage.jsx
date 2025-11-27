@@ -83,7 +83,10 @@ export function PageBuilderPage() {
               nameEn: pageData.nameEn,
               nameAr: pageData.nameAr,
               nameKu: pageData.nameKu,
-              slug: pageData.slug, // Use page slug for category slug
+              descriptionEn: pageData.descriptionEn || '',
+              descriptionAr: pageData.descriptionAr || '',
+              descriptionKu: pageData.descriptionKu || '',
+              sortOrder: 0,
             };
             const newCategoryResponse = await categoriesApi.createCategory(categoryData);
             // Handle different response structures

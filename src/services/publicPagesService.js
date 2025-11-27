@@ -22,6 +22,14 @@ export const publicPagesService = {
   },
 
   /**
+   * Get homepage
+   */
+  getHomepage: async () => {
+    const response = await pagesApi.getPublicHomepage();
+    return response.data || response;
+  },
+
+  /**
    * Get child pages of a parent (category)
    */
   getChildPages: async (parentId) => {

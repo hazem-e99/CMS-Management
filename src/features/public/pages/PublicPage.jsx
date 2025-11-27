@@ -13,8 +13,10 @@ export function PublicPage() {
   const pageSlug = childSlug || slug;
 
   const { data: page, isLoading, error } = useQuery({
-    queryKey: ['publicPage', pageSlug],
-    queryFn: () => publicPagesService.getPageBySlug(pageSlug),
+    queryKey: ['publicPage', pageSlug || 'homepage'],
+    queryFn: () => pageSlug 
+      ? publicPagesService.getPageBySlug(pageSlug)
+      : publicPagesService.getHomepage(),
   });
 
   if (isLoading) {

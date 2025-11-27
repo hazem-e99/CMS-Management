@@ -11,7 +11,10 @@ export function CategoryForm({ category, onSubmit, onCancel, isLoading }) {
       nameEn: category?.nameEn || '',
       nameAr: category?.nameAr || '',
       nameKu: category?.nameKu || '',
-      slug: category?.slug || '',
+      descriptionEn: category?.descriptionEn || '',
+      descriptionAr: category?.descriptionAr || '',
+      descriptionKu: category?.descriptionKu || '',
+      sortOrder: category?.sortOrder || 0,
     },
   });
 
@@ -43,19 +46,35 @@ export function CategoryForm({ category, onSubmit, onCancel, isLoading }) {
         dir="rtl"
       />
 
-      {/* Slug */}
+      {/* Description - English */}
       <Input
-        label="Slug"
-        {...register('slug', { 
-          required: 'Slug is required',
-          pattern: {
-            value: /^[a-z0-9-]+$/,
-            message: 'Slug must contain only lowercase letters, numbers, and hyphens'
-          }
-        })}
-        error={errors.slug?.message}
-        placeholder="category-slug"
-        required
+        label="Description (English)"
+        {...register('descriptionEn')}
+        error={errors.descriptionEn?.message}
+      />
+
+      {/* Description - Arabic */}
+      <Input
+        label="Description (Arabic)"
+        {...register('descriptionAr')}
+        error={errors.descriptionAr?.message}
+        dir="rtl"
+      />
+
+      {/* Description - Kurdish */}
+      <Input
+        label="Description (Kurdish)"
+        {...register('descriptionKu')}
+        error={errors.descriptionKu?.message}
+        dir="rtl"
+      />
+
+      {/* Sort Order */}
+      <Input
+        label="Sort Order"
+        type="number"
+        {...register('sortOrder', { valueAsNumber: true })}
+        error={errors.sortOrder?.message}
       />
 
       {/* Actions */}

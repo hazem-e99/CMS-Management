@@ -8,6 +8,7 @@ import { Modal } from '../../../shared/ui/Modal';
 import { LoadingSpinner } from '../../../shared/ui/LoadingSpinner';
 import { useLanguage } from '../../../contexts/LanguageContext';
 import { CategoryForm } from '../components/CategoryForm';
+import { categoriesSeedData } from '../../../data/categoriesSeed';
 
 export function CategoriesListPage() {
   const { t } = useTranslation();
@@ -55,12 +56,20 @@ export function CategoriesListPage() {
 
   const handleDelete = async () => {
     if (categoryToDelete) {
+      console.log('Deleting category with ID:', categoryToDelete.id);
       try {
-        await deleteCategory.mutateAsync(categoryToDelete.id);
+        const response = await deleteCategory.mutateAsync(categoryToDelete.id);
+        
+        // Check for logical failure despite 200 OK
+        const responseData = response.data || response;
+        if (responseData.success === false) {
+            throw new Error(responseData.message || 'Failed to delete category');
+        }
+
         setCategoryToDelete(null);
       } catch (error) {
         console.error('Failed to delete category:', error);
-        alert('Failed to delete category');
+        alert('Failed to delete category: ' + (error.response?.data?.message || error.message));
       }
     }
   };
@@ -75,6 +84,28 @@ export function CategoriesListPage() {
     setIsModalOpen(true);
   };
 
+  const handleSeedData = async () => {
+    if (!window.confirm('Are you sure you want to seed categories? This will create multiple categories.')) {
+      return;
+    }
+
+    try {
+      let successCount = 0;
+      for (const category of categoriesSeedData) {
+        try {
+            await createCategory.mutateAsync(category);
+            successCount++;
+        } catch (err) {
+            console.error(`Failed to create category ${category.nameEn}:`, err);
+        }
+      }
+      alert(`Categories seeded successfully! Created ${successCount} of ${categoriesSeedData.length} categories.`);
+    } catch (error) {
+      console.error('Failed to seed categories:', error);
+      alert('Failed to seed categories');
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -86,9 +117,14 @@ export function CategoriesListPage() {
             Manage your website categories
           </p>
         </div>
-        <Button icon={Plus} onClick={openCreateModal}>
-          Add Category
-        </Button>
+        <div className="flex gap-2">
+            <Button variant="outline" onClick={handleSeedData} loading={createCategory.isPending}>
+                Seed Data
+            </Button>
+            <Button icon={Plus} onClick={openCreateModal}>
+                Add Category
+            </Button>
+        </div>
       </div>
 
       <Card className="overflow-hidden">
@@ -106,9 +142,16 @@ export function CategoriesListPage() {
                 <div className="flex items-center gap-3">
                   <Folder className="h-5 w-5 text-gray-400" />
                   <div>
-                    <h3 className="font-medium text-gray-900 dark:text-white">
-                      {language === 'ar' ? category.nameAr : language === 'ku' ? category.nameKu : category.nameEn}
-                    </h3>
+                    <div className="flex items-center gap-2">
+                        <h3 className="font-medium text-gray-900 dark:text-white">
+                        {language === 'ar' ? category.nameAr : language === 'ku' ? category.nameKu : category.nameEn}
+                        </h3>
+                        {category.pageCount > 0 && (
+                            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                                {category.pageCount} {category.pageCount === 1 ? t('pages.page') : t('pages.pages')}
+                            </span>
+                        )}
+                    </div>
                     <div className="text-xs text-gray-500 dark:text-gray-400">
                       /{category.slug}
                     </div>
@@ -121,13 +164,16 @@ export function CategoriesListPage() {
                     icon={Edit}
                     onClick={() => openEditModal(category)}
                   />
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    icon={Trash2}
-                    className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20"
-                    onClick={() => setCategoryToDelete(category)}
-                  />
+                  <div title={category.pageCount > 0 ? "Cannot delete category with pages" : "Delete category"}>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        icon={Trash2}
+                        className={`text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 ${category.pageCount > 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        onClick={() => category.pageCount === 0 && setCategoryToDelete(category)}
+                        disabled={category.pageCount > 0}
+                    />
+                  </div>
                 </div>
               </div>
             ))
