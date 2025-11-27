@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Edit, Trash2, Layout, FileText, Eye, ChevronUp, ChevronDown } from 'lucide-react';
+import { Plus, Edit, Trash2, Layout, FileText, ChevronUp, ChevronDown } from 'lucide-react';
 import { usePages, useDeletePage, useUpdatePage } from '../hooks/usePages';
 import { Button } from '../../../shared/ui/Button';
 import { Card } from '../../../shared/ui/Card';
 import { Modal } from '../../../shared/ui/Modal';
 import { Select } from '../../../shared/ui/Select';
 import { LoadingSpinner } from '../../../shared/ui/LoadingSpinner';
-import { PagePreview } from '../../pageBuilder/components/PagePreview';
 import { useLanguage } from '../../../contexts/LanguageContext';
-import { transformComponentsToSections } from '../../pageBuilder/utils/transformers';
 
 export function PagesListPage() {
   const { t } = useTranslation();
@@ -21,7 +19,7 @@ export function PagesListPage() {
   const updatePage = useUpdatePage();
 
   const [pageToDelete, setPageToDelete] = useState(null);
-  const [previewPage, setPreviewPage] = useState(null);
+
 
   if (isLoading) {
     return (
@@ -128,13 +126,7 @@ export function PagesListPage() {
               </>
             )}
             
-            <Button
-              variant="ghost"
-              size="sm"
-              icon={Eye}
-              onClick={() => setPreviewPage(page)}
-              title={t('pages.previewPage')}
-            />
+
             <Button
               variant="outline"
               size="sm"
@@ -297,14 +289,7 @@ export function PagesListPage() {
         </div>
       </Modal>
 
-      {/* Page Preview Modal */}
-      {previewPage && (
-        <PagePreview
-          sections={transformComponentsToSections(previewPage.components || [])}
-          onClose={() => setPreviewPage(null)}
-          title={language === 'ar' ? previewPage.nameAr : language === 'ku' ? previewPage.nameKu : previewPage.nameEn}
-        />
-      )}
+
     </div>
   );
 }
