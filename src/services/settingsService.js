@@ -37,10 +37,9 @@ export const settingsService = {
         if (response.ok) {
           const result = await response.json();
           settingsList = result.data || result || [];
-          console.log('Settings loaded from /Settings endpoint:', settingsList);
         }
       } catch (e) {
-        console.log('Failed to fetch from /Settings, trying search...');
+        console.warn('Failed to fetch from /Settings, trying search...');
       }
       
       // Try method 2: Search with 'site' term if first method failed
@@ -54,10 +53,9 @@ export const settingsService = {
           if (response.ok) {
             const result = await response.json();
             settingsList = result.data || result || [];
-            console.log('Settings loaded from search endpoint:', settingsList);
           }
         } catch (e) {
-          console.log('Failed to fetch from search endpoint');
+          console.warn('Failed to fetch from search endpoint');
         }
       }
       
@@ -80,7 +78,6 @@ export const settingsService = {
         return acc;
       }, {});
 
-      console.log('Final settings object:', settingsObject);
       return { data: settingsObject };
     } catch (error) {
       console.error('Error fetching settings:', error);
@@ -166,6 +163,86 @@ export const settingsService = {
     } catch (error) {
       console.error('Error updating settings:', error);
       throw error;
+    }
+  },
+
+  /**
+   * Get public settings (no authentication required)
+   * Used for public pages like navbar, footer, etc.
+   */
+  getPublicSettings: async () => {
+    try {
+      // Fetch settings WITHOUT authorization header for public access
+      const headers = {
+        'Content-Type': 'application/json',
+      };
+
+      // Try to fetch all public settings
+      let response;
+      let settingsList = [];
+      
+      // Try method 1: Get all settings without auth
+      try {
+        response = await fetch(`${API_URL}/Settings/public`, {
+          headers: headers,
+          cache: 'no-store'
+        });
+        
+        if (response.ok) {
+          const result = await response.json();
+          settingsList = result.data || result || [];
+        }
+      } catch (e) {
+        // If /public endpoint doesn't exist, try with AllowAnonymous parameter
+        try {
+          response = await fetch(`${API_URL}/Settings?isPublic=true`, {
+            headers: headers,
+            cache: 'no-store'
+          });
+          
+          if (response.ok) {
+            const result = await response.json();
+            settingsList = result.data || result || [];
+          }
+        } catch (e2) {
+          // Last resort: try search for 'site' without auth
+          try {
+            response = await fetch(`${API_URL}/Settings/search?searchTerm=site`, {
+              headers: headers,
+              cache: 'no-store'
+            });
+            
+            if (response.ok) {
+              const result = await response.json();
+              settingsList = result.data || result || [];
+            }
+          } catch (e3) {
+            console.warn('All public settings endpoints failed');
+          }
+        }
+      }
+      
+      // If data found, convert and return
+      if (settingsList.length) {
+        const settingsObject = settingsList.reduce((acc, item) => {
+          try {
+            acc[item.key] = JSON.parse(item.value);
+          } catch (e) {
+            acc[item.key] = item.value;
+          }
+          acc[`${item.key}_id`] = item.id;
+          return acc;
+        }, {});
+
+        return { data: settingsObject };
+      }
+      
+      // If no data from API, return empty (components will use their defaults)
+      console.warn('No public settings available from API, using component defaults');
+      return { data: {} };
+    } catch (error) {
+      console.error('Error fetching public settings:', error);
+      return { data: {} };
     }
   },
 };

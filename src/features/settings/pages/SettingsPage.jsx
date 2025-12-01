@@ -57,8 +57,6 @@ export default function SettingsPage() {
   // Update form data when settings load
   useEffect(() => {
     if (settings && Object.keys(settings).length > 0) {
-      console.log('Loading settings:', settings);
-      
       const loadedHeader = settings.site_header || {};
       const loadedFooter = settings.site_footer || {};
       const loadedSidebar = settings.site_sidebar || {};
@@ -84,8 +82,6 @@ export default function SettingsPage() {
         site_footer_id: settings.site_footer_id,
         site_sidebar_id: settings.site_sidebar_id
       });
-      
-      console.log('Logo URL loaded:', loadedHeader.logo?.url);
     }
   }, [settings]);
 
