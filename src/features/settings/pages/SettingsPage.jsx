@@ -57,15 +57,35 @@ export default function SettingsPage() {
   // Update form data when settings load
   useEffect(() => {
     if (settings && Object.keys(settings).length > 0) {
+      console.log('Loading settings:', settings);
+      
+      const loadedHeader = settings.site_header || {};
+      const loadedFooter = settings.site_footer || {};
+      const loadedSidebar = settings.site_sidebar || {};
+      
       setFormData({
-        site_header: { ...defaultHeader, ...settings.site_header },
-        site_footer: { ...defaultFooter, ...settings.site_footer },
-        site_sidebar: { ...defaultSidebar, ...settings.site_sidebar },
+        site_header: {
+          instituteName: loadedHeader.instituteName || defaultHeader.instituteName,
+          slogan: loadedHeader.slogan || defaultHeader.slogan,
+          logo: loadedHeader.logo || defaultHeader.logo
+        },
+        site_footer: {
+          phones: loadedFooter.phones || defaultFooter.phones,
+          email: loadedFooter.email || defaultFooter.email,
+          address: loadedFooter.address || defaultFooter.address,
+          copyright: loadedFooter.copyright || defaultFooter.copyright
+        },
+        site_sidebar: {
+          poll: loadedSidebar.poll || defaultSidebar.poll,
+          ad: loadedSidebar.ad || defaultSidebar.ad
+        },
         // Keep IDs if they exist
         site_header_id: settings.site_header_id,
         site_footer_id: settings.site_footer_id,
         site_sidebar_id: settings.site_sidebar_id
       });
+      
+      console.log('Logo URL loaded:', loadedHeader.logo?.url);
     }
   }, [settings]);
 
@@ -84,9 +104,36 @@ export default function SettingsPage() {
     },
   });
 
+  // Separate mutation for logo only
+  const updateLogoMutation = useMutation({
+    mutationFn: async (logoData) => {
+      const logoSettings = {
+        site_header: {
+          ...formData.site_header,
+          logo: logoData
+        },
+        site_header_id: formData.site_header_id
+      };
+      return settingsService.updateSettings(logoSettings);
+    },
+    onSuccess: async () => {
+      await queryClient.invalidateQueries(['settings']);
+      await queryClient.refetchQueries(['settings']);
+      alert(language === 'ar' ? 'تم حفظ اللوجو بنجاح' : 'Logo saved successfully!');
+    },
+    onError: (error) => {
+      console.error('Error updating logo:', error);
+      alert(language === 'ar' ? 'فشل حفظ اللوجو' : 'Failed to save logo');
+    },
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     updateMutation.mutate(formData);
+  };
+
+  const handleSaveLogo = () => {
+    updateLogoMutation.mutate(formData.site_header.logo);
   };
 
   const handleLogoUpload = async (e) => {
@@ -246,19 +293,31 @@ export default function SettingsPage() {
                   <Image className="w-5 h-5 text-primary-600" />
                   <h2 className="text-xl font-semibold">{language === 'ar' ? 'الشعار (Logo)' : 'Logo'}</h2>
                 </div>
-                <label className="cursor-pointer px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-                  <Upload className="w-4 h-4" />
-                  {isUploading 
-                    ? (language === 'ar' ? 'جاري الرفع...' : 'Uploading...') 
-                    : (language === 'ar' ? 'رفع صورة' : 'Upload Image')}
-                  <input 
-                    type="file" 
-                    className="hidden" 
-                    accept="image/*"
-                    onChange={handleLogoUpload}
-                    disabled={isUploading}
-                  />
-                </label>
+                <div className="flex gap-2">
+                  <label className="cursor-pointer px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                    <Upload className="w-4 h-4" />
+                    {isUploading 
+                      ? (language === 'ar' ? 'جاري الرفع...' : 'Uploading...') 
+                      : (language === 'ar' ? 'رفع صورة' : 'Upload Image')}
+                    <input 
+                      type="file" 
+                      className="hidden" 
+                      accept="image/*"
+                      onChange={handleLogoUpload}
+                      disabled={isUploading}
+                    />
+                  </label>
+                  <button
+                    onClick={handleSaveLogo}
+                    disabled={updateLogoMutation.isPending}
+                    className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 flex items-center gap-2 text-sm font-medium transition-colors"
+                  >
+                    <Save className="w-4 h-4" />
+                    {updateLogoMutation.isPending 
+                      ? (language === 'ar' ? 'جاري الحفظ...' : 'Saving...') 
+                      : (language === 'ar' ? 'حفظ اللوجو' : 'Save Logo')}
+                  </button>
+                </div>
               </div>
               <div className="space-y-4">
                 <div>

@@ -22,16 +22,23 @@ export function PublicNavbar() {
   const { data: settingsData } = useQuery({
     queryKey: ['settings'],
     queryFn: settingsService.getSettings,
+    staleTime: 0,
+    refetchOnMount: true,
   });
 
   const settings = settingsData?.data || {};
   const headerSettings = settings.site_header || {};
+  
+  console.log('PublicNavbar - Settings loaded:', settings);
+  console.log('PublicNavbar - Header settings:', headerSettings);
+  console.log('PublicNavbar - Logo URL from settings:', headerSettings.logo?.url);
   
   // Default values
   const defaultInstituteName = { en: 'Institute for People and Politics', ar: 'معهد الشعب والسياسة', ku: 'پەیمانگەی گەل و سیاسەت' };
   const defaultSlogan = { en: 'Your future starts today', ar: 'مستقبلك يبدأ اليوم', ku: 'داهاتووت ئەمڕۆ دەست پێ دەکات' };
   
   const getImageUrl = (url) => {
+    console.log('getImageUrl - Input URL:', url);
     if (!url) return '/logo.png';
     if (url.startsWith('http') || url.startsWith('data:')) return url;
     
@@ -39,13 +46,17 @@ export function PublicNavbar() {
     const baseUrl = API_CONFIG.baseURL.endsWith('/api') 
       ? API_CONFIG.baseURL.slice(0, -4) 
       : API_CONFIG.baseURL;
-      
-    return `${baseUrl}${url.startsWith('/') ? '' : '/'}${url}`;
+    
+    const finalUrl = `${baseUrl}${url.startsWith('/') ? '' : '/'}${url}`;
+    console.log('getImageUrl - Final URL:', finalUrl);
+    return finalUrl;
   };
 
   const instituteName = headerSettings.instituteName || defaultInstituteName;
   const slogan = headerSettings.slogan || defaultSlogan;
   const logoUrl = getImageUrl(headerSettings.logo?.url);
+  
+  console.log('PublicNavbar - Final Logo URL:', logoUrl);
 
   // Close menu on route change
   useEffect(() => {
