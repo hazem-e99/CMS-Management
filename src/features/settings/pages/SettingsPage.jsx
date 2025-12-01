@@ -72,8 +72,10 @@ export default function SettingsPage() {
   // Update mutation
   const updateMutation = useMutation({
     mutationFn: settingsService.updateSettings,
-    onSuccess: () => {
-      queryClient.invalidateQueries(['settings']);
+    onSuccess: async () => {
+      // Invalidate and refetch to ensure we have the latest data
+      await queryClient.invalidateQueries(['settings']);
+      await queryClient.refetchQueries(['settings']);
       alert(language === 'ar' ? 'تم حفظ الإعدادات بنجاح' : 'Settings updated successfully!');
     },
     onError: (error) => {

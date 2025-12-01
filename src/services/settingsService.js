@@ -23,9 +23,10 @@ export const settingsService = {
         headers['Authorization'] = `Bearer ${token}`;
       }
 
-      // Fetch all settings (using search with empty term or a specific category if applicable)
-      const response = await fetch(`${API_URL}/Settings/search?searchTerm=site_`, {
-        headers: headers
+      // Fetch all settings (using search with empty term to get all settings)
+      const response = await fetch(`${API_URL}/Settings/search?searchTerm=`, {
+        headers: headers,
+        cache: 'no-store' // Prevent browser caching
       });
       
       if (!response.ok) {
@@ -41,6 +42,8 @@ export const settingsService = {
       const result = await response.json();
       const settingsList = result.data || [];
       
+      console.log('Settings loaded from API:', settingsList);
+      
       // Convert list of { key, value } to a single object
       const settingsObject = settingsList.reduce((acc, item) => {
         try {
@@ -54,6 +57,7 @@ export const settingsService = {
         return acc;
       }, {});
 
+      console.log('Settings object:', settingsObject);
       return { data: settingsObject };
     } catch (error) {
       console.error('Error fetching settings:', error);
