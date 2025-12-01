@@ -23,26 +23,49 @@ export const settingsService = {
         headers['Authorization'] = `Bearer ${token}`;
       }
 
-      // Fetch all settings (using search with empty term to get all settings)
-      const response = await fetch(`${API_URL}/Settings/search?searchTerm=`, {
-        headers: headers,
-        cache: 'no-store' // Prevent browser caching
-      });
+      // Try to fetch all settings using different endpoints
+      let response;
+      let settingsList = [];
       
-      if (!response.ok) {
-        if (response.status === 401) {
-            console.error('Unauthorized: Please login to access settings');
-            throw new Error('Unauthorized');
+      // Try method 1: Get all settings without search
+      try {
+        response = await fetch(`${API_URL}/Settings`, {
+          headers: headers,
+          cache: 'no-store'
+        });
+        
+        if (response.ok) {
+          const result = await response.json();
+          settingsList = result.data || result || [];
+          console.log('Settings loaded from /Settings endpoint:', settingsList);
         }
-        // Fallback for development/mock if API fails
-        console.warn('Failed to fetch settings from API, returning empty object');
-        return { data: {} };
+      } catch (e) {
+        console.log('Failed to fetch from /Settings, trying search...');
       }
       
-      const result = await response.json();
-      const settingsList = result.data || [];
+      // Try method 2: Search with 'site' term if first method failed
+      if (!settingsList.length) {
+        try {
+          response = await fetch(`${API_URL}/Settings/search?searchTerm=site`, {
+            headers: headers,
+            cache: 'no-store'
+          });
+          
+          if (response.ok) {
+            const result = await response.json();
+            settingsList = result.data || result || [];
+            console.log('Settings loaded from search endpoint:', settingsList);
+          }
+        } catch (e) {
+          console.log('Failed to fetch from search endpoint');
+        }
+      }
       
-      console.log('Settings loaded from API:', settingsList);
+      // If still no data, return empty object
+      if (!settingsList.length) {
+        console.warn('No settings found, returning empty object');
+        return { data: {} };
+      }
       
       // Convert list of { key, value } to a single object
       const settingsObject = settingsList.reduce((acc, item) => {
@@ -57,7 +80,7 @@ export const settingsService = {
         return acc;
       }, {});
 
-      console.log('Settings object:', settingsObject);
+      console.log('Final settings object:', settingsObject);
       return { data: settingsObject };
     } catch (error) {
       console.error('Error fetching settings:', error);
