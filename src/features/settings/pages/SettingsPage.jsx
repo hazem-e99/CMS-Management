@@ -92,6 +92,16 @@ export default function SettingsPage() {
       // Invalidate and refetch to ensure we have the latest data
       await queryClient.invalidateQueries(['settings']);
       await queryClient.refetchQueries(['settings']);
+      
+      // Also update public settings cache
+      const { data: updatedSettings } = await settingsService.getSettings();
+      if (updatedSettings) {
+        localStorage.setItem('publicSettings', JSON.stringify(updatedSettings));
+        localStorage.setItem('publicSettingsTimestamp', Date.now().toString());
+        // Invalidate public settings cache
+        await queryClient.invalidateQueries(['publicSettings']);
+      }
+      
       alert(language === 'ar' ? 'تم حفظ الإعدادات بنجاح' : 'Settings updated successfully!');
     },
     onError: (error) => {
@@ -115,6 +125,16 @@ export default function SettingsPage() {
     onSuccess: async () => {
       await queryClient.invalidateQueries(['settings']);
       await queryClient.refetchQueries(['settings']);
+      
+      // Also update public settings cache
+      const { data: updatedSettings } = await settingsService.getSettings();
+      if (updatedSettings) {
+        localStorage.setItem('publicSettings', JSON.stringify(updatedSettings));
+        localStorage.setItem('publicSettingsTimestamp', Date.now().toString());
+        // Invalidate public settings cache
+        await queryClient.invalidateQueries(['publicSettings']);
+      }
+      
       alert(language === 'ar' ? 'تم حفظ اللوجو بنجاح' : 'Logo saved successfully!');
     },
     onError: (error) => {

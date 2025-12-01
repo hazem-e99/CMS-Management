@@ -172,6 +172,18 @@ export const settingsService = {
    */
   getPublicSettings: async () => {
     try {
+      // First, try to get from localStorage cache
+      const cachedSettings = localStorage.getItem('publicSettings');
+      const cacheTimestamp = localStorage.getItem('publicSettingsTimestamp');
+      const now = Date.now();
+      const cacheAge = now - (parseInt(cacheTimestamp) || 0);
+      const cacheMaxAge = 5 * 60 * 1000; // 5 minutes
+      
+      // If cache is fresh, use it
+      if (cachedSettings && cacheAge < cacheMaxAge) {
+        return { data: JSON.parse(cachedSettings) };
+      }
+
       // Fetch settings WITHOUT authorization header for public access
       const headers = {
         'Content-Type': 'application/json',
@@ -217,7 +229,11 @@ export const settingsService = {
               settingsList = result.data || result || [];
             }
           } catch (e3) {
-            console.warn('All public settings endpoints failed');
+            // All API calls failed, try to use cache even if expired
+            if (cachedSettings) {
+              console.warn('Using expired cache for public settings');
+              return { data: JSON.parse(cachedSettings) };
+            }
           }
         }
       }
@@ -234,14 +250,25 @@ export const settingsService = {
           return acc;
         }, {});
 
+        // Cache the settings
+        localStorage.setItem('publicSettings', JSON.stringify(settingsObject));
+        localStorage.setItem('publicSettingsTimestamp', now.toString());
+
         return { data: settingsObject };
       }
       
-      // If no data from API, return empty (components will use their defaults)
-      console.warn('No public settings available from API, using component defaults');
+      // If no data from API and no cache, return empty
+      console.warn('No public settings available, using component defaults');
       return { data: {} };
     } catch (error) {
       console.error('Error fetching public settings:', error);
+      
+      // Try to use cached settings even if expired
+      const cachedSettings = localStorage.getItem('publicSettings');
+      if (cachedSettings) {
+        return { data: JSON.parse(cachedSettings) };
+      }
+      
       return { data: {} };
     }
   },
